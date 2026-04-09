@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splendor: Marvel - คู่มือการเล่นแบบเจาะลึก (Comprehensive Guide)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('cover.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .nav-btn.active {
+            background-color: #dc2626; /* Red for Marvel */
+            color: white;
+            border-color: #dc2626;
+        }
+        .infinity-stone {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 4px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        .stone-mind { background-color: #fbbf24; } /* Yellow */
+        .stone-power { background-color: #fbbf24; border: 2px solid #ea580c; } /* Yellow/Orange */
+        .stone-reality { background-color: #9333ea; } /* Purple */
+        .stone-space { background-color: #eab308; border: 2px solid #ca8a04;} /* Amber */
+        .stone-time { background-color: #2563eb; } /* Blue */
+        .stone-soul { background-color: #16a34a; } /* Green */
+        .stone-wild { background-color: #94a3b8; } /* Grey */
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-red-700 text-white p-6 shadow-md text-center relative z-20 border-b-4 border-yellow-400">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-wide uppercase" style="font-family: Impact, sans-serif; letter-spacing: 2px;">Splendor: Marvel</h1>
+        <p class="text-red-100 mt-2 text-sm md:text-lg">คู่มือการเล่นฉบับสมบูรณ์ (Complete Guide) - กอบกู้จักรวาลด้วย Infinity Stones!</p>
+    </header>
+
+    <nav class="bg-slate-900 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap border-b border-slate-700">
+        <div class="max-w-6xl mx-auto flex space-x-2 md:space-x-4 justify-start lg:justify-center">
+            <a href="#sec-overview" class="nav-btn active px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-700 transition inline-block text-sm md:text-base">ภาพรวม & วิธีชนะ</a>
+            <a href="#sec-setup" class="nav-btn px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-700 transition inline-block text-sm md:text-base">อุปกรณ์ & เตรียมบอร์ด</a>
+            <a href="#sec-actions" class="nav-btn px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-700 transition inline-block text-sm md:text-base">4 แอคชั่นหลัก</a>
+            <a href="#sec-mechanics" class="nav-btn px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-700 transition inline-block text-sm md:text-base">กลไกพิเศษ: ถุงมือ & อเวนเจอร์</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full">
+
+        <!-- OVERVIEW -->
+        <section id="sec-overview" class="mb-20 scroll-mt-24">
+            <div class="text-center bg-white/95 p-8 rounded-2xl shadow-md border border-slate-200 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-100 rounded-bl-full opacity-50 z-0"></div>
+                <h2 class="text-3xl font-bold text-slate-800 mb-4 relative z-10">เป้าหมายของเกม</h2>
+                <p class="text-slate-700 text-lg leading-relaxed max-w-3xl mx-auto relative z-10">
+                    ใน Splendor: Marvel ผู้เล่นจะสวมบทบาทเป็นทีมฮีโร่ที่พยายามรวบรวม <strong>Infinity Stones (อัญมณีอินฟินิตี้)</strong> 
+                    เพื่อนำไปสร้าง <strong>Infinity Gauntlet (ถุงมืออินฟินิตี้)</strong> และหยุดยั้งธานอสจากการทำลายล้างจักรวาล! 
+                    คุณต้องสะสมโทเคน ดึงตัวฮีโร่มาร่วมทีม และยึดครองพื้นที่ต่างๆ
+                </p>
+                <div class="mt-6 flex flex-wrap justify-center gap-3 relative z-10">
+                    <span class="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow">⏱ 30 นาที</span>
+                    <span class="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow">👥 2-4 คน</span>
+                    <span class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow">⚙️ วางแผน / บริหารทรัพยากร</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mt-8">
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-yellow-400">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center">🏆 เงื่อนไขการชนะ (End Game Trigger)</h3>
+                    <p class="text-slate-700 leading-relaxed">
+                        เกมจะเข้าสู่ <strong>"รอบสุดท้าย"</strong> เมื่อมีผู้เล่นคนใดคนหนึ่งสามารถทำเงื่อนไข <strong>ทั้ง 3 ข้อนี้</strong> ได้ครบถ้วน:
+                    </p>
+                    <ul class="list-decimal pl-5 mt-3 space-y-2 text-slate-700 font-semibold">
+                        <li>มีคะแนน <strong>Infinity Points</strong> รวมกัน 16 คะแนนขึ้นไป (จากฮีโร่และพื้นที่)</li>
+                        <li>มีการ์ดฮีโร่ที่มี <strong>สัญลักษณ์สีครบทั้ง 5 สี</strong> (เขียว, ฟ้า, แดง, ดำ, เหลือง) อย่างน้อยสีละ 1 ใบในพื้นที่ของตนเอง</li>
+                        <li>มี <strong>โทเคน Time Stone (สีเขียว)</strong> 1 อัน (ได้จากการจั่วการ์ดระดับ 3 และจะได้ โทเคน Time Stone เพียง 1 อันเท่านั้น)</li>
+                    </ul>
+                    <p class="text-sm text-slate-500 mt-4 italic">*เมื่อมีคนทำได้ ผู้เล่นคนอื่นในรอบนั้นจะได้เล่นอีกคนละ 1 เทิร์นเพื่อให้ทุกคนได้เล่นจำนวนเทิร์นเท่ากัน จากนั้นใครมีแต้มสูงสุดจะเป็นผู้ชนะ (ต้องครบ 3 เงื่อนไขเช่นกัน!)</p>
+                </div>
+
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center">🔄 ระบบการเล่นหลัก (Engine Building)</h3>
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        คุณเริ่มต้นด้วยการหยิบ <strong>โทเคน (Tokens)</strong> ที่เป็นสีต่างๆ แล้วนำโทเคนเหล่านั้นไปจ่ายเพื่อ <strong>"จ้าง" ฮีโร่ (ซื้อการ์ด)</strong> มาวางไว้ตรงหน้า
+                    </p>
+                    <div class="bg-slate-50 p-4 rounded border border-slate-200 text-sm">
+                        <strong>ความลับของเครื่องยนต์:</strong> ฮีโร่ที่คุณซื้อมาแต่ละตัว จะให้ <strong>ส่วนลดถาวร</strong> แก่คุณตามสีที่ระบุที่มุมขวาบนของการ์ด!<br>
+                        <em>ตัวอย่าง: ถ้าคุณมีฮีโร่ที่ให้โบนัสสีแดง 2 ใบ ในตาต่อๆ ไป ถ้าคุณซื้อการ์ดที่ราคา แดง 3 เขียว 1 คุณจ่ายแค่ แดง 1 เขียว 1 (ใช้โทเคนจ่ายน้อยลงเรื่อยๆ)</em>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SETUP & COMPONENTS -->
+        <section id="sec-setup" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-300 pb-2">อุปกรณ์ & การเตรียมบอร์ด</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Deck 1, 2, 3 -->
+                <div class="bg-white/95 p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">🃏 กองการ์ดฮีโร่ (3 ระดับ)</h3>
+                    <p class="text-sm text-slate-600 mb-3">สับการ์ดแยกตามสีหลังการ์ด (ระดับ 1 🟢, ระดับ 2 🟡, ระดับ 3 🔵) คว่ำไว้เป็นกอง แล้วเปิดหงายการ์ดจากแต่ละกอง <strong>ระดับละ 4 ใบ</strong> ไว้ตรงกลางโต๊ะ (รวม 12 ใบ)</p>
+                    <p class="text-xs text-blue-600 font-semibold">*ทุกครั้งที่มีคนหยิบการ์ดไป ให้เปิดใบใหม่จากกองนั้นมาแทนที่ทันที</p>
+                </div>
+                
+                <!-- Tokens -->
+                <div class="bg-white/95 p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">💎 โทเคน (อัญมณี)</h3>
+                    <ul class="text-sm text-slate-600 space-y-1 mb-2">
+                        <li><span class="stone-reality"></span> แดง (Reality)</li>
+                        <li><span class="stone-space"></span> ฟ้า (Space)</li>
+                        <li><span class="stone-soul"></span> ส้ม (Soul)</li>
+                        <li><span class="stone-time"></span> ดำ (Power)</li>
+                        <li><span class="stone-mind"></span> เหลือง (Mind)</li>
+                    </ul>
+                    <p class="text-sm font-semibold text-slate-800">จำนวนที่ใช้เล่นตามจำนวนคน:</p>
+                    <ul class="text-xs text-slate-600 list-disc pl-5">
+                        <li>2 คน: สีละ 4 อัน</li>
+                        <li>3 คน: สีละ 5 อัน</li>
+                        <li>4 คน: สีละ 7 อัน</li>
+                    </ul>
+                    <p class="text-xs text-red-600 mt-2 font-bold">*โทเคนสีเทา S.H.I.E.L.D. (Wild) ใช้ 5 อันเสมอ ทุกจำนวนคนเล่น</p>
+                </div>
+
+                <!-- Locations & Avengers -->
+                <div class="bg-white/95 p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">📍 ไทล์พื้นที่ & อเวนเจอร์</h3>
+                    <ul class="list-disc pl-5 text-sm text-slate-600 space-y-2">
+                        <li><strong>ไทล์พื้นที่ (Locations):</strong> สุ่มหยิบมาวางหงายไว้ = จำนวนผู้เล่น + 1 อัน (แผ่นเหล่านี้ให้คะแนนพิเศษเมื่อสะสมโบนัสสีครบตามที่ระบุ)</li>
+                        <li><strong>โทเคน Avengers Assemble:</strong> วางไว้ข้างกระดาน (ให้ 3 คะแนนสำหรับคนที่มีสัญลักษณ์อเวนเจอร์มากที่สุด)</li>
+                        <li><strong>แผ่น Time Stone (สีเขียว):</strong> วางไว้กองเดียวกัน ผู้เล่นจะได้หยิบเมื่อซื้อการ์ดระดับ 3 สำเร็จ</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACTIONS -->
+        <section id="sec-actions" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-300 pb-2">4 แอคชั่นหลักในเทิร์นของคุณ</h2>
+            <p class="text-slate-700 text-lg mb-6 bg-white/90 p-4 rounded-lg">เมื่อถึงตาของคุณ คุณสามารถเลือกทำ <strong>1 แอคชั่น เท่านั้น</strong> จาก 4 ตัวเลือกด้านล่าง:</p>
+
+            <div class="space-y-6">
+                <!-- Action 1 -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-slate-400">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-4">💎💎💎</span>
+                        <h3 class="text-xl font-bold text-slate-800">1. หยิบโทเคนสีต่างกัน 3 สี (สีละ 1 อัน)</h3>
+                    </div>
+                    <p class="text-slate-700">หยิบโทเคนจากกองกลางมาไว้กับตัว 3 อัน โดยต้องเป็นสีที่ไม่ซ้ำกันเลย (ห้ามหยิบสีเทา S.H.I.E.L.D.)</p>
+                </div>
+
+                <!-- Action 2 -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-slate-400">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-4">💎💎</span>
+                        <h3 class="text-xl font-bold text-slate-800">2. หยิบโทเคนสีเดียวกัน 2 อัน</h3>
+                    </div>
+                    <p class="text-slate-700">หยิบโทเคนสีเดียวกัน 2 อันจากกองกลาง <strong>แต่มีเงื่อนไขสำคัญ:</strong> คุณจะหยิบได้ก็ต่อเมื่อ กองของสีที่คุณจะหยิบ มีโทเคนเหลืออยู่อย่างน้อย <strong>4 อันขึ้นไป</strong> ก่อนที่คุณจะหยิบ (หยิบแล้วต้องเหลืออย่างน้อย 2 อันบนโต๊ะ)</p>
+                </div>
+
+                <!-- Action 3 -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-amber-400">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-4">🔒</span>
+                        <h3 class="text-xl font-bold text-slate-800">3. จองการ์ด (Reserve) 1 ใบ + รับ 1 โทเคน S.H.I.E.L.D. (สีเทา)</h3>
+                    </div>
+                    <p class="text-slate-700 mb-3">หยิบการ์ดฮีโร่ที่หงายอยู่บนโต๊ะ (หรือจั่วใบบนสุดจากกองคว่ำก็ได้) มาคว่ำไว้ตรงหน้าคุณ (คนอื่นจะซื้อไม่ได้) และคุณจะได้รับ <strong>โทเคนสีเทา (S.H.I.E.L.D.) 1 อัน ฟรี!</strong></p>
+                    <ul class="list-disc pl-9 text-sm text-slate-600">
+                        <li>โทเคนสีเทา เป็น <strong>Joker (Wild)</strong> ใช้แทนสีอะไรก็ได้ตอนจ่ายเพื่อซื้อการ์ด</li>
+                        <li>คุณสามารถ <strong>จองการ์ดไว้ในมือได้สูงสุดแค่ 3 ใบ</strong> เท่านั้น</li>
+                        <li>ถ้าโทเคนสีเทากองกลางหมด คุณยังจองการ์ดได้ แต่จะไม่ได้โทเคนสีเทา</li>
+                        <li>คุณสามารถนำการ์ดที่จองไว้ มาจ่ายซื้อได้ในเทิร์นต่อๆ ไป (โดยใช้แอคชั่นที่ 4)</li>
+                    </ul>
+                </div>
+
+                <!-- Action 4 -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-red-600">
+                    <div class="flex items-center mb-3">
+                        <span class="text-3xl mr-4">🦸‍♂️</span>
+                        <h3 class="text-xl font-bold text-slate-800">4. จ้างฮีโร่ (ซื้อการ์ด) 1 ใบ</h3>
+                    </div>
+                    <p class="text-slate-700 mb-3">จ่ายโทเคนคืนกองกลาง ตามราคาที่ระบุบนมุมซ้ายล่างของการ์ด (ที่คุณจะซื้อจากตรงกลางโต๊ะ หรือ จากบนมือที่คุณจองไว้)</p>
+                    <div class="bg-red-50 p-4 rounded border border-red-200 text-sm text-slate-800">
+                        <strong>ระบบส่วนลด (Discount):</strong> <br>
+                        การ์ดฮีโร่ที่คุณซื้อไปแล้ววางหงายไว้ตรงหน้า จะทำหน้าที่เป็น <strong>ส่วนลดถาวร</strong> ให้คุณ 1 อันต่อ 1 ใบ ตามสีที่อยู่บนมุมขวาบนของการ์ดใบนั้น!<br>
+                        <em>เช่น หากคุณมีฮีโร่โบนัสสีแดง 2 ใบ วางอยู่ตรงหน้า และคุณต้องการซื้อการ์ดราคา [แดง 3, ดำ 1] คุณจะจ่ายโทเคนจริงๆ แค่ [แดง 1, ดำ 1] โทเคนเท่านั้น!</em>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-slate-800 p-4 rounded-xl shadow-md border border-slate-700 text-white flex items-start">
+                <div class="text-3xl mr-4">⚠️</div>
+                <div>
+                    <h4 class="font-bold text-amber-400 mb-1">กฎเหล็ก: ถือโทเคนรวมกันได้สูงสุด 10 อัน</h4>
+                    <p class="text-sm text-slate-300">เมื่อจบเทิร์นของคุณ หากคุณมีโทเคนรวมกัน (รวมทุกสีและสีเทา) <strong>เกิน 10 อัน</strong> คุณจะต้องเลือกทิ้งโทเคนสีใดก็ได้ คืนลงกองกลาง จนกว่าจะเหลือ 10 อันพอดี!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPECIAL MECHANICS -->
+        <section id="sec-mechanics" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-300 pb-2">กลไกพิเศษของ Splendor: Marvel</h2>
+            <p class="text-slate-700 text-lg mb-6 bg-white/90 p-4 rounded-lg">ความแตกต่างของภาค Marvel กับ Splendor ต้นฉบับ คือความหลากหลายของการทำคะแนนและการจบเกม</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Locations -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-t-4 border-slate-600">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">🏙️ การยึดพื้นที่ (Locations)</h3>
+                    <p class="text-sm text-slate-600 mb-3">แผ่นพื้นที่ที่วางอยู่ด้านบน จะระบุโบนัสสี (เช่น ต้องการฮีโร่สีแดง 3 ตัว สีดำ 3 ตัว)</p>
+                    <ul class="list-disc pl-5 text-sm text-slate-700">
+                        <li>ในตอนจบเทิร์นของคุณ ถ้าคุณมีฮีโร่วางอยู่ตรงหน้าที่มี "โบนัสสี" ครบตามที่พื้นที่ระบุ คุณ <strong>"ต้อง"</strong> หยิบแผ่นพื้นที่นั้นมาครอบครองฟรีๆ ทันที! (ถือว่ายึดพื้นที่สำเร็จ)</li>
+                        <li>แผ่นพื้นที่แต่ละแผ่น มีคะแนน Infinity Points ให้ (มักจะ 3 คะแนน)</li>
+                        <li>คุณครอบครองพื้นที่ได้ไม่จำกัดจำนวน</li>
+                    </ul>
+                </div>
+
+                <!-- Avengers Assemble -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-t-4 border-red-600">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">🅰️ โทเคน Avengers Assemble</h3>
+                    <p class="text-sm text-slate-600 mb-3">การ์ดฮีโร่บางใบ (โดยเฉพาะระดับสูงๆ) จะมีสัญลักษณ์รูป <strong>ตัว A (Avengers)</strong> เล็กๆ อยู่ใต้ภาพฮีโร่</p>
+                    <ul class="list-disc pl-5 text-sm text-slate-700">
+                        <li>ผู้เล่น <strong>คนแรก</strong> ที่สามารถรวบรวมสัญลักษณ์ตัว A ได้ครบ <strong>3 อัน</strong> จะได้หยิบโทเคน Avengers Assemble มาครอบครอง (รับ 3 คะแนน)</li>
+                        <li><strong>การแย่งชิง:</strong> หากมีผู้เล่นคนอื่น สะสมสัญลักษณ์ตัว A ได้ <strong>"มากกว่า"</strong> คนที่ถือโทเคนอยู่ (เช่น สะสมได้ 4 อัน) เขาจะแย่งโทเคน Avengers (และ 3 คะแนน) ไปจากคนเดิมทันที!</li>
+                    </ul>
+                </div>
+
+                <!-- Time Stone -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-t-4 border-green-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">⏳ โทเคน Time Stone (สีเขียว)</h3>
+                    <p class="text-sm text-slate-600 mb-3">นี่คือ 1 ในเงื่อนไขสำคัญที่ต้องมีเพื่อให้จบเกมและชนะได้ (Infinity Stones เม็ดสุดท้าย)</p>
+                    <ul class="list-disc pl-5 text-sm text-slate-700">
+                        <li>การจะได้มา คุณต้องซื้อ <strong>การ์ดระดับ 3 (ระดับสูงสุด)</strong> อย่างน้อย 1 ใบ</li>
+                        <li>เมื่อคุณจ้างฮีโร่ระดับ 3 ได้สำเร็จ คุณจะได้หยิบโทเคน Time Stone ไป 1 อัน ทันที</li>
+                        <li>มีค่าใช้เป็นเครื่องยืนยันว่าคุณพร้อมใช้ถุงมืออินฟินิตี้แล้ว (ไม่มีไม่ได้แชมป์!)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 text-center py-8 mt-auto border-t-4 border-red-800">
+        <h3 class="text-xl font-bold text-red-500 tracking-wider mb-2">SPLENDOR: MARVEL</h3>
+        <p class="text-sm">Interactive Comprehensive Guide | Board Game Books Architecture</p>
+    </footer>
+
+    <script>
+        // Setup Scrollspy for Navigation Highlighting
+        function setupScrollspy() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-btn');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.id;
+                        
+                        navLinks.forEach(link => {
+                            link.classList.remove('active', 'bg-red-600', 'text-white');
+                            link.classList.add('text-slate-300');
+                            link.style.backgroundColor = '';
+                            link.style.color = '';
+                            
+                            if (link.getAttribute('href') === `#${activeId}`) {
+                                link.classList.add('active');
+                                link.style.backgroundColor = '#dc2626';
+                                link.style.color = 'white';
+                                
+                                link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        window.onload = () => {
+            setupScrollspy();
+        };
+    </script>
+</body>
+</html>
