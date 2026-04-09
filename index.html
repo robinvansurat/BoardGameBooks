@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Game Books - คู่มือบอร์ดเกมภาษาไทย</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #fdfbf7;
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-amber-800 text-amber-50 p-6 shadow-md text-center relative z-20">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-wide">BOARD GAME BOOKS</h1>
+        <p class="text-amber-200 mt-2 text-sm md:text-lg">คลังคู่มือการเล่นและผู้ช่วยดิจิทัล (ภาษาไทย)</p>
+    </header>
+
+    <main class="flex-grow p-6 md:p-12 max-w-6xl mx-auto w-full">
+        <div class="mb-10 text-center">
+            <h2 class="text-2xl font-bold text-amber-800 mb-2">เลือกคู่มือเกมที่คุณต้องการ</h2>
+            <p class="text-slate-600">คู่มือแบบอินเตอร์แอคทีฟที่เข้าใจง่าย พร้อมข้อมูลทุกอย่างที่คุณต้องรู้ก่อนเริ่มเล่น</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card: Here to Slay -->
+            <a href="HereToSlay/" class="block group">
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+                    <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
+                        <!-- Cover Image -->
+                        <img src="HereToSlay/cover.jpg" alt="Here to Slay Box Art" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="bg-amber-600 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Party / Strategy</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">Here to Slay</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">รวบรวมปาร์ตี้ฮีโร่ สวมใส่อาวุธ ใช้เวทมนตร์ และปราบมอนสเตอร์สุดอันตราย พร้อมขัดขวางเพื่อนที่กลายเป็นศัตรู!</p>
+                        <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
+                            <span class="mr-4">⏱ 30-60 นาที</span>
+                            <span>👥 2-6 คน</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Card: 7 Wonders -->
+            <a href="7Wonders/" class="block group">
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+                    <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
+                        <!-- Cover Image -->
+                        <img src="7Wonders/cover.jpg" alt="7 Wonders Box Art" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Drafting / Civilization</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">7 Wonders</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">นำพาเมืองแห่งโลกยุคโบราณของคุณสู่ความยิ่งใหญ่! รวบรวมทรัพยากร สร้างกองทัพ และสร้างมหาพีระมิดหรือสวนลอยบาบิโลน</p>
+                        <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
+                            <span class="mr-4">⏱ 30 นาที</span>
+                            <span>👥 3-7 คน</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Add more game cards here in the future -->
+        </div>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 text-center py-6 mt-auto">
+        <p class="text-sm">Board Game Books | คลังความรู้สำหรับคนรักบอร์ดเกม</p>
+    </footer>
+
+</body>
+</html>
