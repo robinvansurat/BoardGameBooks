@@ -188,27 +188,198 @@
 
         <section id="sec-cards" class="mb-20 scroll-mt-24">
             <h2 class="text-2xl font-bold text-amber-800 mb-2 border-b border-amber-200 pb-2">คลังความรู้: ประเภทของการ์ด</h2>
-            <p class="mb-6 text-slate-600">คลิกที่ประเภทการ์ดเพื่อดูรายละเอียดและกฎเฉพาะของการ์ดนั้นๆ</p>
+            <p class="mb-6 text-slate-600">รายละเอียดและกฎเฉพาะของการ์ดแต่ละประเภท</p>
 
-            <div class="flex flex-wrap gap-2 mb-6" id="card-filters">
-                <button onclick="showCardInfo('hero', this)" class="card-tab active px-4 py-2 bg-amber-600 text-white rounded font-semibold transition">Hero</button>
-                <button onclick="showCardInfo('item', this)" class="card-tab px-4 py-2 bg-slate-200 text-slate-700 hover:bg-slate-300 rounded font-semibold transition">Item</button>
-                <button onclick="showCardInfo('magic', this)" class="card-tab px-4 py-2 bg-slate-200 text-slate-700 hover:bg-slate-300 rounded font-semibold transition">Magic</button>
-                <button onclick="showCardInfo('modifier', this)" class="card-tab px-4 py-2 bg-slate-200 text-slate-700 hover:bg-slate-300 rounded font-semibold transition">Modifier</button>
-                <button onclick="showCardInfo('challenge', this)" class="card-tab px-4 py-2 bg-slate-200 text-slate-700 hover:bg-slate-300 rounded font-semibold transition">Challenge</button>
-                <button onclick="showCardInfo('leader', this)" class="card-tab px-4 py-2 bg-slate-200 text-slate-700 hover:bg-slate-300 rounded font-semibold transition">Party Leader</button>
-                <button onclick="showCardInfo('monster', this)" class="card-tab px-4 py-2 bg-slate-200 text-slate-700 hover:bg-slate-300 rounded font-semibold transition">Monster</button>
+            <div class="space-y-6">
+                <!-- Hero -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-3">🦸‍♂️ การ์ดฮีโร่ (Hero Cards)</h3>
+                    <div class="text-slate-700 space-y-3">
+                        <p>ฮีโร่แต่ละตัวจะมีคลาสและเอฟเฟกต์ประจำตัว ต้องทอยเต๋า 2 ลูกให้ได้ผลรวม <strong>เท่ากับหรือมากกว่า</strong> ตัวเลขกำกับเพื่อใช้เอฟเฟกต์</p>
+<ul class="list-disc pl-5 mt-2 mb-4">
+    <li>เมื่อลงฮีโร่จากมือสู่ปาร์ตี้ ทอยเต๋าใช้เอฟเฟกต์ได้ทันทีฟรี 1 ครั้ง</li>
+    <li>หากอยู่ในปาร์ตี้แล้ว จ่าย 1 AP ทอยเต๋าใช้เอฟเฟกต์ได้เทิร์นละ 1 ครั้ง/ตัว (ทอยพลาดไม่ได้ AP คืน)</li>
+    <li>ไม่จำกัดจำนวนฮีโร่ในปาร์ตี้</li>
+</ul>
+<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
+    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: Mellow Dee (คลาส: กวี 🎵)</h4>
+    <div class="flex flex-col md:flex-row gap-4 items-start">
+        <div class="bg-white border-2 border-slate-300 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
+            <div class="text-xl mb-1">🎵</div>
+            <div class="font-bold text-slate-800">Mellow Dee</div>
+            <div class="bg-slate-800 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto my-2 font-bold">7+</div>
+            <div class="text-xs text-slate-600">DRAW a card.</div>
+        </div>
+        <div>
+            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> เมื่อ Mellow Dee อยู่ในปาร์ตี้ของคุณ คุณสามารถจ่าย 1 AP ในเทิร์นเพื่อทอยลูกเต๋า 2 ลูก หากผลรวมลูกเต๋าได้ตั้งแต่ 7 ขึ้นไป คุณจะได้จั่วการ์ด 1 ใบจากกองหลักฟรี</p>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+
+                <!-- Item -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-3">🎒 การ์ดไอเทม (Item Cards)</h3>
+                    <div class="text-slate-700 space-y-3">
+                        <p>อาวุธและสิ่งของเวทมนตร์สำหรับสวมใส่ให้ฮีโร่ (ส่วนใหญ่บัฟ บางใบเป็นคำสาปใช้ใส่ศัตรูได้)</p>
+<ul class="list-disc pl-5 mt-2 mb-4">
+    <li>เล่นปุ๊บ ต้องสวมให้ฮีโร่ทันที (สอดไว้ใต้การ์ด)</li>
+    <li>ใส่ให้ฮีโร่เท่านั้น ผู้นำปาร์ตี้ใส่ไม่ได้</li>
+    <li>ฮีโร่ 1 ตัวใส่ได้ชิ้นเดียว เปลี่ยนไม่ได้</li>
+    <li>ถ้าฮีโร่ตาย/โดนเด้ง ไอเทมจะตามไปด้วยเสมอ</li>
+</ul>
+<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
+    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: Decoy Doll</h4>
+    <div class="flex flex-col md:flex-row gap-4 items-start">
+        <div class="bg-white border-2 border-slate-300 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
+            <div class="text-xl mb-1">🎒</div>
+            <div class="font-bold text-slate-800">Decoy Doll</div>
+            <div class="text-xs text-slate-600 mt-2">If this Hero card would be destroyed or stolen, DESTROY this card instead.</div>
+        </div>
+        <div>
+            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> จ่าย 1 AP นำการ์ดนี้ไปสวมใส่ (วางไว้ข้างใต้) การ์ดฮีโร่ใบหนึ่งในปาร์ตี้ของคุณ เมื่อฮีโร่ตัวนั้นถูกโจมตีให้ตาย (Destroy) หรือถูกขโมย (Steal) ไอเทมตุ๊กตาตัวแทนนี้จะถูกทำลายแทน และฮีโร่ของคุณจะรอดพ้นจากผลนั้น</p>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+
+                <!-- Magic -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-3">✨ การ์ดเวทมนตร์ (Magic Cards)</h3>
+                    <div class="text-slate-700 space-y-3">
+                        <p>คาถาทรงพลังที่ให้ผลรุนแรงแต่ใช้ได้ <strong>เพียงครั้งเดียว</strong></p>
+<p class="mt-2 mb-4 text-amber-700 bg-amber-50 p-2 rounded border border-amber-200"><strong>วิธีใช้:</strong> จ่าย 1 AP เพื่อร่าย เมื่อผลของเวทมนตร์ทำงานเสร็จสิ้น ให้นำการ์ดใบนี้ไปวางไว้ที่กองการ์ดทิ้งทันที</p>
+<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
+    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: Destructive Spell</h4>
+    <div class="flex flex-col md:flex-row gap-4 items-start">
+        <div class="bg-white border-2 border-slate-300 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
+            <div class="text-xl mb-1">✨</div>
+            <div class="font-bold text-slate-800">Destructive Spell</div>
+            <div class="text-xs text-slate-600 mt-2">DESTROY a Hero card.</div>
+        </div>
+        <div>
+            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> จ่าย 1 AP เพื่อเล่นการ์ดใบนี้ จากนั้นเลือกการ์ดฮีโร่ 1 ใบในปาร์ตี้ของผู้เล่นคนอื่น แล้วส่งการ์ดฮีโร่นั้นลงกองการ์ดทิ้งทันที หลังจากนั้นนำการ์ด Destructive Spell ลงกองการ์ดทิ้ง</p>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+
+                <!-- Modifier -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-3">🎲 การ์ดปรับแต่งเต๋า (Modifier Cards)</h3>
+                    <div class="text-slate-700 space-y-3">
+                        <p>ใช้เพิ่มโอกาสชนะ หรือขัดขวางคนอื่น (บวก/ลบแต้มลูกเต๋า)</p>
+<ul class="list-disc pl-5 mt-2 mb-4">
+    <li>เล่น <strong>ทันทีจากมือ ไม่เสีย AP</strong> เมื่อมีการทอยเต๋าเกิดขึ้น (รวมตาตัวเองด้วย)</li>
+    <li>ถ้ามีการ์ด 2 ทางเลือก ให้ประกาศว่าจะใช้ฝั่งไหน</li>
+    <li>รอคนอื่นเลือกเป้าหมายก่อนค่อยลงได้</li>
+    <li>ลงกี่ใบก็ได้ เอาผลลัพธ์ทุกใบมารวมกัน</li>
+</ul>
+<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
+    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: +2 / -2</h4>
+    <div class="flex flex-col md:flex-row gap-4 items-start">
+        <div class="bg-white border-2 border-slate-300 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
+            <div class="text-xl mb-1">🎲</div>
+            <div class="font-bold text-slate-800">Modifier</div>
+            <div class="flex justify-between mt-2 font-bold px-2">
+                <span class="text-green-600">+2</span>
+                <span class="text-slate-400">หรือ</span>
+                <span class="text-red-600">-2</span>
             </div>
+            <div class="text-xs text-slate-600 mt-1">Play this card after any player rolls the dice...</div>
+        </div>
+        <div>
+            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> สามารถเล่นได้ <strong>ฟรี ไม่เสีย AP</strong> เมื่อมีคนทอยลูกเต๋าเสร็จแล้ว (ทั้งคุณหรือคู่แข่ง) คุณสามารถโยนการ์ดใบนี้ลงมาเพื่อ <strong>บวก 2</strong> ให้กับผลลูกเต๋า (เพื่อให้คุณโจมตีผ่าน) หรือเลือก <strong>ลบ 2</strong> จากผลลูกเต๋า (เพื่อให้เพื่อนโจมตีพลาด) แล้วนำการ์ดนี้ลงกองทิ้ง</p>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
 
-            <div id="card-content-area" class="bg-white p-6 rounded-xl shadow-md border border-amber-100 min-h-[250px]">
-                <h3 id="card-title" class="text-xl font-bold text-amber-900 mb-3">🦸‍♂️ การ์ดฮีโร่ (Hero Cards)</h3>
-                <div id="card-desc" class="text-slate-700 space-y-3">
-                    <p>ฮีโร่แต่ละตัวจะมีคลาสและเอฟเฟกต์ประจำตัว ต้องทอยเต๋า 2 ลูกให้ได้ผลรวม <strong>เท่ากับหรือมากกว่า</strong> ตัวเลขกำกับเพื่อใช้เอฟเฟกต์</p>
-                    <ul class="list-disc pl-5 mt-2">
-                        <li>เมื่อลงฮีโร่จากมือสู่ปาร์ตี้ ทอยเต๋าใช้เอฟเฟกต์ได้ทันทีฟรี 1 ครั้ง</li>
-                        <li>หากอยู่ในปาร์ตี้แล้ว จ่าย 1 AP ทอยเต๋าใช้เอฟเฟกต์ได้เทิร์นละ 1 ครั้ง/ตัว (ทอยพลาดไม่ได้ AP คืน)</li>
-                        <li>ไม่จำกัดจำนวนฮีโร่ในปาร์ตี้</li>
-                    </ul>
+                <!-- Challenge -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-3">🛑 การ์ดท้าทาย (Challenge Cards)</h3>
+                    <div class="text-slate-700 space-y-3">
+                        <p>ใช้ขัดขวางผู้เล่นอื่น <strong>ไม่เสีย AP</strong> เล่นตอนคนอื่นกำลังจะลง ฮีโร่/ไอเทม/เวทมนตร์</p>
+<ul class="list-disc pl-5 mt-2 mb-4">
+    <li>ทั้งคู่ทอย 2D6 สู้กัน</li>
+    <li>ฝ่ายท้าทาย (เรา) ทอยได้ <strong>มากกว่าหรือเท่ากับ</strong> = การ์ดนั้นตกกองทิ้งทันที (คนลงไม่ได้ AP คืน)</li>
+    <li>ฝ่ายถูกท้าทายชนะ = ลงการ์ดได้ตามปกติ</li>
+    <li>การ์ด 1 ใบโดนชาเลนจ์ได้แค่รอบเดียว</li>
+</ul>
+<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
+    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: Challenge</h4>
+    <div class="flex flex-col md:flex-row gap-4 items-start">
+        <div class="bg-white border-2 border-slate-300 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
+            <div class="text-xl mb-1">🛑</div>
+            <div class="font-bold text-slate-800">Challenge</div>
+            <div class="text-xs text-slate-600 mt-2">You may play this card when another player attempts to play...</div>
+        </div>
+        <div>
+            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> เมื่อผู้เล่นคนอื่นประกาศว่าจะจ่าย AP ลงการ์ดฮีโร่, ไอเทม, หรือเวทมนตร์ (ก่อนที่การ์ดนั้นจะแสดงผล) คุณสามารถโยนการ์ดใบนี้ลงไป <strong>(ฟรี ไม่เสีย AP)</strong> เพื่อ "ท้าทาย" ทั้งคุณและผู้เล่นคนนั้นต้องทอยลูกเต๋าสู้กัน ใครแต้มมากกว่าจะชนะ (ฝ่ายท้าทายชนะเสมอหากแต้มเท่ากัน) หากคุณชนะ การ์ดที่ผู้เล่นนั้นกำลังจะลงจะถูกส่งลงกองทิ้งทันทีและเสีย AP ฟรี</p>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+
+                <!-- Leader -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-3">👑 ผู้นำปาร์ตี้ (Party Leader)</h3>
+                    <div class="text-slate-700 space-y-3">
+                        <p>หัวหน้าแก๊ง มีคลาสและสกิลติดตัว ไม่ถือว่าเป็นฮีโร่</p>
+<ul class="list-disc pl-5 mt-2 mb-4">
+    <li>สกิลใช้ได้ <strong>ทุกครั้ง</strong> ที่ตรงเงื่อนไข (ไม่ต้องทอยเต๋า ไม่จำกัดรอบ)</li>
+    <li>อมตะ! ไม่สามารถถูกสังเวย ทำลาย ขโมย หรือส่งกลับมือได้</li>
+</ul>
+<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
+    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: The Charismatic Song (คลาส: กวี 🎵)</h4>
+    <div class="flex flex-col md:flex-row gap-4 items-start">
+        <div class="bg-amber-100 border-2 border-amber-400 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
+            <div class="text-xl mb-1">👑 🎵</div>
+            <div class="font-bold text-slate-800">The Charismatic Song</div>
+            <div class="text-xs text-slate-600 mt-2">Each time you roll to use a Bard Hero card's effect, +1 to your roll.</div>
+        </div>
+        <div>
+            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> การ์ดผู้นำปาร์ตี้จะอยู่บนโต๊ะตั้งแต่เริ่มเกม เอฟเฟกต์ของการ์ดใบนี้จะเป็นแบบ <strong>ติดตัว (Passive)</strong> เสมอ ตัวอย่างเช่นใบนี้: ทุกครั้งที่คุณทอยเต๋าเพื่อพยายามใช้เอฟเฟกต์ของฮีโร่คลาส "กวี (Bard)" คุณจะได้บวกแต้มลูกเต๋าฟรี 1 แต้มเสมอ ช่วยให้ใช้เอฟเฟกต์ติดง่ายขึ้น</p>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+
+                <!-- Monster -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-3">🐉 มอนสเตอร์ (Monster Cards)</h3>
+                    <div class="text-slate-700 space-y-3">
+                        <p>เป้าหมายหลัก! ใช้ 2 AP โจมตี ต้องมีปาร์ตี้ตรงตามเงื่อนไขที่ระบุก่อนถึงจะตีได้</p>
+<ul class="list-disc pl-5 mt-2 mb-4">
+    <li>ทอยได้ <strong>เท่ากับ/มากกว่า</strong> ค่าพลัง = <strong>SLAY!</strong> (ได้มอนสเตอร์เข้าปาร์ตี้ และได้สกิลถาวร)</li>
+    <li>ทอยตกในช่อง <strong>ระยะสวนกลับ</strong> = โดนลงโทษตามที่ระบุบนการ์ดมอนสเตอร์</li>
+    <li>ทอยพลาดหรือชนะ ก็ไม่ได้ 2 AP คืน</li>
+</ul>
+<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
+    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: Crowned Serpent</h4>
+    <div class="flex flex-col md:flex-row gap-4 items-start">
+        <div class="bg-red-50 border-2 border-red-800 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0 relative overflow-hidden">
+            <div class="text-xl mb-1">🐉</div>
+            <div class="font-bold text-red-900">Crowned Serpent</div>
+            <div class="text-xs font-semibold text-slate-700 bg-slate-200 rounded px-1 my-1">เงื่อนไข: ฮีโร่ 2 ใบ</div>
+            <div class="flex justify-between text-sm mt-2 border-t border-red-200 pt-1">
+                <span class="text-red-600 font-bold">10+</span>
+                <span class="text-slate-500 font-bold">6-</span>
+            </div>
+            <div class="text-xs text-slate-600 mt-1">Slay: จั่วเพิ่ม 1 ใบเมื่อสั่งจั่ว<br>Fail: ดิสการ์ด 1 ใบ</div>
+        </div>
+        <div>
+            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> หากในปาร์ตี้ของคุณมีฮีโร่อย่างน้อย 2 ใบ คุณสามารถจ่าย 2 AP เพื่อทอยเต๋าโจมตีมอนสเตอร์ตัวนี้ หากทอยได้รวม <strong>10 ขึ้นไป</strong> คุณจะปราบมันได้สำเร็จและได้สกิลติดตัว "จั่วการ์ดเพิ่ม 1 ใบทุกครั้งที่จั่ว" แต่ถ้าทอยได้ <strong>6 หรือต่ำกว่า</strong> คุณจะโดนมันสวนกลับและต้องทิ้งการ์ด 1 ใบจากมือ (ถ้าทอยได้ 7, 8, 9 จะไม่เกิดอะไรขึ้น แต่เสีย 2 AP ฟรี)</p>
+        </div>
+    </div>
+</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -297,35 +468,6 @@
         function resetAP() {
             currentAP = 3;
             updateAPDisplay();
-        }
-
-        // Setup Card Information Display
-        const cardData = {
-            'hero': { title: '🦸‍♂️ การ์ดฮีโร่ (Hero Cards)', desc: '<p>ฮีโร่แต่ละตัวจะมีคลาสและเอฟเฟกต์ประจำตัว ต้องทอยเต๋า 2 ลูกให้ได้ผลรวม <strong>เท่ากับหรือมากกว่า</strong> ตัวเลขกำกับเพื่อใช้เอฟเฟกต์</p><ul class="list-disc pl-5 mt-2"><li>เมื่อลงฮีโร่จากมือสู่ปาร์ตี้ ทอยเต๋าใช้เอฟเฟกต์ได้ทันทีฟรี 1 ครั้ง</li><li>หากอยู่ในปาร์ตี้แล้ว จ่าย 1 AP ทอยเต๋าใช้เอฟเฟกต์ได้เทิร์นละ 1 ครั้ง/ตัว (ทอยพลาดไม่ได้ AP คืน)</li><li>ไม่จำกัดจำนวนฮีโร่ในปาร์ตี้</li></ul>' },
-            'item': { title: '🎒 การ์ดไอเทม (Item Cards)', desc: '<p>อาวุธและสิ่งของเวทมนตร์สำหรับสวมใส่ให้ฮีโร่ (ส่วนใหญ่บัฟ บางใบเป็นคำสาปใช้ใส่ศัตรูได้)</p><ul class="list-disc pl-5 mt-2"><li>เล่นปุ๊บ ต้องสวมให้ฮีโร่ทันที (สอดไว้ใต้การ์ด)</li><li>ใส่ให้ฮีโร่เท่านั้น ผู้นำปาร์ตี้ใส่ไม่ได้</li><li>ฮีโร่ 1 ตัวใส่ได้ชิ้นเดียว เปลี่ยนไม่ได้</li><li>ถ้าฮีโร่ตาย/โดนเด้ง ไอเทมจะตามไปด้วยเสมอ</li></ul>' },
-            'magic': { title: '✨ การ์ดเวทมนตร์ (Magic Cards)', desc: '<p>คาถาทรงพลังที่ให้ผลรุนแรงแต่ใช้ได้ <strong>เพียงครั้งเดียว</strong></p><p class="mt-2 text-amber-700 bg-amber-50 p-2 rounded border border-amber-200"><strong>วิธีใช้:</strong> จ่าย 1 AP เพื่อร่าย เมื่อผลของเวทมนตร์ทำงานเสร็จสิ้น ให้นำการ์ดใบนี้ไปวางไว้ที่กองการ์ดทิ้งทันที</p>' },
-            'modifier': { title: '🎲 การ์ดปรับแต่งเต๋า (Modifier Cards)', desc: '<p>ใช้เพิ่มโอกาสชนะ หรือขัดขวางคนอื่น (บวก/ลบแต้มลูกเต๋า)</p><ul class="list-disc pl-5 mt-2"><li>เล่น <strong>ทันทีจากมือ ไม่เสีย AP</strong> เมื่อมีการทอยเต๋าเกิดขึ้น (รวมตาตัวเองด้วย)</li><li>ถ้ามีการ์ด 2 ทางเลือก ให้ประกาศว่าจะใช้ฝั่งไหน</li><li>รอคนอื่นเลือกเป้าหมายก่อนค่อยลงได้</li><li>ลงกี่ใบก็ได้ เอาผลลัพธ์ทุกใบมารวมกัน</li></ul>' },
-            'challenge': { title: '🛑 การ์ดท้าทาย (Challenge Cards)', desc: '<p>ใช้ขัดขวางผู้เล่นอื่น <strong>ไม่เสีย AP</strong> เล่นตอนคนอื่นกำลังจะลง ฮีโร่/ไอเทม/เวทมนตร์</p><ul class="list-disc pl-5 mt-2"><li>ทั้งคู่ทอย 2D6 สู้กัน</li><li>ฝ่ายท้าทาย (เรา) ทอยได้ <strong>มากกว่าหรือเท่ากับ</strong> = การ์ดนั้นตกกองทิ้งทันที (คนลงไม่ได้ AP คืน)</li><li>ฝ่ายถูกท้าทายชนะ = ลงการ์ดได้ตามปกติ</li><li>การ์ด 1 ใบโดนชาเลนจ์ได้แค่รอบเดียว</li></ul>' },
-            'leader': { title: '👑 ผู้นำปาร์ตี้ (Party Leader)', desc: '<p>หัวหน้าแก๊ง มีคลาสและสกิลติดตัว ไม่ถือว่าเป็นฮีโร่</p><ul class="list-disc pl-5 mt-2"><li>สกิลใช้ได้ <strong>ทุกครั้ง</strong> ที่ตรงเงื่อนไข (ไม่ต้องทอยเต๋า ไม่จำกัดรอบ)</li><li>อมตะ! ไม่สามารถถูกสังเวย ทำลาย ขโมย หรือส่งกลับมือได้</li></ul>' },
-            'monster': { title: '🐉 มอนสเตอร์ (Monster Cards)', desc: '<p>เป้าหมายหลัก! ใช้ 2 AP โจมตี ต้องมีปาร์ตี้ตรงตามเงื่อนไขที่ระบุก่อนถึงจะตีได้</p><ul class="list-disc pl-5 mt-2"><li>ทอยได้ <strong>เท่ากับ/มากกว่า</strong> ค่าพลัง = <strong>SLAY!</strong> (ได้มอนสเตอร์เข้าปาร์ตี้ และได้สกิลถาวร)</li><li>ทอยตกในช่อง <strong>ระยะสวนกลับ</strong> = โดนลงโทษตามที่ระบุบนการ์ดมอนสเตอร์</li><li>ทอยพลาดหรือชนะ ก็ไม่ได้ 2 AP คืน</li></ul>' }
-        };
-
-        function showCardInfo(type, btnElement) {
-            document.querySelectorAll('.card-tab').forEach(el => {
-                el.classList.remove('active', 'bg-amber-600', 'text-white');
-                el.classList.add('bg-slate-200', 'text-slate-700');
-            });
-            btnElement.classList.remove('bg-slate-200', 'text-slate-700');
-            btnElement.classList.add('active', 'bg-amber-600', 'text-white');
-
-            const content = document.getElementById('card-content-area');
-            content.classList.remove('animate-fade-in');
-            void content.offsetWidth; 
-            
-            document.getElementById('card-title').innerHTML = cardData[type].title;
-            document.getElementById('card-desc').innerHTML = cardData[type].desc;
-            
-            content.classList.add('animate-fade-in');
         }
 
         // Setup Chart
@@ -419,9 +561,6 @@
         window.onload = () => {
             initChart();
             setupScrollspy();
-            
-            // Add fade-in animation style dynamically
-            document.head.insertAdjacentHTML("beforeend", `<style>.animate-fade-in { animation: fadeIn 0.3s ease-in-out; } @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }</style>`);
         };
     </script>
 </body>
