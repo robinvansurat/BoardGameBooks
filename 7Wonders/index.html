@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Wonders - คู่มือการเล่นแบบอินเตอร์แอคทีฟ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #fdfbf7;
+            color: #1e293b;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('cover.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .nav-btn.active {
+            background-color: #b45309;
+            color: white;
+            border-color: #b45309;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-amber-800 text-amber-50 p-6 shadow-md text-center relative z-20">
+        <h1 class="text-3xl md:text-4xl font-bold tracking-wide">7 WONDERS</h1>
+        <p class="text-amber-200 mt-2 text-sm md:text-base">คู่มือการเล่นและกฎเกมเบื้องต้น (ภาษาไทย)</p>
+    </header>
+
+    <nav class="bg-amber-100 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap">
+        <div class="max-w-4xl mx-auto flex space-x-2 md:space-x-4 justify-start md:justify-center">
+            <a href="#sec-overview" id="btn-overview" class="nav-btn active px-4 py-2 rounded-full border border-amber-600 text-amber-800 font-semibold hover:bg-amber-200 transition inline-block">ภาพรวม & วิธีชนะ</a>
+            <a href="#sec-cards" id="btn-cards" class="nav-btn px-4 py-2 rounded-full border border-amber-600 text-amber-800 font-semibold hover:bg-amber-200 transition inline-block">สีของการ์ด (สิ่งปลูกสร้าง)</a>
+            <a href="#sec-actions" id="btn-actions" class="nav-btn px-4 py-2 rounded-full border border-amber-600 text-amber-800 font-semibold hover:bg-amber-200 transition inline-block">การเล่นในแต่ละเทิร์น</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-4 md:p-8 max-w-5xl mx-auto w-full">
+
+        <section id="sec-overview" class="mb-20 scroll-mt-24">
+            <div class="mb-8 text-center">
+                <h2 class="text-2xl font-bold text-amber-800 mb-2">เป้าหมายของเกม</h2>
+                <p class="text-slate-600">คุณคือผู้นำของหนึ่งในเจ็ดเมืองยิ่งใหญ่แห่งโลกยุคโบราณ รวบรวมทรัพยากร พัฒนาเส้นทางการค้า สร้างกองทัพอันเกรียงไกร และสร้างสิ่งก่อสร้างมหัศจรรย์ (Wonder) ที่จะอยู่คู่ประวัติศาสตร์!</p>
+                <div class="mt-2 inline-block bg-slate-100 px-4 py-1 rounded-full text-sm font-semibold text-slate-500">⏱ 30 นาที | 👥 ผู้เล่น 3-7 คน (มีกฎพิเศษสำหรับ 2 คน)</div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500 hover:shadow-md transition cursor-default">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">🏆 วิธีชนะ</h3>
+                    <p class="text-slate-700">เกมจะเล่นทั้งหมด 3 ยุค (Ages) เมื่อจบยุคที่ 3 ผู้เล่นที่มี <strong>แต้มชัยชนะ (Victory Points)</strong> รวมมากที่สุด จะเป็นผู้ชนะ</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500 hover:shadow-md transition cursor-default">
+                    <h3 class="text-xl font-bold mb-2 flex items-center">🔄 ระบบการเล่นหลัก</h3>
+                    <p class="text-slate-700"><strong>Card Drafting:</strong> ผู้เล่นทุกคนจะเลือกไพ่จากมือ 1 ใบเพื่อสร้าง ส่งไพ่ที่เหลือให้คนข้างๆ แล้วรับไพ่ใหม่จากคนอีกฝั่ง ทำพร้อมกันทุกคน (Simultaneous Play)</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-amber-200 my-12">
+
+        <section id="sec-cards" class="mb-20 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-amber-800 mb-2 border-b border-amber-200 pb-2">ประเภทของการ์ด (สีของสิ่งปลูกสร้าง)</h2>
+            <p class="mb-6 text-slate-600">การ์ดแต่ละสีมีความสามารถและจุดประสงค์ที่แตกต่างกัน</p>
+
+            <div class="space-y-6">
+                <!-- Brown & Grey -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-amber-800">
+                        <h3 class="text-lg font-bold text-amber-900 mb-2 flex items-center">🟫 สีน้ำตาล (Raw Materials)</h3>
+                        <p class="text-sm text-slate-700">ผลิตทรัพยากรพื้นฐาน เช่น ไม้ หิน แร่ อิฐบล็อก</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-slate-400">
+                        <h3 class="text-lg font-bold text-slate-700 mb-2 flex items-center">⬜ สีเทา (Manufactured Goods)</h3>
+                        <p class="text-sm text-slate-700">ผลิตทรัพยากรขั้นสูง เช่น แก้ว กระดาษ ผ้า</p>
+                    </div>
+                </div>
+
+                <!-- Blue & Yellow -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-blue-600">
+                        <h3 class="text-lg font-bold text-blue-900 mb-2 flex items-center">🟦 สีฟ้า (Civilian Structures)</h3>
+                        <p class="text-sm text-slate-700">สิ่งก่อสร้างทั่วไป มอบแต้มชัยชนะ (VP) ให้กับคุณโดยตรงเมื่อจบเกม</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-yellow-500">
+                        <h3 class="text-lg font-bold text-yellow-700 mb-2 flex items-center">🟨 สีเหลือง (Commercial Structures)</h3>
+                        <p class="text-sm text-slate-700">ตลาดและการค้า มอบเหรียญทอง, มอบส่วนลดในการซื้อทรัพยากรจากเมืองเพื่อนบ้าน, หรือมอบแต้มตามเงื่อนไขพิเศษ</p>
+                    </div>
+                </div>
+
+                <!-- Red & Green -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-red-600">
+                        <h3 class="text-lg font-bold text-red-900 mb-2 flex items-center">🟥 สีแดง (Military Structures)</h3>
+                        <p class="text-sm text-slate-700">เพิ่มพลังทางทหาร (สัญลักษณ์รูปโล่) เมื่อจบแต่ละยุค จะมีการเทียบพลังทหารกับเมืองข้างซ้ายและขวา หากชนะจะได้แต้ม (1, 3, 5 ตามยุค) หากแพ้จะติดลบ 1 แต้มเสมอ</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-green-600">
+                        <h3 class="text-lg font-bold text-green-900 mb-2 flex items-center">🟩 สีเขียว (Scientific Structures)</h3>
+                        <p class="text-sm text-slate-700">มอบสัญลักษณ์วิทยาศาสตร์ (วงเวียน, ฟันเฟือง, แผ่นศิลา) การสะสมสัญลักษณ์ที่เหมือนกัน หรือสะสมครบเซ็ต 3 แบบ จะให้แต้มทวีคูณมหาศาลในช่วงจบเกม</p>
+                    </div>
+                </div>
+                
+                <!-- Purple -->
+                <div class="bg-white p-5 rounded-xl shadow-md border-t-4 border-purple-600">
+                    <h3 class="text-lg font-bold text-purple-900 mb-2 flex items-center">🟪 สีม่วง (Guilds - เฉพาะยุค 3)</h3>
+                    <p class="text-sm text-slate-700">มอบแต้มชัยชนะตามเงื่อนไขพิเศษที่อิงจากสิ่งปลูกสร้างของคุณ หรือของเมืองเพื่อนบ้าน (ซ้าย/ขวา) เป็นไพ่ที่ทรงพลังมากในช่วงท้ายเกม</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-amber-200 my-12">
+
+        <section id="sec-actions" class="mb-20 scroll-mt-24">
+            <h2 class="text-2xl font-bold text-amber-800 mb-4 border-b border-amber-200 pb-2">แอคชั่นในแต่ละเทิร์น</h2>
+            <p class="mb-6 text-slate-600">ในแต่ละเทิร์น คุณจะเลือกไพ่ 1 ใบจากมือ แล้วสามารถเลือกทำ <strong>1 ใน 3 แอคชั่น</strong> ดังนี้:</p>
+
+            <div class="space-y-4">
+                <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                    <div class="bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">1</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800">สร้างสิ่งปลูกสร้าง (Build a Structure)</h4>
+                        <p class="text-sm text-slate-600">วางการ์ดใบที่เลือกไว้ตรงหน้าคุณ (โดยต้องจ่ายค่าร่ายตามที่ระบุบนมุมซ้ายบนของการ์ด ไม่ว่าจะเป็นทรัพยากร หรือเหรียญทอง)</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                    <div class="bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">2</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800">สร้างขั้นของ Wonder (Build a Stage of your Wonder)</h4>
+                        <p class="text-sm text-slate-600">นำการ์ดที่เลือกคว่ำหน้าลง สอดไว้ใต้กระดาน Wonder ของคุณตามลำดับขั้น (ต้องจ่ายทรัพยากรตามที่ระบุบนกระดาน Wonder ไม่ใช่บนการ์ด)</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                    <div class="bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">3</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800">ทิ้งการ์ดเพื่อรับเงิน (Discard for Coins)</h4>
+                        <p class="text-sm text-slate-600">นำการ์ดใบนั้นคว่ำหน้าทิ้งลงกองการ์ดทิ้ง (Discard Pile) แล้วหยิบเหรียญทอง 3 เหรียญจากกองกลาง</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-amber-50 border-l-4 border-amber-600 p-4 rounded">
+                <h4 class="font-bold text-amber-800 mb-1">🤝 กฎการค้า (Trading)</h4>
+                <p class="text-sm text-slate-700">
+                    หากคุณไม่มีทรัพยากรเพียงพอในการสร้าง คุณสามารถจ่ายเงินเพื่อ <strong>"ซื้อ"</strong> ทรัพยากรจากเมืองเพื่อนบ้าน (คนที่นั่งติดคุณซ้ายและขวา) ได้ในราคา <strong>2 เหรียญทอง ต่อ 1 ทรัพยากร</strong> (ยกเว้นคุณจะมีการ์ดตลาดสีเหลืองที่ลดราคาเหลือ 1 เหรียญ) <br><br>
+                    <em>หมายเหตุ: การซื้อทรัพยากร ไม่ได้ทำให้ทรัพยากรของเพื่อนบ้านหายไป คุณแค่จ่ายเงินให้เขาและได้จำลองการใช้ทรัพยากรนั้นในเทิร์นของคุณ</em>
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 text-center py-6 mt-auto">
+        <p class="text-sm">Interactive Guide for "7 Wonders" | Data & Structure Architecture</p>
+    </footer>
+
+    <script>
+        // Setup Scrollspy for Navigation Highlighting
+        function setupScrollspy() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-btn');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.id;
+                        
+                        navLinks.forEach(link => {
+                            link.classList.remove('active', 'bg-amber-600', 'text-white');
+                            link.classList.add('text-amber-800');
+                            link.style.backgroundColor = '';
+                            link.style.color = '';
+                            
+                            if (link.getAttribute('href') === `#${activeId}`) {
+                                link.classList.add('active');
+                                link.style.backgroundColor = '#b45309';
+                                link.style.color = 'white';
+                                
+                                link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        window.onload = () => {
+            setupScrollspy();
+        };
+    </script>
+</body>
+</html>
