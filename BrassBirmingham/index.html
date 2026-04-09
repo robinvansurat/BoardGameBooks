@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brass: Birmingham - คู่มือการเล่นแบบเจาะลึก (Comprehensive Guide)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #fdfbf7;
+            color: #1e293b;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('cover.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .nav-btn.active {
+            background-color: #1e293b; /* Dark Slate */
+            color: white;
+            border-color: #1e293b;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-slate-900 text-amber-50 p-6 shadow-md text-center relative z-20 border-b-4 border-amber-600">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-wide text-amber-500">BRASS: BIRMINGHAM</h1>
+        <p class="text-slate-300 mt-2 text-sm md:text-lg">คู่มือการเล่นฉบับสมบูรณ์ (Complete Guide) ภาษาไทย</p>
+    </header>
+
+    <nav class="bg-slate-200 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap border-b border-slate-300">
+        <div class="max-w-6xl mx-auto flex space-x-2 md:space-x-4 justify-start lg:justify-center">
+            <a href="#sec-overview" id="btn-overview" class="nav-btn active px-4 py-2 rounded-full border border-slate-400 text-slate-800 font-semibold hover:bg-slate-300 transition inline-block text-sm md:text-base">ภาพรวมเกม</a>
+            <a href="#sec-core-rules" id="btn-core-rules" class="nav-btn px-4 py-2 rounded-full border border-slate-400 text-slate-800 font-semibold hover:bg-slate-300 transition inline-block text-sm md:text-base">กฎพื้นฐาน & การ์ด</a>
+            <a href="#sec-actions" id="btn-actions" class="nav-btn px-4 py-2 rounded-full border border-slate-400 text-slate-800 font-semibold hover:bg-slate-300 transition inline-block text-sm md:text-base">6 แอคชั่นหลัก</a>
+            <a href="#sec-resources" id="btn-resources" class="nav-btn px-4 py-2 rounded-full border border-slate-400 text-slate-800 font-semibold hover:bg-slate-300 transition inline-block text-sm md:text-base">ระบบทรัพยากร</a>
+            <a href="#sec-industries" id="btn-industries" class="nav-btn px-4 py-2 rounded-full border border-slate-400 text-slate-800 font-semibold hover:bg-slate-300 transition inline-block text-sm md:text-base">ประเภทอุตสาหกรรม</a>
+            <a href="#sec-end-era" id="btn-end-era" class="nav-btn px-4 py-2 rounded-full border border-slate-400 text-slate-800 font-semibold hover:bg-slate-300 transition inline-block text-sm md:text-base">จบยุค & นับคะแนน</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full">
+
+        <!-- OVERVIEW -->
+        <section id="sec-overview" class="mb-20 scroll-mt-24">
+            <div class="text-center bg-white/95 p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4">เข้าสู่ยุคปฏิวัติอุตสาหกรรม</h2>
+                <p class="text-slate-600 text-lg leading-relaxed max-w-3xl mx-auto">
+                    ในเกม Brass: Birmingham คุณจะได้รับบทบาทเป็นนักธุรกิจผู้มั่งคั่งในเมืองเบอร์มิงแฮม ประเทศอังกฤษ ช่วงปี ค.ศ. 1770-1870
+                    หน้าที่ของคุณคือการสร้างเครือข่ายคมนาคม (คลองและรถไฟ) สร้างโรงงานทอฝ้าย โรงงานเซรามิก และโรงเบียร์ เพื่อส่งออกสินค้าและทำกำไรให้ได้มากที่สุด
+                </p>
+                <div class="mt-6 flex flex-wrap justify-center gap-3">
+                    <span class="bg-slate-800 text-amber-500 px-4 py-2 rounded-full text-sm font-bold shadow">⏱ เวลาเล่น: 60-120 นาที</span>
+                    <span class="bg-slate-800 text-amber-500 px-4 py-2 rounded-full text-sm font-bold shadow">👥 ผู้เล่น: 2-4 คน</span>
+                    <span class="bg-red-900 text-white px-4 py-2 rounded-full text-sm font-bold shadow">⚙️ ระดับความยาก: สูง (Heavy)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE RULES -->
+        <section id="sec-core-rules" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-300 pb-2">กฎพื้นฐาน และ ระบบการเล่น</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-amber-600">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">⏳ โครงสร้างของเกม (Eras)</h3>
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        เกมแบ่งออกเป็น 2 ยุคหลัก เมื่อจบแต่ละยุคจะมีการนับคะแนน 1 ครั้ง:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 text-slate-700">
+                        <li><strong>ยุคคลอง (Canal Era):</strong> ยุคแรกของเกม การสร้างเส้นทางจะสร้างได้แค่ "เรือบรรทุก" (คลอง) จำกัดการสร้างเส้นทางเพียง 1 เส้นต่อ 1 แอคชั่น</li>
+                        <li><strong>การเคลียร์กระดาน (Transition):</strong> เมื่อจบยุคคลอง สิ่งก่อสร้างระดับ 1 ทั้งหมดบนกระดาน และเส้นทางคลองทั้งหมด จะถูกถอดออกจากกระดาน!</li>
+                        <li><strong>ยุครถไฟ (Rail Era):</strong> ยุคที่สอง การสร้างเส้นทางจะเปลี่ยนเป็น "รถไฟ" ซึ่งสามารถสร้างรวดเดียว 2 เส้นได้ (ใช้ถ่านหินและเบียร์) และสามารถสร้างอุตสาหกรรมระดับสูงได้</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">🎴 การ์ดคือทุกสิ่ง (Card Driven)</h3>
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        ผู้เล่นทุกคนจะมีการ์ดในมือ 8 ใบเสมอ <strong>การทำแอคชั่นทุกครั้งจะต้องทิ้งการ์ด 1 ใบลงกองทิ้งส่วนตัว</strong> เสมอ!
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 text-slate-700">
+                        <li><strong>การ์ดเมือง (Location Card):</strong> ระบุชื่อเมือง ใช้สำหรับแอคชั่น "สร้าง (Build)" ในเมืองนั้นๆ <em>(สร้างอะไรก็ได้ที่มีช่องว่าง โดยไม่ต้องมีเครือข่ายเชื่อมไปถึง)</em></li>
+                        <li><strong>การ์ดอุตสาหกรรม (Industry Card):</strong> ระบุประเภทอุตสาหกรรม (เช่น โรงเบียร์, เหมืองถ่านหิน) ใช้สร้างอุตสาหกรรมประเภทนั้น ในเมืองใดก็ได้ <strong>แต่คุณต้องมีเครือข่ายเชื่อมไปถึงเมืองนั้นแล้ว</strong></li>
+                        <li><strong>Wild Cards:</strong> มีการ์ดพิเศษคือ Wild Location และ Wild Industry ที่สามารถใช้แทนเมืองใดหรืออุตสาหกรรมใดก็ได้ (ได้มาจากการทำแอคชั่น Scout)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACTIONS -->
+        <section id="sec-actions" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-300 pb-2">6 แอคชั่นหลัก (ทำ 2 แอคชั่นต่อเทิร์น)</h2>
+            <p class="text-slate-700 text-lg mb-6 bg-white/90 p-4 rounded-lg">ในตาของคุณ คุณต้องทิ้งการ์ด 2 ใบ เพื่อทำ 2 แอคชั่น (คุณสามารถทำแอคชั่นเดิมซ้ำได้) <em>ยกเว้นเทิร์นแรกสุดของเกม ที่ทุกคนจะได้ทำแค่ 1 แอคชั่น</em> เมื่อทำจบ ค่อยจั่วการ์ดเติมให้เต็ม 8 ใบ</p>
+
+            <div class="space-y-6">
+                <!-- 1. BUILD -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-blue-600">
+                    <div class="flex items-center mb-3">
+                        <span class="text-4xl mr-4">🏗️</span>
+                        <h3 class="text-2xl font-bold text-slate-800">1. สร้างอุตสาหกรรม (Build)</h3>
+                    </div>
+                    <p class="text-slate-700 mb-4">นำแผ่นไทล์อุตสาหกรรมที่อยู่ <strong>ต่ำสุด (ตัวเลขน้อยสุด)</strong> จากบอร์ดของคุณ ไปวางในช่องที่ตรงกันบนแผนที่</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-700">
+                        <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                            <strong class="text-blue-800 text-base block mb-1">กฎการใช้การ์ด:</strong>
+                            <ul class="list-disc pl-5">
+                                <li class="mb-1"><strong>ทิ้งการ์ดเมือง:</strong> สร้างอุตสาหกรรมในเมืองที่ระบุ <em>(สร้างได้เลย ไม่ต้องมีเส้นทางเชื่อมถึง)</em></li>
+                                <li><strong>ทิ้งการ์ดอุตสาหกรรม:</strong> สร้างอุตสาหกรรมตามภาพที่ระบุ <em>(ต้องสร้างในเมืองที่อยู่ใน "เครือข่าย" ของคุณเท่านั้น)</em></li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                            <strong class="text-blue-800 text-base block mb-1">กฎการวาง (Building Rules):</strong>
+                            <ul class="list-disc pl-5">
+                                <li class="mb-1">ในยุคคลอง คุณสามารถมีสิ่งก่อสร้างได้ <strong>แค่ 1 ชิ้น ต่อ 1 เมือง</strong> เท่านั้น</li>
+                                <li class="mb-1">ในยุครถไฟ คุณสามารถสร้างกี่ชิ้นก็ได้ในเมืองเดียวกัน (ถ้ามีช่องว่าง)</li>
+                                <li>ต้องจ่ายค่าร่ายตามที่ระบุบนแผ่นไทล์ (เงิน / ถ่านหิน / เหล็ก)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-amber-50 p-3 rounded border border-amber-200 text-sm">
+                        <strong class="text-amber-800">การสร้างทับ (Overbuilding):</strong> โดยปกติคุณไม่สามารถสร้างทับของคนอื่นได้ แต่คุณสามารถสร้างทับสิ่งก่อสร้าง <strong>ระดับต่ำกว่าของตัวเอง</strong> ได้ (เอาของเก่าออก เอาของใหม่วางแทนที่) หรือถ้าทรัพยากรเหล็ก/ถ่านหินบนกระดานหมดเกลี้ยงและตลาดก็ไม่มี คุณอาจมีสิทธิสร้างทับเหมืองหรือโรงถลุงเหล็กของคนอื่นได้ตามกฎพิเศษ
+                    </div>
+                </div>
+
+                <!-- 2. NETWORK -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-slate-600">
+                    <div class="flex items-center mb-3">
+                        <span class="text-4xl mr-4">🛤️</span>
+                        <h3 class="text-2xl font-bold text-slate-800">2. สร้างเส้นทางคมนาคม (Network)</h3>
+                    </div>
+                    <p class="text-slate-700 mb-4">ขยายเครือข่ายของคุณ ทิ้งการ์ด <strong>อะไรก็ได้ 1 ใบ</strong> เพื่อสร้างเส้นทาง</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-700">
+                        <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                            <strong class="text-slate-800 text-base block mb-1">ยุคคลอง (Canal Era) - เรือบรรทุก</strong>
+                            <ul class="list-disc pl-5">
+                                <li>วางแผ่นเรือของคุณลงบนเส้นทางน้ำ</li>
+                                <li><strong>ค่าก่อสร้าง:</strong> 3 เหรียญทอง</li>
+                                <li>สร้างได้ 1 เส้นทางต่อ 1 แอคชั่น</li>
+                                <li>ต้องวางเชื่อมต่อกับสถานที่ที่คุณมีเครือข่ายอยู่แล้วเสมอ</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded border border-slate-200">
+                            <strong class="text-slate-800 text-base block mb-1">ยุครถไฟ (Rail Era) - รถไฟ</strong>
+                            <ul class="list-disc pl-5">
+                                <li>วางแผ่นรถไฟของคุณลงบนรางรถไฟ</li>
+                                <li><strong>ค่าก่อสร้าง 1 เส้น:</strong> 5 เหรียญ + 1 ถ่านหิน</li>
+                                <li><strong>สร้างรวดเดียว 2 เส้น (ใน 1 แอคชั่น):</strong> 15 เหรียญ + 2 ถ่านหิน + <strong>1 เบียร์</strong></li>
+                                <li>ต้องวางเชื่อมกับเครือข่ายของคุณ และเบียร์/ถ่านหินต้องหามาตามกฎการดึงทรัพยากร</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. DEVELOP -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-green-600">
+                    <div class="flex items-center mb-3">
+                        <span class="text-4xl mr-4">⚙️</span>
+                        <h3 class="text-2xl font-bold text-slate-800">3. วิจัยพัฒนา (Develop)</h3>
+                    </div>
+                    <p class="text-slate-700 mb-3">ทิ้งการ์ด <strong>อะไรก็ได้ 1 ใบ</strong> เพื่อเอาแผ่นไทล์อุตสาหกรรมระดับต่ำสุดบนบอร์ดส่วนตัวของคุณ <strong>ทิ้งออกจากเกม</strong> (1 หรือ 2 แผ่นก็ได้ใน 1 แอคชั่น)</p>
+                    <ul class="list-disc pl-9 text-sm text-slate-700">
+                        <li class="mb-1">คุณต้องจ่าย <strong>เหล็ก 1 ชิ้น</strong> ต่อแผ่นไทล์ 1 แผ่นที่คุณเอาออก (ถ้าเอาออก 2 แผ่น จ่ายเหล็ก 2 ชิ้น)</li>
+                        <li class="mb-1">ช่วยให้คุณเข้าถึงสิ่งก่อสร้างระดับสูงๆ ที่ให้คะแนนเยอะได้เร็วขึ้น โดยไม่ต้องสร้างระดับ 1 ให้เสียเวลา</li>
+                        <li class="text-red-600 font-semibold">ข้อควรระวัง: สิ่งก่อสร้างระดับ 1 บางชนิดไม่สามารถข้ามได้ (เช่น ต้องสร้างถึงจะเอาออกได้) แต่ส่วนใหญ่สามารถใช้ Develop เพื่อข้ามได้</li>
+                    </ul>
+                </div>
+
+                <!-- 4. SELL -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-amber-600">
+                    <div class="flex items-center mb-3">
+                        <span class="text-4xl mr-4">🚢</span>
+                        <h3 class="text-2xl font-bold text-slate-800">4. ขายสินค้า (Sell)</h3>
+                    </div>
+                    <p class="text-slate-700 mb-3">ทิ้งการ์ด <strong>อะไรก็ได้ 1 ใบ</strong> เพื่อขายสินค้าจาก โรงทอฝ้าย, โรงงานเซรามิก, หรือ โรงงานหีบห่อ ของคุณ</p>
+                    <div class="bg-amber-50 p-4 rounded border border-amber-200 text-sm text-slate-800">
+                        <strong class="block text-base mb-2">ขั้นตอนการขาย:</strong>
+                        <ol class="list-decimal pl-5 space-y-2">
+                            <li>เลือกโรงงานของคุณที่ยังไม่ถูกพลิกหน้า (Unflipped)</li>
+                            <li>เช็คว่าโรงงานนั้นมี <strong>เส้นทางเชื่อมต่อ (Network)</strong> ไปถึง <strong>ช่องพ่อค้า (Merchant)</strong> ที่อยู่ขอบกระดาน ที่รับซื้อสินค้าประเภทนั้นหรือไม่</li>
+                            <li>เช็คว่ามีเบียร์ที่สุ่มวางไว้ที่ช่องพ่อค้านั้นหรือไม่ ถ้ามี คุณใช้เบียร์นั้นฟรีๆ ได้เลย พร้อมรับโบนัส (ถ้ามี)</li>
+                            <li>ถ้าพ่อค้าไม่มีเบียร์ คุณต้องหา <strong>เบียร์ (Beer)</strong> มาจ่ายตามจำนวนที่โรงงานคุณระบุไว้ (อาจจะ 1 หรือ 2 ถัง) โดยต้องดึงเบียร์ผ่านเครือข่าย หรือใช้เบียร์จากโรงเบียร์ตัวเอง</li>
+                            <li>เมื่อทำครบ พลิกหน้าโรงงานนั้น! รับคะแนน Income (ตัวเลขเหรียญบนแผ่นไทล์) ทันที</li>
+                            <li class="text-amber-700 font-semibold">ใน 1 แอคชั่น Sell คุณสามารถขายสินค้าพร้อมกันกี่โรงงานก็ได้ หากคุณมีทรัพยากรเบียร์และเส้นทางเพียงพอ!</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 5. LOAN -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-purple-600">
+                    <div class="flex items-center mb-3">
+                        <span class="text-4xl mr-4">💰</span>
+                        <h3 class="text-2xl font-bold text-slate-800">5. กู้เงิน (Loan)</h3>
+                    </div>
+                    <p class="text-slate-700 mb-3">ทิ้งการ์ด <strong>อะไรก็ได้ 1 ใบ</strong> เพื่อรับเงินสด 30 เหรียญทันที</p>
+                    <ul class="list-disc pl-9 text-sm text-slate-700">
+                        <li><strong>บทลงโทษ:</strong> คุณต้องถอยโทเคนรายได้ (Income Marker) ของคุณลง <strong>3 ระดับแถบสี</strong> (ไม่ใช่ลงทีละก้าว แต่ลงทีละสี)</li>
+                        <li>เกมนี้การกู้เงินเป็นเรื่องปกติและจำเป็นมากในต้นเกม อย่ากลัวที่จะกู้!</li>
+                        <li class="text-slate-500">หมายเหตุ: คุณไม่สามารถกู้เงินได้ถ้าโทเคน Income ของคุณติดลบจนสุดกระดานแล้ว (ระดับ -10) หรือไม่สามารถกู้ได้ในช่วงครึ่งหลังของยุครถไฟ (เมื่อการ์ดในกองจั่วหมด)</li>
+                    </ul>
+                </div>
+
+                <!-- 6. SCOUT -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-red-800">
+                    <div class="flex items-center mb-3">
+                        <span class="text-4xl mr-4">🕵️</span>
+                        <h3 class="text-2xl font-bold text-slate-800">6. ลาดตระเวนหาพื้นที่ (Scout)</h3>
+                    </div>
+                    <p class="text-slate-700 mb-3">ทิ้งการ์ด <strong>อะไรก็ได้ 3 ใบ</strong> (นับเป็น 1 แอคชั่น) เพื่อหยิบการ์ด Wild Location และ Wild Industry มาขึ้นมือ</p>
+                    <ul class="list-disc pl-9 text-sm text-slate-700">
+                        <li>แอคชั่นนี้มีประโยชน์มากเมื่อมือคุณเน่า หรือต้องการจองพื้นที่ทำเลทองโดยไม่สนว่าจั่วได้การ์ดอะไร</li>
+                        <li><strong>Wild Location:</strong> สร้างอุตสาหกรรมในเมืองใดก็ได้บนกระดาน (โดยไม่ต้องมีเครือข่ายเชื่อม)</li>
+                        <li><strong>Wild Industry:</strong> สร้างอุตสาหกรรมอะไรก็ได้ (แต่ยังต้องสร้างในเครือข่ายของตัวเอง)</li>
+                        <li class="font-semibold text-red-700">ข้อจำกัด: คุณไม่สามารถมี Wild Card ในมือเกิน 1 ใบของแต่ละประเภทได้ และไม่สามารถทำแอคชั่นนี้ได้ถ้ามีการ์ด Wild ในมืออยู่แล้ว</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESOURCES DETAIL -->
+        <section id="sec-resources" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-300 pb-2">ระบบทรัพยากร (The Heart of Brass)</h2>
+            <p class="text-slate-700 text-lg mb-6 bg-white/90 p-4 rounded-lg">
+                เกมนี้การใช้ทรัพยากรจะอิงความเป็นจริงในอดีต ทรัพยากรบางอย่างหนักและขนส่งยาก บางอย่างเบา หรือใช้ในท้องถิ่น การดึงทรัพยากรมาใช้งานจึงมีกฎที่แตกต่างกันอย่างสิ้นเชิง
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Coal -->
+                <div class="bg-slate-900 text-slate-100 p-6 rounded-xl shadow-lg border-t-4 border-black relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-20 text-6xl">⚫</div>
+                    <h3 class="text-2xl font-bold mb-3 z-10 relative">ถ่านหิน (Coal)</h3>
+                    <p class="text-sm text-slate-300 mb-4 z-10 relative italic">"ขนส่งยาก ต้องผ่านคลองหรือรางเท่านั้น"</p>
+                    <ul class="list-disc pl-5 text-sm space-y-2 z-10 relative">
+                        <li><strong>ต้องการเส้นทาง:</strong> เมื่อคุณต้องการจ่ายถ่านหินเพื่อสร้างสิ่งก่อสร้าง หรือสร้างรถไฟ จุดที่คุณจะสร้าง <strong>ต้องมีเส้นทางเชื่อมต่อ (เครือข่ายของใครก็ได้)</strong> ไปยังเหมืองถ่านหินที่มีถ่านหินเหลืออยู่ หรือเชื่อมไปถึงกระดานพ่อค้า (Merchant)</li>
+                        <li><strong>ซื้อจากตลาด:</strong> หากคุณเชื่อมไปถึงสัญลักษณ์พ่อค้าที่มีสัญลักษณ์ถ่านหิน คุณสามารถ "ซื้อ" ถ่านหินจากกระดานกลางได้ จ่ายเงินตามราคาตลาดปัจจุบัน (1-8 เหรียญ)</li>
+                        <li class="text-amber-400">คุณต้องใช้ถ่านหินที่อยู่ใกล้ที่สุด หรือราคาถูกที่สุดเสมอ (เกมจะบังคับให้ดึงจากบอร์ดก่อนซื้อตลาดเสมอ)</li>
+                    </ul>
+                </div>
+
+                <!-- Iron -->
+                <div class="bg-orange-50 text-slate-800 p-6 rounded-xl shadow-lg border-t-4 border-orange-500 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-20 text-6xl">🟠</div>
+                    <h3 class="text-2xl font-bold text-orange-900 mb-3 z-10 relative">เหล็ก (Iron)</h3>
+                    <p class="text-sm text-slate-600 mb-4 z-10 relative italic">"มีค่าน้อยแต่น้ำหนักเบา สั่งซื้อได้จากทุกที่"</p>
+                    <ul class="list-disc pl-5 text-sm space-y-2 z-10 relative">
+                        <li><strong>วาร์ปได้! (Teleport):</strong> เหล็ก <strong>ไม่ต้องใช้เส้นทางเชื่อมต่อ</strong> ใดๆ ทั้งสิ้น!</li>
+                        <li>เมื่อคุณต้องการใช้เหล็ก (เช่น การ Develop หรือสร้างโรงงานระดับสูง) คุณสามารถหยิบก้อนเหล็กจากโรงถลุงเหล็ก (Iron Works) <strong>ของใครก็ได้ ตรงไหนก็ได้บนกระดาน</strong> ได้ทันที</li>
+                        <li><strong>ซื้อจากตลาด:</strong> หากไม่มีเหล็กเหลือบนแผ่นไทล์ของผู้เล่นเลย คุณสามารถซื้อเหล็กจากตลาดกลางได้ทันที (จ่าย 1-4 เหรียญ) โดยไม่ต้องมีเส้นทางเชื่อมไปพ่อค้า!</li>
+                    </ul>
+                </div>
+
+                <!-- Beer -->
+                <div class="bg-amber-100 text-slate-800 p-6 rounded-xl shadow-lg border-t-4 border-amber-500 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-20 text-6xl">🍺</div>
+                    <h3 class="text-2xl font-bold text-amber-900 mb-3 z-10 relative">เบียร์ (Beer)</h3>
+                    <p class="text-sm text-slate-600 mb-4 z-10 relative italic">"น้ำดื่มสะอาดที่ใช้ผูกมิตรและเจรจาธุรกิจ"</p>
+                    <ul class="list-disc pl-5 text-sm space-y-2 z-10 relative">
+                        <li>เบียร์ส่วนใหญ่ใช้ในแอคชั่น <strong>ขาย (Sell)</strong> และสร้างรถไฟแบบแพ็คคู่</li>
+                        <li><strong>เบียร์ของคนอื่น:</strong> หากคุณจะใช้ถังเบียร์จากโรงเบียร์ของผู้เล่นอื่น คุณ <strong>ต้องมีเส้นทางเชื่อมต่อ</strong> ระหว่างเมืองที่คุณอยู่กับโรงเบียร์นั้น</li>
+                        <li><strong>เบียร์ของตัวเอง:</strong> วีไอพีสุดๆ! หากคุณใช้เบียร์จากโรงเบียร์ของคุณเอง คุณสามารถ <strong>วาร์ปเบียร์นั้นข้ามแผนที่ได้เลย</strong> โดยไม่ต้องมีเส้นทางเชื่อมต่อ!</li>
+                        <li><strong>เบียร์ของพ่อค้า:</strong> ตอนต้นยุคจะมีเบียร์วางไว้ที่พ่อค้าขอบกระดาน ถ้าคุณเชื่อมไปถึง คุณใช้เบียร์นั้นฟรีๆ ได้ (1 ถังต่อการขาย 1 ครั้ง)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- INDUSTRIES -->
+        <section id="sec-industries" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-300 pb-2">ความเข้าใจเกี่ยวกับแผ่นอุตสาหกรรม</h2>
+            
+            <div class="bg-white/90 p-6 rounded-xl shadow-sm border border-slate-200 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-2">🔄 กลไกการ "พลิกหน้า (Flipped)"</h3>
+                <p class="text-slate-700">
+                    สิ่งก่อสร้างจะให้ <strong>คะแนนโบนัสรายได้ (Income)</strong> และ <strong>แต้มชัยชนะ (VP)</strong> เมื่อมัน "ทำงานสำเร็จ" หรือที่เรียกว่าการ <strong>พลิกหน้าคว่ำลง</strong><br>
+                    - <strong>กลุ่มสร้างทรัพยากร (เหมือง, โรงเหล็ก, โรงเบียร์):</strong> จะพลิกหน้าทันที เมื่อก้อนทรัพยากรบนแผ่นนั้น ถูกดึงไปใช้งานจนหมดเกลี้ยง!<br>
+                    - <strong>กลุ่มผลิตสินค้า (ทอฝ้าย, เซรามิก, หีบห่อ):</strong> จะพลิกหน้าได้ก็ต่อเมื่อคุณใช้แอคชั่น <strong>ขาย (Sell)</strong> สำเร็จเท่านั้น
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white/95 p-5 rounded shadow-sm border-l-4 border-slate-800 flex items-start">
+                    <div class="text-4xl mr-4">🏭</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">โรงงานทอฝ้าย (Cotton Mill)</h4>
+                        <p class="text-sm text-slate-600 mt-1">อุตสาหกรรมหลักที่ให้แต้มดีปานกลาง สร้างรายได้ดี ต้องรีบเชื่อมไปหาพ่อค้าเพื่อขายสินค้า</p>
+                    </div>
+                </div>
+                <div class="bg-white/95 p-5 rounded shadow-sm border-l-4 border-slate-800 flex items-start">
+                    <div class="text-4xl mr-4">📦</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">โรงงานสินค้าหีบห่อ (Manufactured Goods)</h4>
+                        <p class="text-sm text-slate-600 mt-1">หลากหลายแต่แต้มต่อชิ้นไม่สูงมาก มักจะสร้างง่ายและใช้ทรัพยากรน้อย ใช้พลิกแพลงได้ดี</p>
+                    </div>
+                </div>
+                <div class="bg-white/95 p-5 rounded shadow-sm border-l-4 border-amber-700 flex items-start">
+                    <div class="text-4xl mr-4">🏺</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">โรงงานเซรามิก (Pottery)</h4>
+                        <p class="text-sm text-slate-600 mt-1">สุดยอดสิ่งก่อสร้างที่ให้คะแนนชัยชนะสูงปรี๊ด! สร้างได้จำกัด (มีแค่ไม่กี่ระดับ) ค่าสร้างแพงสุดๆ และใช้เบียร์เยอะมากในการขาย</p>
+                    </div>
+                </div>
+                <div class="bg-white/95 p-5 rounded shadow-sm border-l-4 border-black flex items-start">
+                    <div class="text-4xl mr-4">⚫</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">เหมืองถ่านหิน (Coal Mine)</h4>
+                        <p class="text-sm text-slate-600 mt-1">สำคัญมากในยุครถไฟ สร้างแล้ววางถ่านหินไว้ด้านบน ถ้าเหมืองเชื่อมกับตลาดถ่านหินแล้วตลาดยังว่าง ถ่านหินจะวิ่งเข้าตลาดไปขายอัตโนมัติ ทำให้พลิกหน้าได้ทันที!</p>
+                    </div>
+                </div>
+                <div class="bg-white/95 p-5 rounded shadow-sm border-l-4 border-orange-500 flex items-start">
+                    <div class="text-4xl mr-4">🟠</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">โรงถลุงเหล็ก (Iron Works)</h4>
+                        <p class="text-sm text-slate-600 mt-1">ให้แต้มและรายได้สูงมาก เหล็กมักจะหมดไวเพราะคนเอาไป Develop ทำให้โรงเหล็กพลิกหน้าได้ไวสุดๆ ใครคุมเหล็กได้คนนั้นรวย</p>
+                    </div>
+                </div>
+                <div class="bg-white/95 p-5 rounded shadow-sm border-l-4 border-amber-400 flex items-start">
+                    <div class="text-4xl mr-4">🍺</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">โรงเบียร์ (Brewery)</h4>
+                        <p class="text-sm text-slate-600 mt-1">สิ่งก่อสร้างที่ทุกคนต้องการ! สร้างเบียร์ไว้ใช้ขายของและสร้างรถไฟ โรงเบียร์มักจะโดนผู้เล่นอื่นแย่งดึงเบียร์ไปใช้ ทำให้แผ่นเราพลิกหน้าฟรีๆ ได้คะแนนเต็มๆ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- END OF ERA / GAME -->
+        <section id="sec-end-era" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-300 pb-2">การจบยุค และ การนับคะแนน (Scoring)</h2>
+            <p class="text-slate-700 text-lg mb-6 bg-white/90 p-4 rounded-lg">ยุคจะจบลงเมื่อผู้เล่นทุกคนจั่วการ์ดจนหมดกอง และเล่นการ์ดในมือจนหมด (มือว่างเปล่า)</p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Link Scoring -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">🔗 1. นับคะแนนเส้นทาง (Link Points)</h3>
+                    <p class="text-sm text-slate-600 mb-4">ผู้เล่นทุกคนจะได้รับคะแนนจากแผ่นคลอง (หรือรถไฟ) ทุกชิ้นที่ตัวเองสร้างไว้</p>
+                    <ul class="list-disc pl-5 text-sm text-slate-700 space-y-2">
+                        <li>ดูที่แผ่นคลอง/รถไฟแต่ละชิ้นของคุณ ว่าเชื่อมต่อกับเมืองอะไรบ้าง (หัว/ท้าย)</li>
+                        <li>นับจำนวน <strong>สัญลักษณ์หกเหลี่ยมสีเหลือง (Link Points)</strong> ที่อยู่บนอุตสาหกรรมที่ <strong>"พลิกหน้าแล้วเท่านั้น"</strong> ในเมืองที่ติดกับเส้นทางนั้น</li>
+                        <li>ไม่ว่าจะเป็นโรงงานของใคร ขอแค่พลิกหน้าแล้วและมีสัญลักษณ์สีเหลือง เส้นทางของคุณจะได้คะแนนตามนั้น</li>
+                        <li>เส้นทางที่อยู่ติดกับพ่อค้า (Merchant) ที่มีสัญลักษณ์หกเหลี่ยมสีเหลือง ก็ได้แต้มเช่นกัน</li>
+                    </ul>
+                </div>
+
+                <!-- Industry Scoring -->
+                <div class="bg-white/95 p-6 rounded-xl shadow-md border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">🏢 2. นับคะแนนอุตสาหกรรม (Industry Points)</h3>
+                    <p class="text-sm text-slate-600 mb-4">ผู้เล่นจะได้คะแนนจากสิ่งก่อสร้างของตัวเอง</p>
+                    <ul class="list-disc pl-5 text-sm text-slate-700 space-y-2">
+                        <li>ตรวจสอบแผ่นอุตสาหกรรมของคุณทุกชิ้นบนกระดาน</li>
+                        <li>ถ้าแผ่นนั้น <strong>"พลิกหน้าแล้ว"</strong> ให้รับแต้มชัยชนะ (VP) ตามตัวเลขในหกเหลี่ยมสีเหลืองบนแผ่นนั้นเลย</li>
+                        <li>แผ่นที่ยังไม่พลิกหน้า (คว่ำอยู่) จะไม่ได้คะแนนใดๆ เลย (สร้างทิ้งไว้เฉยๆ ไม่ได้แต้ม)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-slate-800 p-6 rounded-xl shadow-lg border border-slate-700 text-white">
+                <h3 class="text-xl font-bold text-amber-500 mb-3">⚠️ การเคลียร์กระดาน (จบยุคคลอง สู่ ยุครถไฟ)</h3>
+                <p class="text-sm text-slate-300 mb-4">หลังจากนับคะแนนยุคคลองเสร็จ จะต้องจัดการกระดานดังนี้:</p>
+                <ol class="list-decimal pl-5 text-sm text-slate-200 space-y-2">
+                    <li><strong>รื้อเส้นทาง:</strong> เก็บแผ่น "คลอง" ของทุกคนออกจากกระดาน (ยุคหน้ารถไฟจะมาแทน)</li>
+                    <li><strong>ทุบตึกเก่า:</strong> เก็บแผ่นอุตสาหกรรมที่มีสัญลักษณ์ <strong>ระดับ 1 (I)</strong> ของทุกคน ไม่ว่าจะพลิกหน้าแล้วหรือยัง ออกจากกระดานให้หมด! (แปลว่าแต้มของระดับ 1 จะได้นับแค่ยุคเดียว)</li>
+                    <li><strong>คงตึกระดับ 2 ขึ้นไป:</strong> อุตสาหกรรมระดับ 2 (II), 3 (III), 4 (IV) จะยังคงอยู่บนกระดานต่อไปในยุครถไฟ และสามารถทำคะแนนซ้ำได้อีกรอบเมื่อจบเกม!</li>
+                    <li>สับไพ่ทั้งหมดแจกใหม่ วางเบียร์ของพ่อค้าใหม่ และเริ่มยุครถไฟ</li>
+                </ol>
+            </div>
+            
+            <div class="mt-6 text-center text-slate-600">
+                <p>เมื่อจบยุครถไฟ ให้นับคะแนนอีกครั้ง ผู้ที่มี <strong>แต้มชัยชนะ (VP) รวมมากที่สุด</strong> จะเป็นผู้ชนะ (หากเสมอกัน ให้ดูว่าใครมีระดับรายได้ - Income Level สูงกว่า)</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 text-center py-8 mt-auto border-t-4 border-amber-800">
+        <h3 class="text-xl font-bold text-amber-600 tracking-wider mb-2">BRASS: BIRMINGHAM</h3>
+        <p class="text-sm">Interactive Comprehensive Guide | Board Game Books Architecture</p>
+    </footer>
+
+    <script>
+        // Setup Scrollspy for Navigation Highlighting
+        function setupScrollspy() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-btn');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.id;
+                        
+                        navLinks.forEach(link => {
+                            link.classList.remove('active', 'bg-slate-800', 'text-white');
+                            link.classList.add('text-slate-800');
+                            link.style.backgroundColor = '';
+                            link.style.color = '';
+                            
+                            if (link.getAttribute('href') === `#${activeId}`) {
+                                link.classList.add('active');
+                                link.style.backgroundColor = '#1e293b';
+                                link.style.color = 'white';
+                                
+                                link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        window.onload = () => {
+            setupScrollspy();
+        };
+    </script>
+</body>
+</html>
