@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โดมหัวเพชร Splendor - คู่มือการเล่นแบบเว็บ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #eff6ff;
+            color: #0f172a;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url('cover.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.10;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .nav-btn.active {
+            background-color: #1d4ed8;
+            color: white;
+            border-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="bg-slate-900 text-slate-50 p-6 shadow-md text-center relative z-20 border-b-4 border-yellow-400">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-wide">โดมหัวเพชร Splendor</h1>
+        <p class="text-slate-300 mt-2 text-sm md:text-lg">คู่มือการเล่นฉบับเว็บจากเอกสาร PDF ภาษาไทย</p>
+    </header>
+
+    <nav class="bg-slate-50 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap border-b border-slate-200">
+        <div class="max-w-6xl mx-auto flex space-x-2 md:space-x-4 justify-start lg:justify-center">
+            <a href="#sec-overview" class="nav-btn active px-4 py-2 rounded-full border border-blue-300 text-blue-800 font-semibold hover:bg-blue-100 transition inline-block text-sm md:text-base">ภาพรวม</a>
+            <a href="#sec-setup" class="nav-btn px-4 py-2 rounded-full border border-blue-300 text-blue-800 font-semibold hover:bg-blue-100 transition inline-block text-sm md:text-base">อุปกรณ์</a>
+            <a href="#sec-actions" class="nav-btn px-4 py-2 rounded-full border border-blue-300 text-blue-800 font-semibold hover:bg-blue-100 transition inline-block text-sm md:text-base">4 แอคชัน</a>
+            <a href="#sec-nobles" class="nav-btn px-4 py-2 rounded-full border border-blue-300 text-blue-800 font-semibold hover:bg-blue-100 transition inline-block text-sm md:text-base">โบนัสและขุนนาง</a>
+            <a href="#sec-endgame" class="nav-btn px-4 py-2 rounded-full border border-blue-300 text-blue-800 font-semibold hover:bg-blue-100 transition inline-block text-sm md:text-base">จบเกม</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full">
+        <section id="sec-overview" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div class="bg-white/90 p-8 rounded-3xl shadow-lg border border-slate-200">
+                    <div class="flex flex-wrap gap-3 mb-5">
+                        <span class="bg-blue-700 text-white px-4 py-1 rounded-full text-sm font-bold">Engine Building</span>
+                        <span class="bg-slate-100 text-slate-700 px-4 py-1 rounded-full text-sm font-bold">2-4 คน</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full text-sm font-bold">ประมาณ 30 นาที</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-blue-900 mb-3">เป้าหมายของเกม</h2>
+                    <p class="text-slate-700 leading-relaxed mb-5">
+                        รับบทพ่อค้านายธนาคารแห่งยุคเรอเนสซองส์ สะสมเหรียญอัญมณีเพื่อซื้อการ์ดพัฒนา
+                        เมื่อการ์ดพัฒนาสะสมมากขึ้น คุณจะมี <strong>ส่วนลดถาวร</strong> ช่วยให้ซื้อการ์ดใบต่อไปถูกลงเรื่อย ๆ
+                        ผู้ที่สะสมแต้มชื่อเสียงถึง 15 แต้มและจบรอบอย่างถูกต้องจะเป็นผู้ชนะ
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                            <h3 class="font-bold text-blue-800 mb-2">แกนของเกม</h3>
+                            <p class="text-sm text-slate-700">เก็บโทเคนให้พอ ซื้อการ์ดให้ได้ไว แล้วให้การ์ดเหล่านั้นช่วยลดต้นทุนในอนาคต</p>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-2xl border border-yellow-100">
+                            <h3 class="font-bold text-yellow-700 mb-2">อะไรให้แต้ม</h3>
+                            <p class="text-sm text-slate-700">แต้มจากการ์ดพัฒนาและแผ่นขุนนางที่คุณดึงมาครอบครองได้ระหว่างเกม</p>
+                        </div>
+                    </div>
+                </div>
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-slate-200">
+                    <img src="page-01.jpg" alt="หน้าคู่มือเกม Splendor" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">หน้าปกและสรุปอุปกรณ์จากคู่มือ PDF</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-setup" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-slate-200">
+                    <img src="page-02.jpg" alt="หน้าคู่มืออธิบายอุปกรณ์และการเล่น Splendor" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ภาพสรุปการจัดโต๊ะและแอคชันทั้งหมด</figcaption>
+                </figure>
+                <div>
+                    <h2 class="text-3xl font-bold text-blue-900 mb-4 border-b-2 border-blue-200 pb-2">จัดโต๊ะยังไง</h2>
+                    <div class="space-y-4">
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">1. แยกการ์ดพัฒนาเป็น 3 ระดับ</h3>
+                            <p class="text-sm text-slate-600">สับแต่ละกองแยกกัน แล้วเปิดหงายกองละ 4 ใบให้ผู้เล่นเลือกซื้อจากแถวกลาง</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">2. วางเหรียญตามจำนวนผู้เล่น</h3>
+                            <p class="text-sm text-slate-600">โดยทั่วไปใช้เหรียญสีละ 4 / 5 / 7 เหรียญตามเกม 2 / 3 / 4 คน และมีเหรียญทองสำหรับจองการ์ด</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">3. สุ่มแผ่นขุนนาง</h3>
+                            <p class="text-sm text-slate-600">วางแผ่นขุนนางให้มากกว่าจำนวนผู้เล่น 1 แผ่น เพื่อเป็นเป้าหมายโบนัสกลางเกม</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">4. ทุกคนเริ่มแบบมือเปล่า</h3>
+                            <p class="text-sm text-slate-600">ยังไม่มีส่วนลดใด ๆ ดังนั้นช่วงต้นเกมจึงเป็นการสะสมโทเคนและปั้นเครื่องยนต์ทางเศรษฐกิจของตัวเอง</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-actions" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-blue-900 mb-4 border-b-2 border-blue-200 pb-2">4 แอคชันหลักในแต่ละตา</h2>
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border-l-4 border-blue-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">1. หยิบโทเคนต่างสีกัน 3 อัน</h3>
+                    <p class="text-sm text-slate-600">เร่งสร้างทุนตั้งต้น เหมาะมากช่วงต้นเกมเมื่อคุณยังไม่รู้ว่าจะไล่ซื้อสีไหนเป็นหลัก</p>
+                </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border-l-4 border-cyan-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">2. หยิบโทเคนสีเดียวกัน 2 อัน</h3>
+                    <p class="text-sm text-slate-600">ทำได้เมื่อกองสีนี้เหลือพออย่างน้อย 4 อันก่อนหยิบ ใช้เร่งซื้อการ์ดใบสำคัญที่ต้องการสีเดิมเยอะ</p>
+                </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border-l-4 border-yellow-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">3. จองการ์ด 1 ใบ + รับทอง 1 เหรียญ</h3>
+                    <p class="text-sm text-slate-600">กันไม่ให้คนอื่นซื้อการ์ดใบที่คุณเล็งไว้ และเก็บเหรียญทองมาใช้แทนสีใดก็ได้ตอนซื้อจริง</p>
+                </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border-l-4 border-emerald-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">4. ซื้อการ์ดพัฒนา 1 ใบ</h3>
+                    <p class="text-sm text-slate-600">จ่ายโทเคนตามต้นทุน แล้ววางการ์ดไว้หน้าตัวเองเพื่อรับโบนัสถาวร และอาจได้แต้มชื่อเสียงด้วย</p>
+                </div>
+            </div>
+
+            <div class="mt-8 grid lg:grid-cols-2 gap-6">
+                <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold text-yellow-300 mb-3">ระบบส่วนลดถาวร</h3>
+                    <p class="text-sm text-slate-200 mb-3">
+                        สีที่มุมบนของการ์ดพัฒนาที่คุณซื้อไปแล้ว คือส่วนลดถาวรสำหรับการ์ดใบถัด ๆ ไป
+                        ยิ่งมีการ์ดสะสมมาก ต้นทุนจริงที่ต้องจ่ายเป็นโทเคนก็ยิ่งลดลง
+                    </p>
+                    <p class="text-sm text-slate-200">
+                        นี่คือหัวใจของ Splendor: ช่วงแรกอาจดูช้า แต่เมื่อเครื่องยนต์ติดแล้วคุณจะซื้อการ์ดได้เร็วขึ้นอย่างชัดเจน
+                    </p>
+                </div>
+                <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3">ข้อจำกัดที่ห้ามลืม</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><strong>ถือโทเคนรวมได้ไม่เกิน 10 อัน</strong> ถ้าเกินต้องเลือกคืนทันทีเมื่อจบตา</li>
+                        <li><strong>จองการ์ดได้จำกัด</strong> โดยทั่วไปเก็บการ์ดที่จองไว้บนมือได้ไม่เกิน 3 ใบ</li>
+                        <li><strong>เหรียญทองเป็น Wild</strong> ใช้แทนสีใดก็ได้ แต่หยิบมาจากการจองเท่านั้น</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-nobles" class="mb-20 scroll-mt-24">
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-slate-200">
+                    <h2 class="text-3xl font-bold text-blue-900 mb-4 border-b-2 border-blue-200 pb-2">โบนัสจากขุนนาง</h2>
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        ถ้าจบตาของคุณแล้วมีโบนัสสีจากการ์ดพัฒนาครบตามเงื่อนไขบนแผ่นขุนนาง
+                        คุณจะได้หยิบขุนนาง 1 แผ่นมาครอบครองทันทีโดยไม่ต้องเสียแอคชัน
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><strong>ขุนนางให้แต้มชื่อเสียงทันที</strong> ช่วยเร่งเกมช่วงกลางถึงท้าย</li>
+                        <li><strong>หยิบได้เพียง 1 แผ่นต่อ 1 ตา</strong> แม้จะผ่านเงื่อนไขหลายแผ่นพร้อมกัน</li>
+                        <li><strong>เน้นสะสมโบนัสให้ตรงแพทเทิร์น</strong> มากกว่าไล่เก็บเหรียญแบบไม่มีทิศทาง</li>
+                    </ul>
+                </div>
+                <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-3xl shadow-sm">
+                    <h3 class="text-xl font-bold text-yellow-800 mb-3">ทิศทางการเล่นที่เห็นผลไว</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li>เริ่มจากการ์ดราคาถูกเพื่อปั้นโบนัสสีพื้นฐานก่อน</li>
+                        <li>ถ้ามีการ์ดระดับสูงที่สำคัญมาก ให้จองไว้ก่อนเพื่อกันคนอื่น</li>
+                        <li>สังเกตแผ่นขุนนางตั้งแต่ต้น เพื่อรู้ว่าควรลงทุนกับสีไหนเป็นแกนหลัก</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-endgame" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-blue-900 mb-4 border-b-2 border-blue-200 pb-2">เกมจบเมื่อไร</h2>
+            <div class="space-y-8">
+                <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-slate-200">
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        เมื่อมีผู้เล่นคนใดคนหนึ่งแต้มชื่อเสียงถึง <strong>15 แต้มขึ้นไป</strong> ให้เล่นจนจบรอบ
+                        เพื่อให้ทุกคนได้จำนวนตาเท่ากัน จากนั้นนับคะแนนหาผู้ชนะ
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><strong>แต้มมาจาก:</strong> การ์ดพัฒนาและแผ่นขุนนาง</li>
+                        <li><strong>กรณีเสมอ:</strong> ใช้ผู้เล่นที่มีการ์ดพัฒนาน้อยกว่าชนะ</li>
+                        <li><strong>จังหวะจบเกม:</strong> มักเกิดตอนที่เครื่องยนต์เริ่มซื้อการ์ดระดับสูงได้ต่อเนื่อง</li>
+                    </ul>
+                </div>
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-sm border border-slate-200">
+                    <img src="page-02.jpg" alt="ภาพหน้าคู่มืออธิบายการเล่น Splendor" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">หน้าคู่มือที่สรุป 4 แอคชันหลัก โบนัส และการจบเกม</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-300 text-center py-6 mt-auto">
+        <p class="text-sm">Splendor | Web guide generated from the PDF booklet</p>
+    </footer>
+
+    <script>
+        function setupScrollspy() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-btn');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const activeId = entry.target.id;
+
+                    navLinks.forEach((link) => {
+                        link.classList.remove('active');
+                        link.style.backgroundColor = '';
+                        link.style.color = '';
+
+                        if (link.getAttribute('href') === `#${activeId}`) {
+                            link.classList.add('active');
+                            link.style.backgroundColor = '#1d4ed8';
+                            link.style.color = 'white';
+                            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        }
+                    });
+                });
+            }, {
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            });
+
+            sections.forEach((section) => observer.observe(section));
+        }
+
+        window.onload = () => {
+            setupScrollspy();
+        };
+    </script>
+</body>
+</html>
