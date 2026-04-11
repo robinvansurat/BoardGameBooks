@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>มนุษย์หมาป่า - คู่มือการเล่นแบบเว็บ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #020617;
+            color: #e2e8f0;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url('cover.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.16;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .nav-btn.active {
+            background-color: #0f766e;
+            color: white;
+            border-color: #0f766e;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="bg-black/90 text-slate-50 p-6 shadow-md text-center relative z-20 border-b-4 border-teal-500">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-wide">มนุษย์หมาป่า</h1>
+        <p class="text-slate-300 mt-2 text-sm md:text-lg">คู่มือเล่นเบื้องต้น + บทบาทอ้างอิงจาก PDF ภาษาไทย</p>
+    </header>
+
+    <nav class="bg-slate-950/90 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap border-b border-slate-800">
+        <div class="max-w-6xl mx-auto flex space-x-2 md:space-x-4 justify-start lg:justify-center">
+            <a href="#sec-overview" class="nav-btn active px-4 py-2 rounded-full border border-teal-700 text-teal-200 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">ภาพรวม</a>
+            <a href="#sec-setup" class="nav-btn px-4 py-2 rounded-full border border-teal-700 text-teal-200 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">เริ่มเกมแรก</a>
+            <a href="#sec-flow" class="nav-btn px-4 py-2 rounded-full border border-teal-700 text-teal-200 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">กลางคืน/กลางวัน</a>
+            <a href="#sec-variants" class="nav-btn px-4 py-2 rounded-full border border-teal-700 text-teal-200 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">กติกาพิเศษ</a>
+            <a href="#sec-roles" class="nav-btn px-4 py-2 rounded-full border border-teal-700 text-teal-200 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">บทบาท</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full">
+        <section id="sec-overview" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div class="bg-slate-950/85 p-8 rounded-3xl shadow-lg border border-slate-800">
+                    <div class="flex flex-wrap gap-3 mb-5">
+                        <span class="bg-teal-700 text-white px-4 py-1 rounded-full text-sm font-bold">Social Deduction</span>
+                        <span class="bg-slate-800 text-slate-100 px-4 py-1 rounded-full text-sm font-bold">6-15 คน</span>
+                        <span class="bg-red-900 text-red-100 px-4 py-1 rounded-full text-sm font-bold">มีผู้ดำเนินเกม 1 คน</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-3">เกมนี้เล่นยังไง</h2>
+                    <p class="text-slate-300 leading-relaxed mb-5">
+                        ผู้เล่นถูกแบ่งเป็นสองฝ่ายลับ ๆ คือ <strong>ชาวบ้าน</strong> และ <strong>มนุษย์หมาป่า</strong>
+                        ตอนกลางคืนหมาป่าจะกำจัดคน ทีละคน ส่วนตอนกลางวันทุกคนต้องพูดคุย สงสัย และโหวตหาตัวหมาป่าให้เจอ
+                        เกมนี้ไม่ได้วัดดวง แต่วัดการอ่านคน การเล่าเรื่อง และความนิ่งบนโต๊ะ
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-teal-950/80 p-4 rounded-2xl border border-teal-900">
+                            <h3 class="font-bold text-teal-200 mb-2">ฝ่ายชาวบ้านชนะ</h3>
+                            <p class="text-sm text-slate-300">เมื่อช่วยกันกำจัดมนุษย์หมาป่าจนหมด</p>
+                        </div>
+                        <div class="bg-red-950/80 p-4 rounded-2xl border border-red-900">
+                            <h3 class="font-bold text-red-200 mb-2">ฝ่ายหมาป่าชนะ</h3>
+                            <p class="text-sm text-slate-300">เมื่อจำนวนหมาป่าเท่ากับหรือมากกว่าจำนวนชาวบ้านที่เหลือ</p>
+                        </div>
+                    </div>
+                </div>
+                <figure class="bg-slate-950/85 p-4 rounded-3xl shadow-lg border border-slate-800">
+                    <img src="page-01.jpg" alt="หน้าคู่มือเกมมนุษย์หมาป่า" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">หน้าคู่มือเริ่มต้นและข้อมูลพื้นฐานของเกม</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-setup" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4 border-b-2 border-slate-700 pb-2">การเริ่มเกมแรกแบบไม่งง</h2>
+                    <div class="space-y-4">
+                        <div class="bg-slate-950/85 p-4 rounded-2xl shadow-sm border border-slate-800">
+                            <h3 class="font-bold text-slate-100 mb-1">1. เลือกผู้ดำเนินเกม</h3>
+                            <p class="text-sm text-slate-400">ผู้ดำเนินเกมคือคนที่คอยปลุกบทบาทตอนกลางคืน ดูแลลำดับเฟส และประกาศผลเมื่อมีคนตกรอบ</p>
+                        </div>
+                        <div class="bg-slate-950/85 p-4 rounded-2xl shadow-sm border border-slate-800">
+                            <h3 class="font-bold text-slate-100 mb-1">2. ใช้ชุดเริ่มต้นก่อน</h3>
+                            <p class="text-sm text-slate-400">
+                                สำหรับการเล่นครั้งแรก ใช้ <strong>เทพพยากรณ์ 1 ใบ</strong> +
+                                <strong>มนุษย์หมาป่า</strong> ตามจำนวนคนเล่น +
+                                <strong>ชาวบ้าน</strong> จนครบผู้เล่นทั้งหมด
+                            </p>
+                        </div>
+                        <div class="bg-slate-950/85 p-4 rounded-2xl shadow-sm border border-slate-800">
+                            <h3 class="font-bold text-slate-100 mb-1">3. จำนวนหมาป่าที่แนะนำ</h3>
+                            <ul class="text-sm text-slate-400 space-y-1 mt-2">
+                                <li>6-8 คน: ใช้หมาป่า 1 ใบ</li>
+                                <li>8-11 คน: ใช้หมาป่า 2 ใบ</li>
+                                <li>12-15 คน: ใช้หมาป่า 3 ใบ</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-950/85 p-4 rounded-2xl shadow-sm border border-slate-800">
+                            <h3 class="font-bold text-slate-100 mb-1">4. แจกการ์ดลับ</h3>
+                            <p class="text-sm text-slate-400">แจกการ์ดคว่ำคนละ 1 ใบ ทุกคนดูบทบาทของตัวเองอย่างเงียบ ๆ แล้วเก็บความลับไว้จนกว่าเกมจะบังคับให้เปิดเผย</p>
+                        </div>
+                        <div class="bg-teal-950/80 border-l-4 border-teal-500 p-4 rounded-r-2xl">
+                            <h3 class="font-bold text-teal-200 mb-1">เมื่อตกรอบ</h3>
+                            <p class="text-sm text-slate-300">ให้เปิดเผยบทบาทของตัวเอง แล้วหยุดพูดหรือให้ข้อมูลเพิ่มเติม กลายเป็นผู้ชมจนกว่าเกมจะจบ</p>
+                        </div>
+                    </div>
+                </div>
+                <figure class="bg-slate-950/85 p-4 rounded-3xl shadow-lg border border-slate-800">
+                    <img src="page-03.jpg" alt="หน้าคู่มือกติกาพิเศษของเกมมนุษย์หมาป่า" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">คู่มือฉบับสมบูรณ์มีโหมดและกติกาพิเศษต่อยอดจากการเล่นพื้นฐาน</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-flow" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-white mb-4 border-b-2 border-slate-700 pb-2">ลำดับเล่นกลางคืนและกลางวัน</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="bg-slate-950/85 p-5 rounded-2xl shadow-sm border-t-4 border-indigo-500">
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">1. ทุกคนหลับตา</h3>
+                    <p class="text-sm text-slate-400">ผู้ดำเนินเกมเรียกบทบาทตามลำดับที่กำหนดให้ลืมตาและทำความสามารถของตัวเอง</p>
+                </div>
+                <div class="bg-slate-950/85 p-5 rounded-2xl shadow-sm border-t-4 border-red-600">
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">2. หมาป่าออกล่า</h3>
+                    <p class="text-sm text-slate-400">หมาป่ารู้กันเองว่าใครเป็นพวกเดียวกัน แล้วเลือกเป้าหมายในคืนถัดไป</p>
+                </div>
+                <div class="bg-slate-950/85 p-5 rounded-2xl shadow-sm border-t-4 border-yellow-500">
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">3. กลางวันเปิดโต๊ะคุย</h3>
+                    <p class="text-sm text-slate-400">ทุกคนสืบหาความจริงจากคำพูด ท่าที และเรื่องเล่าที่แต่ละคนสร้างขึ้น</p>
+                </div>
+                <div class="bg-slate-950/85 p-5 rounded-2xl shadow-sm border-t-4 border-teal-500">
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">4. โหวตกำจัด</h3>
+                    <p class="text-sm text-slate-400">ผู้เล่นตัดสินใจร่วมกันว่าจะกำจัดใคร แล้วเกมเข้าสู่คืนใหม่ทันทีถ้ายังไม่จบ</p>
+                </div>
+            </div>
+
+            <div class="mt-8 grid lg:grid-cols-2 gap-6">
+                <div class="bg-slate-950/85 p-6 rounded-3xl shadow-sm border border-slate-800">
+                    <h3 class="text-xl font-bold text-teal-200 mb-3">บทบาทพื้นฐานที่ควรมีตอนเริ่ม</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li><strong>ชาวบ้าน:</strong> ไม่มีพลังพิเศษ เน้นอ่านเกมและลงคะแนนให้ถูกคน</li>
+                        <li><strong>มนุษย์หมาป่า:</strong> ทำตัวกลมกลืนตอนกลางวัน แต่ร่วมมือกันลอบฆ่าคนตอนกลางคืน</li>
+                        <li><strong>เทพพยากรณ์:</strong> ตัวเปิดข้อมูลหลักของเกม ตรวจผู้เล่นได้ทีละคนตอนกลางคืน</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-950/85 p-6 rounded-3xl shadow-sm border border-slate-800">
+                    <h3 class="text-xl font-bold text-yellow-200 mb-3">เคล็ดลับสำหรับผู้ดำเนินเกม</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li>อธิบายลำดับกลางคืนให้ชัดก่อนเริ่ม และใช้โทนเสียงคงที่ทุกคืน</li>
+                        <li>กำหนดเวลาช่วงพูดคุยล่วงหน้า เพื่อไม่ให้เกมยืดเกินไป</li>
+                        <li>เลือกชุดบทบาทให้พอดีกับประสบการณ์ผู้เล่น อย่าใส่บทมากเกินไปตั้งแต่เกมแรก</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-variants" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <figure class="bg-slate-950/85 p-4 rounded-3xl shadow-lg border border-slate-800">
+                    <img src="page-04.jpg" alt="หน้าคู่มือกติกาพิเศษมนุษย์หมาป่า" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">หน้าคู่มือที่รวมโหมดพิเศษ การโหวตแบบต่าง ๆ และเหตุการณ์ประจำวัน</figcaption>
+                </figure>
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4 border-b-2 border-slate-700 pb-2">กติกาพิเศษที่คู่มือแนะนำ</h2>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-slate-950/85 p-4 rounded-2xl shadow-sm border border-slate-800">
+                            <h3 class="font-bold text-slate-100 mb-2">บทบาทเฉพาะหมาป่า</h3>
+                            <p class="text-sm text-slate-400">เพิ่มพลังพิเศษเฉพาะฝั่งหมาป่า เพื่อทำให้เกมเดายากและมีการ bluff มากขึ้น</p>
+                        </div>
+                        <div class="bg-slate-950/85 p-4 rounded-2xl shadow-sm border border-slate-800">
+                            <h3 class="font-bold text-slate-100 mb-2">ไม่เปิดเผยบทบาทคนตาย</h3>
+                            <p class="text-sm text-slate-400">ทำให้ข้อมูลในเกมน้อยลง ชาวบ้านต้องพึ่งบทสนทนาแทนการเช็กจากการ์ดที่เปิดออก</p>
+                        </div>
+                        <div class="bg-slate-950/85 p-4 rounded-2xl shadow-sm border border-slate-800">
+                            <h3 class="font-bold text-slate-100 mb-2">โหวตลับ</h3>
+                            <p class="text-sm text-slate-400">ให้ผู้เล่นเขียนชื่อเป้าหมายลงกระดาษแล้วนับพร้อมกัน เหมาะกับโต๊ะที่อ่านหน้ากันเก่งมาก</p>
+                        </div>
+                        <div class="bg-slate-950/85 p-4 rounded-2xl shadow-sm border border-slate-800">
+                            <h3 class="font-bold text-slate-100 mb-2">เหตุการณ์ประจำวัน</h3>
+                            <p class="text-sm text-slate-400">เพิ่มเงื่อนไขหรือข้อบังคับใหม่ในแต่ละวัน เพื่อเปลี่ยนจังหวะเกมและบังคับให้ทุกคนปรับแผน</p>
+                        </div>
+                    </div>
+                    <div class="bg-teal-950/80 border-l-4 border-teal-500 p-4 rounded-r-2xl mt-6">
+                        <h3 class="font-bold text-teal-200 mb-1">คำแนะนำ</h3>
+                        <p class="text-sm text-slate-300">ถ้าโต๊ะยังใหม่กับเกมนี้ เริ่มจากกติกาปกติก่อน พอทุกคนเข้าใจจังหวะโกหกและจับผิดแล้วค่อยเพิ่มบทบาทพิเศษเข้าไปทีละชุด</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-roles" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-white mb-4 border-b-2 border-slate-700 pb-2">บทบาทเด่นจากคู่มือ</h2>
+            <p class="text-slate-400 mb-6">ผมสรุปบทบาทที่เห็นบ่อยจากหน้ารวมบทบาท และแนบสเปรดจาก PDF ไว้ด้านล่างเพื่อใช้อ้างอิงระหว่างเล่น</p>
+
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
+                <div class="bg-slate-950/85 p-4 rounded-2xl border border-slate-800">
+                    <h3 class="font-bold text-teal-200 mb-2">กามเทพ</h3>
+                    <p class="text-sm text-slate-400">จับคู่ชีวิต 2 คน ถ้าคนหนึ่งตาย อีกคนมักตายตามทันที</p>
+                </div>
+                <div class="bg-slate-950/85 p-4 rounded-2xl border border-slate-800">
+                    <h3 class="font-bold text-teal-200 mb-2">เจ้าชาย</h3>
+                    <p class="text-sm text-slate-400">ถ้าถูกโหวตกำจัด สามารถเปิดเผยตนและรอดจากการโหวตได้ 1 ครั้ง</p>
+                </div>
+                <div class="bg-slate-950/85 p-4 rounded-2xl border border-slate-800">
+                    <h3 class="font-bold text-teal-200 mb-2">เจ้าลัทธิ</h3>
+                    <p class="text-sm text-slate-400">ค่อย ๆ ดึงผู้เล่นเข้าเป็นพวกลัทธิและเปลี่ยนเงื่อนไขชนะของทั้งโต๊ะ</p>
+                </div>
+                <div class="bg-slate-950/85 p-4 rounded-2xl border border-slate-800">
+                    <h3 class="font-bold text-teal-200 mb-2">เทพพยากรณ์</h3>
+                    <p class="text-sm text-slate-400">ตรวจสอบผู้เล่นได้ทีละคนในตอนกลางคืนว่าเป็นหมาป่าหรือไม่</p>
+                </div>
+                <div class="bg-slate-950/85 p-4 rounded-2xl border border-slate-800">
+                    <h3 class="font-bold text-teal-200 mb-2">นายพราน</h3>
+                    <p class="text-sm text-slate-400">หากถูกกำจัด สามารถพาผู้เล่นอีก 1 คนตายตามได้</p>
+                </div>
+                <div class="bg-slate-950/85 p-4 rounded-2xl border border-slate-800">
+                    <h3 class="font-bold text-teal-200 mb-2">บอดี้การ์ด</h3>
+                    <p class="text-sm text-slate-400">คุ้มครองผู้เล่น 1 คนต่อคืนจากการถูกลอบฆ่าหรือการกำจัดบางแบบ</p>
+                </div>
+                <div class="bg-slate-950/85 p-4 rounded-2xl border border-slate-800">
+                    <h3 class="font-bold text-teal-200 mb-2">ตัวป่วน</h3>
+                    <p class="text-sm text-slate-400">สร้างความวุ่นวายในการโหวตหรือบังคับให้เกิดการลงมติซ้ำ</p>
+                </div>
+                <div class="bg-slate-950/85 p-4 rounded-2xl border border-slate-800">
+                    <h3 class="font-bold text-teal-200 mb-2">ขี้เมา</h3>
+                    <p class="text-sm text-slate-400">บทบาทเริ่มต้นอาจดูธรรมดา แต่สามารถเปลี่ยนสถานะของตัวเองในช่วงกลางคืนได้</p>
+                </div>
+            </div>
+
+            <div class="space-y-5">
+                <figure class="bg-slate-950/85 p-3 rounded-2xl shadow-sm border border-slate-800">
+                    <img src="page-11.jpg" alt="หน้ารวมบทบาทมนุษย์หมาป่าหน้า 11" class="w-full rounded-xl">
+                    <figcaption class="text-sm text-slate-500 mt-2">บทบาทชุดที่ 1</figcaption>
+                </figure>
+                <figure class="bg-slate-950/85 p-3 rounded-2xl shadow-sm border border-slate-800">
+                    <img src="page-12.jpg" alt="หน้ารวมบทบาทมนุษย์หมาป่าหน้า 12" class="w-full rounded-xl">
+                    <figcaption class="text-sm text-slate-500 mt-2">บทบาทชุดที่ 2</figcaption>
+                </figure>
+                <figure class="bg-slate-950/85 p-3 rounded-2xl shadow-sm border border-slate-800">
+                    <img src="page-13.jpg" alt="หน้ารวมบทบาทมนุษย์หมาป่าหน้า 13" class="w-full rounded-xl">
+                    <figcaption class="text-sm text-slate-500 mt-2">บทบาทชุดที่ 3</figcaption>
+                </figure>
+                <figure class="bg-slate-950/85 p-3 rounded-2xl shadow-sm border border-slate-800">
+                    <img src="page-14.jpg" alt="หน้ารวมบทบาทมนุษย์หมาป่าหน้า 14" class="w-full rounded-xl">
+                    <figcaption class="text-sm text-slate-500 mt-2">บทบาทชุดที่ 4</figcaption>
+                </figure>
+                <figure class="bg-slate-950/85 p-3 rounded-2xl shadow-sm border border-slate-800">
+                    <img src="page-15.jpg" alt="หน้ารวมบทบาทมนุษย์หมาป่าหน้า 15" class="w-full rounded-xl">
+                    <figcaption class="text-sm text-slate-500 mt-2">บทบาทชุดที่ 5</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black text-slate-400 text-center py-6 mt-auto">
+        <p class="text-sm">มนุษย์หมาป่า | Web guide generated from the PDF booklet</p>
+    </footer>
+
+    <script>
+        function setupScrollspy() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-btn');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const activeId = entry.target.id;
+
+                    navLinks.forEach((link) => {
+                        link.classList.remove('active');
+                        link.style.backgroundColor = '';
+                        link.style.color = '';
+
+                        if (link.getAttribute('href') === `#${activeId}`) {
+                            link.classList.add('active');
+                            link.style.backgroundColor = '#0f766e';
+                            link.style.color = 'white';
+                            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        }
+                    });
+                });
+            }, {
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            });
+
+            sections.forEach((section) => observer.observe(section));
+        }
+
+        window.onload = () => {
+            setupScrollspy();
+        };
+    </script>
+</body>
+</html>
