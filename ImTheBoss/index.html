@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm the Boss! - คู่มือการเล่นแบบเว็บ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #f6fbf7;
+            color: #1f2937;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url('cover.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .nav-btn.active {
+            background-color: #15803d;
+            color: white;
+            border-color: #15803d;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="bg-emerald-700 text-white p-6 shadow-md text-center relative z-20 border-b-4 border-yellow-300">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-wide">I'M THE BOSS!</h1>
+        <p class="text-emerald-100 mt-2 text-sm md:text-lg">คู่มือย่อยง่ายสำหรับเกมเจรจาธุรกิจสุดป่วน</p>
+    </header>
+
+    <nav class="bg-emerald-50 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap border-b border-emerald-100">
+        <div class="max-w-6xl mx-auto flex space-x-2 md:space-x-4 justify-start lg:justify-center">
+            <a href="#sec-overview" class="nav-btn active px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">ภาพรวม</a>
+            <a href="#sec-setup" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">เตรียมเกม</a>
+            <a href="#sec-flow" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">ลำดับเล่น</a>
+            <a href="#sec-cards" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">การ์ดอิทธิพล</a>
+            <a href="#sec-closing" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">ปิดการเจรจา</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full">
+        <section id="sec-overview" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div class="bg-white/90 p-8 rounded-3xl shadow-lg border border-emerald-100">
+                    <div class="flex flex-wrap gap-3 mb-5">
+                        <span class="bg-emerald-700 text-white px-4 py-1 rounded-full text-sm font-bold">Negotiation / Table Talk</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full text-sm font-bold">3-6 คน</span>
+                        <span class="bg-slate-100 text-slate-700 px-4 py-1 rounded-full text-sm font-bold">60+ นาที</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-emerald-800 mb-3">เกมนี้เล่นเรื่องอะไร</h2>
+                    <p class="text-slate-700 leading-relaxed mb-5">
+                        ทุกคนคือหัวหน้าทีมนักลงทุนที่อยากเข้าไปมีส่วนในดีลมูลค่ามหาศาลของบริษัทต่าง ๆ
+                        คุณต้องต่อรอง เกทับ ขวางคู่แข่ง และพยายามเป็นคนที่คุมจังหวะการปิดดีลให้ได้มากที่สุด
+                        พอเกมจบ ใครมีเงินมากสุดคือผู้ชนะ
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                            <h3 class="font-bold text-emerald-700 mb-2">แกนหลักของเกม</h3>
+                            <p class="text-sm text-slate-700">เปิดเจรจา รวบรวมนักลงทุนให้ครบเงื่อนไข แล้วแบ่งเงินปันผลตามที่ตกลงกัน</p>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-2xl border border-yellow-100">
+                            <h3 class="font-bold text-yellow-700 mb-2">สิ่งที่ต้องทำให้เก่ง</h3>
+                            <p class="text-sm text-slate-700">คุมบทสนทนา อ่านโต๊ะ และเก็บการ์ดอิทธิพลไว้ตัดจังหวะคู่แข่ง</p>
+                        </div>
+                    </div>
+                </div>
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-01.jpg" alt="หน้าคู่มือเกม I'm the Boss!" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ภาพหน้าแรกจากคู่มือ PDF ต้นฉบับ</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-setup" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-02.jpg" alt="หน้าคู่มือการเตรียมเกม I'm the Boss!" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">อธิบายเป้าหมาย การตั้งกระดาน และองค์ประกอบหลัก</figcaption>
+                </figure>
+                <div>
+                    <h2 class="text-3xl font-bold text-emerald-800 mb-4 border-b-2 border-emerald-200 pb-2">การเตรียมเกม</h2>
+                    <div class="space-y-4">
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">1. แจกแผ่นป้ายนักลงทุน</h3>
+                            <p class="text-sm text-slate-600">ผู้เล่นแต่ละคนจะมีทีมนักลงทุนของตัวเองเป็นสี/สายงานต่างกัน ใช้เข้าร่วมดีลตามสัญลักษณ์บนแผ่นดีล</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">2. แจกการ์ดอิทธิพลคนละ 5 ใบ</h3>
+                            <p class="text-sm text-slate-600">การ์ดเหล่านี้คือเครื่องมือไว้แทรกแซงการเจรจา ย้ายทีม ซื้อทีม ขวาง หรือยึดสถานะบอส</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">3. วางแผ่นดีลเรียงจาก #1 ถึง #15</h3>
+                            <p class="text-sm text-slate-600">แผ่นบนสุดของกองจะเป็นดีลปัจจุบัน ตัวเลขและสัญลักษณ์ด้านขวาจะบอกว่าต้องการนักลงทุนกี่คนและสายไหนบ้าง</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">4. เลือกผู้เล่นคนแรกและเริ่มจากดีลแรก</h3>
+                            <p class="text-sm text-slate-600">เมื่อได้เทิร์นของคุณจะเลือกว่าจะเปิดดีลทันที หรือทอยเต๋าเพื่อย้ายตัวกำกับไปยังดีลใหม่ก่อนก็ได้</p>
+                        </div>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-300 p-4 rounded-r-2xl">
+                            <h3 class="font-bold text-yellow-800 mb-1">ทริกสำคัญตั้งแต่ต้นเกม</h3>
+                            <p class="text-sm text-slate-700">ในช่วงแรกอย่าปล่อยการ์ดอิทธิพลทิ้งง่าย ๆ เพราะไพ่หยุด, ไพ่เดินทาง และไพ่ซื้อทีมมีผลต่อการปิดดีลมากกว่าที่เห็น</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-flow" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-emerald-800 mb-4 border-b-2 border-emerald-200 pb-2">ลำดับเล่นแบบเข้าใจเร็ว</h2>
+            <div class="grid md:grid-cols-3 gap-5 mb-8">
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border-t-4 border-emerald-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">1. เลือกดีล</h3>
+                    <p class="text-sm text-slate-600">เปิดการเจรจาในช่องปัจจุบัน หรือทอยเต๋าเพื่อเลื่อนตัวกำกับไปหาดีลใหม่ก่อน</p>
+                </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border-t-4 border-cyan-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">2. เจรจาและแทรกแซง</h3>
+                    <p class="text-sm text-slate-600">ผู้เล่นคนอื่นตัดสินใจว่าจะเข้าร่วมดีล เล่นการ์ดสวน หรือเจรจาแบ่งผลประโยชน์อย่างไร</p>
+                </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border-t-4 border-yellow-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">3. ปิดดีลรับเงิน</h3>
+                    <p class="text-sm text-slate-600">เมื่อหานักลงทุนครบตามสัญลักษณ์ บอสจะนับปิดการเจรจาแล้วรับเงินไปแบ่งกันตามดีลที่ตกลง</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold text-yellow-300 mb-3">ในตาของคุณเลือกได้หลัก ๆ</h3>
+                    <ul class="space-y-3 text-sm text-slate-200">
+                        <li><strong>เปิดเจรจาดีล:</strong> เริ่มโต๊ะต่อรองในช่องที่ตัวกำกับหยุดอยู่</li>
+                        <li><strong>ทอยและขยับตัวกำกับ:</strong> ไปดีลใหม่ แล้วเลือกเปิดดีลทันทีหรือจั่วการ์ดอิทธิพล 3 ใบ</li>
+                        <li><strong>ถือไพ่ในมือได้จำกัด:</strong> ถ้ามีมากเกินกำหนดต้องทิ้งลงมาจนเหลือเท่าที่กติกาอนุญาต</li>
+                        <li><strong>ทุกอย่างอยู่ที่การคุย:</strong> ดีลเดียวกันอาจแบ่งเงินไม่เท่ากัน ขึ้นกับว่าคุณต่อรองเก่งแค่ไหน</li>
+                    </ul>
+                </div>
+                <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-emerald-100">
+                    <h3 class="text-xl font-bold text-emerald-700 mb-3">เงื่อนไขของแผ่นดีล</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><strong>ตัวเลขด้านซ้าย:</strong> จำนวนเงินต่อหน่วยสัญลักษณ์ $</li>
+                        <li><strong>คอลัมน์สัญลักษณ์:</strong> สายงานนักลงทุนที่ต้องใช้ เช่น สื่อ เทคโนโลยี การเงิน กฎหมาย วิทยาศาสตร์</li>
+                        <li><strong>จำนวนที่ต้องการ:</strong> สัญลักษณ์บางสีต้องใช้มากกว่า 1 คนหรือมากกว่า 1 แผ่นป้าย</li>
+                        <li><strong>คนไม่มีแผ่นป้ายตรงสี:</strong> ยังเข้าร่วมได้หากใช้การ์ดทีมเข้าช่วย หรือใช้ไพ่ซื้อทีมจากคนอื่น</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-cards" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-emerald-800 mb-4 border-b-2 border-emerald-200 pb-2">การ์ดอิทธิพลที่พลิกโต๊ะได้</h2>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-l-4 border-cyan-500">
+                            <h3 class="font-bold text-slate-800 mb-2">การ์ดเดินทาง</h3>
+                            <p class="text-sm text-slate-600">ย้ายแผ่นป้ายนักลงทุนหรือการ์ดทีมไปยังดีลอื่น ทำให้ดีลเดิมล้ม หรือช่วยเติมดีลใหม่ให้ครบได้ทันที</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-l-4 border-emerald-500">
+                            <h3 class="font-bold text-slate-800 mb-2">การ์ดซื้อทีม</h3>
+                            <p class="text-sm text-slate-600">เก็บครบชุดแล้วใช้สลับหรือยึดทีมบางส่วนจากผู้เล่นคนอื่นมาอยู่ฝั่งตัวเอง</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-l-4 border-yellow-500">
+                            <h3 class="font-bold text-slate-800 mb-2">การ์ดบอส</h3>
+                            <p class="text-sm text-slate-600">ใช้ยึดสถานะบอสจากคนที่กำลังคุมดีลอยู่ ทำให้คุณเป็นคนปิดการเจรจาแทน</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-l-4 border-red-500">
+                            <h3 class="font-bold text-slate-800 mb-2">การ์ดหยุด</h3>
+                            <p class="text-sm text-slate-600">ใช้ยกเลิกผลของการ์ดเดินทาง การ์ดบอส หรือการ์ดซื้อทีม เป็นไพ่กันตายประจำโต๊ะ</p>
+                        </div>
+                    </div>
+                    <div class="bg-emerald-50 border-l-4 border-emerald-400 p-4 rounded-r-2xl mt-6">
+                        <h3 class="font-bold text-emerald-800 mb-1">คำแนะนำ</h3>
+                        <p class="text-sm text-slate-700">อย่าระบายการ์ดออกจากมือหมดเร็วเกินไป เกมนี้ชนะกันที่จังหวะตัดบทสนทนาและการเปลี่ยนเจ้าของทีมในวินาทีสุดท้าย</p>
+                    </div>
+                </div>
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-03.jpg" alt="หน้าคู่มือการ์ดอิทธิพลของ I'm the Boss!" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ตัวอย่างการ์ดเดินทางและการ์ดซื้อทีมจากคู่มือ</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-closing" class="mb-16 scroll-mt-24">
+            <div class="space-y-8">
+                <div class="space-y-6">
+                    <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-emerald-100">
+                        <h2 class="text-3xl font-bold text-emerald-800 mb-4 border-b-2 border-emerald-200 pb-2">การปิดการเจรจา</h2>
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            เมื่อผู้เล่นตกลงกันและหานักลงทุนครบเงื่อนไข บอสจะนับ “หนึ่ง... สอง... สาม... ปิดการเจรจา!”
+                            จากนั้นไม่มีใครเล่นการ์ดอิทธิพลแทรกได้อีกแล้ว ดีลนั้นจ่ายเงินทันทีตามมูลค่าบนแผ่นดีล
+                        </p>
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li><strong>บอสเป็นคนรับเงินก้อน:</strong> แล้วแบ่งให้ผู้ร่วมดีลตามที่ตกลงไว้</li>
+                            <li><strong>คนเล่นไพ่แต่ไม่ได้เข้าดีล:</strong> จะไม่ได้ส่วนแบ่ง แม้จะช่วยปูทางให้ดีลเกิดขึ้นก็ตาม</li>
+                            <li><strong>ถ้าดีลคุยไม่ลง:</strong> ปล่อยให้การเจรจาล้มเหลวได้ แล้วคืนการ์ดชั่วคราวกลับตามกติกา</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-lg">
+                        <h3 class="text-xl font-bold text-yellow-300 mb-3">เกมจบเมื่อไร</h3>
+                        <p class="text-sm text-slate-200 mb-3">
+                            ตั้งแต่ดีลช่วงท้าย เกมอาจจบได้เร็วขึ้นตามเงื่อนไขบนแผ่นดีล และจะจบแน่นอนเมื่อเล่นไปถึงดีลสุดท้าย
+                        </p>
+                        <p class="text-sm text-slate-200">
+                            หลังเกมจบให้นับเงินทั้งหมด ผู้เล่นที่มีเงินมากที่สุดคือผู้ชนะ และถ้าเล่น 2 คนให้ใช้กติกาพิเศษตามคู่มือด้วย
+                        </p>
+                    </div>
+                </div>
+                <div class="space-y-5">
+                    <figure class="bg-white/90 p-4 rounded-3xl shadow-sm border border-emerald-100">
+                        <img src="page-04.jpg" alt="หน้าคู่มืออธิบายการปิดการเจรจาในเกม I'm the Boss!" class="w-full rounded-2xl shadow-sm">
+                        <figcaption class="text-sm text-slate-500 mt-3">ขั้นตอนการปิดการเจรจา รับเงิน และการ์ดหยุด</figcaption>
+                    </figure>
+                    <figure class="bg-white/90 p-4 rounded-3xl shadow-sm border border-emerald-100">
+                        <img src="page-05.jpg" alt="หน้าคู่มือกติกาพิเศษของเกม I'm the Boss!" class="w-full rounded-2xl shadow-sm">
+                        <figcaption class="text-sm text-slate-500 mt-3">กติกาพิเศษ การจบเกม และโหมดเล่นสองคน</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-emerald-800 text-emerald-100 text-center py-6 mt-auto">
+        <p class="text-sm">I'm the Boss! | Web guide generated from the PDF booklet</p>
+    </footer>
+
+    <script>
+        function setupScrollspy() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-btn');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const activeId = entry.target.id;
+
+                    navLinks.forEach((link) => {
+                        link.classList.remove('active');
+                        link.style.backgroundColor = '';
+                        link.style.color = '';
+
+                        if (link.getAttribute('href') === `#${activeId}`) {
+                            link.classList.add('active');
+                            link.style.backgroundColor = '#15803d';
+                            link.style.color = 'white';
+                            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        }
+                    });
+                });
+            }, {
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            });
+
+            sections.forEach((section) => observer.observe(section));
+        }
+
+        window.onload = () => {
+            setupScrollspy();
+        };
+    </script>
+</body>
+</html>
