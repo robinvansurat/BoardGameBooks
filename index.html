@@ -9,31 +9,39 @@
         @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Prompt', sans-serif;
-            background-color: #fdfbf7;
+            background:
+                radial-gradient(circle at top left, #fde68a 0, transparent 28%),
+                radial-gradient(circle at bottom right, #fcd34d 0, transparent 24%),
+                #fdfbf7;
             color: #1e293b;
+        }
+        .game-card img {
+            transition: transform 0.5s ease;
+        }
+        .game-card:hover img {
+            transform: scale(1.06);
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
-
-    <header class="bg-amber-800 text-amber-50 p-6 shadow-md text-center relative z-20">
+    <header class="bg-amber-800 text-amber-50 p-6 md:p-8 shadow-md text-center relative z-20">
         <h1 class="text-3xl md:text-5xl font-bold tracking-wide">BOARD GAME BOOKS</h1>
-        <p class="text-amber-200 mt-2 text-sm md:text-lg">คลังคู่มือการเล่นและผู้ช่วยดิจิทัล (ภาษาไทย)</p>
+        <p class="text-amber-100 mt-3 text-sm md:text-lg max-w-3xl mx-auto">
+            คลังคู่มือบอร์ดเกมภาษาไทยในรูปแบบเว็บ อ่านง่ายกว่า PDF และเปิดดูบนมือถือระหว่างเล่นได้สะดวก
+        </p>
     </header>
 
-    <main class="flex-grow p-6 md:p-12 max-w-6xl mx-auto w-full">
-        <div class="mb-10 text-center">
-            <h2 class="text-2xl font-bold text-amber-800 mb-2">เลือกคู่มือเกมที่คุณต้องการ</h2>
-            <p class="text-slate-600">คู่มือแบบอินเตอร์แอคทีฟที่เข้าใจง่าย พร้อมข้อมูลทุกอย่างที่คุณต้องรู้ก่อนเริ่มเล่น</p>
-        </div>
+    <main class="flex-grow p-6 md:p-10 max-w-7xl mx-auto w-full">
+        <section class="text-center mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-amber-900 mb-2">เลือกเกมที่ต้องการเปิดคู่มือ</h2>
+            <p class="text-slate-600">ตอนนี้มีทั้งเกมที่ทำไว้ก่อนหน้า และเกมใหม่ที่แปลงมาจาก PDF ที่วางไว้ที่ root แล้ว</p>
+        </section>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Card: Here to Slay -->
-            <a href="HereToSlay/" class="block group">
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+        <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+            <a href="HereToSlay/" class="game-card block group">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
                     <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
-                        <!-- Cover Image -->
-                        <img src="HereToSlay/cover.jpg" alt="Here to Slay Box Art" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <img src="HereToSlay/cover.jpg" alt="Here to Slay Box Art" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         <div class="absolute bottom-4 left-4 right-4">
                             <span class="bg-amber-600 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Party / Strategy</span>
@@ -41,7 +49,7 @@
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">Here to Slay</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-grow">รวบรวมปาร์ตี้ฮีโร่ สวมใส่อาวุธ ใช้เวทมนตร์ และปราบมอนสเตอร์สุดอันตราย พร้อมขัดขวางเพื่อนที่กลายเป็นศัตรู!</p>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">จัดปาร์ตี้ฮีโร่ สวมอาวุธ ใช้เวท และล่ามอนสเตอร์ พร้อมผู้ช่วยดูแต้มและโอกาสจากลูกเต๋า</p>
                         <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
                             <span class="mr-4">⏱ 30-60 นาที</span>
                             <span>👥 2-6 คน</span>
@@ -49,13 +57,11 @@
                     </div>
                 </div>
             </a>
-            
-            <!-- Card: 7 Wonders -->
-            <a href="7Wonders/" class="block group">
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+
+            <a href="7Wonders/" class="game-card block group">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
                     <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
-                        <!-- Cover Image -->
-                        <img src="7Wonders/cover.jpg" alt="7 Wonders Box Art" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <img src="7Wonders/cover.jpg" alt="7 Wonders Box Art" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         <div class="absolute bottom-4 left-4 right-4">
                             <span class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Drafting / Civilization</span>
@@ -63,7 +69,7 @@
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">7 Wonders</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-grow">นำพาเมืองแห่งโลกยุคโบราณของคุณสู่ความยิ่งใหญ่! รวบรวมทรัพยากร สร้างกองทัพ และสร้างมหาพีระมิดหรือสวนลอยบาบิโลน</p>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">สร้างอารยธรรมของตัวเองผ่านระบบ draft การ์ดและบริหารทรัพยากรให้คุ้มที่สุด</p>
                         <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
                             <span class="mr-4">⏱ 30 นาที</span>
                             <span>👥 3-7 คน</span>
@@ -71,21 +77,19 @@
                     </div>
                 </div>
             </a>
-            
-            <!-- Card: Brass Birmingham -->
-            <a href="BrassBirmingham/" class="block group">
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+
+            <a href="BrassBirmingham/" class="game-card block group">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
                     <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
-                        <!-- Cover Image -->
-                        <img src="BrassBirmingham/cover.jpg" alt="Brass Birmingham Box Art" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <img src="BrassBirmingham/cover.jpg" alt="Brass Birmingham Box Art" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         <div class="absolute bottom-4 left-4 right-4">
-                            <span class="bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Strategy / Economic</span>
+                            <span class="bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Economic / Heavy Strategy</span>
                         </div>
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">Brass: Birmingham</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-grow">ก้าวขึ้นเป็นเจ้าสัวแห่งยุคปฏิวัติอุตสาหกรรมในอังกฤษ บริหารเครือข่ายคลองและรถไฟ ทำกำไรจากฝ้ายและเบียร์!</p>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">สร้างเครือข่ายอุตสาหกรรมและทำกำไรในยุคปฏิวัติอุตสาหกรรมอังกฤษ</p>
                         <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
                             <span class="mr-4">⏱ 60-120 นาที</span>
                             <span>👥 2-4 คน</span>
@@ -94,19 +98,18 @@
                 </div>
             </a>
 
-            <a href="SplendorMarvel/" class="block group">
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+            <a href="SplendorMarvel/" class="game-card block group">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
                     <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
-                        <!-- Cover Image -->
-                        <img src="SplendorMarvel/cover.webp" alt="Splendor Marvel Box Art" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <img src="SplendorMarvel/cover.webp" alt="Splendor Marvel Box Art" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         <div class="absolute bottom-4 left-4 right-4">
-                            <span class="bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Strategy / Economic</span>
+                            <span class="bg-red-700 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Engine Building / Marvel</span>
                         </div>
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">Splendor: Marvel</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-grow">รวบรวม Infinity Stones และสร้าง Infinity Gauntlet เพื่อหยุดยั้งธานอสจากการทำลายล้างจักรวาล!</p>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">เก็บ Infinity Stones สร้างทีมฮีโร่ และทำแต้มให้ครบเงื่อนไขชนะทั้งสามข้อ</p>
                         <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
                             <span class="mr-4">⏱ 30 นาที</span>
                             <span>👥 2-4 คน</span>
@@ -115,19 +118,18 @@
                 </div>
             </a>
 
-            <a href="UnoNoMercy/" class="block group">
-                <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+            <a href="UnoNoMercy/" class="game-card block group">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
                     <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
-                        <!-- Cover Image -->
-                        <img src="UnoNoMercy/cover.jpg" alt="Uno No Mercy Box Art" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <img src="UnoNoMercy/cover.jpg" alt="UNO No Mercy Box Art" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         <div class="absolute bottom-4 left-4 right-4">
-                            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Hand Management / Take That</span>
+                            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Take That / Card Chaos</span>
                         </div>
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">UNO Show 'em No Mercy</h3>
-                        <p class="text-slate-600 text-sm mb-4 flex-grow">เวอร์ชั่นที่โหดร้ายที่สุดของ UNO - ไร้ความปรานี กฎใหม่สุดเดือด จั่วจนกว่าจะลงได้!</p>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">UNO เวอร์ชันโหดจัดที่ซ้อนการ์ดจั่วกันได้ และอาจคัดผู้เล่นออกจากเกมได้จริง</p>
                         <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
                             <span class="mr-4">⏱ 15-30 นาที</span>
                             <span>👥 2-6 คน</span>
@@ -135,14 +137,111 @@
                     </div>
                 </div>
             </a>
-            
-            <!-- Add more game cards here in the future -->
-        </div>
+
+            <a href="ExplodingKittens/" class="game-card block group">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+                    <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
+                        <img src="ExplodingKittens/page-04.jpg" alt="Exploding Kittens Guide Cover" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Party / Push Your Luck</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">เหมียวระเบิด</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">แปลงจาก PDF พร้อมภาพคู่มือเดิม ครบทั้ง setup, ลำดับเล่น, คอมโบ และการ์ดสำคัญ</p>
+                        <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
+                            <span class="mr-4">⏱ 15-20 นาที</span>
+                            <span>👥 2-10 คน</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="ImTheBoss/" class="game-card block group">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+                    <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
+                        <img src="ImTheBoss/cover.jpg" alt="I'm the Boss Guide Cover" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="bg-emerald-700 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Negotiation / Table Talk</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">I'm the Boss!</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">คู่มือฉบับเว็บใหม่จาก PDF สรุปกระดาน ลำดับเล่น การ์ดอิทธิพล และขั้นตอนปิดดีล</p>
+                        <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
+                            <span class="mr-4">⏱ 60+ นาที</span>
+                            <span>👥 3-6 คน</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="Splendor/" class="game-card block group">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+                    <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
+                        <img src="Splendor/cover.jpg" alt="Splendor Guide Cover" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="bg-blue-700 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Engine Building / Classic</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">Splendor</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">สรุปกติกาหลักของ Splendor ตั้งแต่จัดโต๊ะ 4 แอคชัน โบนัสถาวร ไปจนถึงแผ่นขุนนาง</p>
+                        <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
+                            <span class="mr-4">⏱ 30 นาที</span>
+                            <span>👥 2-4 คน</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="Wyrmspan/" class="game-card block group">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+                    <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
+                        <img src="Wyrmspan/cover.png" alt="Wyrmspan Box Art" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="bg-emerald-700 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Engine Building / Dragons</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">ปีกมังกร Wyrmspan</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">คู่มือแบบเว็บจาก rulebook และ Rules &amp; FAQ ทางการ สรุป setup, 5 แอ็กชันหลัก, hatchling และระบบ Dragon Guild พร้อมภาพจากคู่มือจริง</p>
+                        <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
+                            <span class="mr-4">⏱ 90 นาที</span>
+                            <span>👥 1-5 คน</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="Werewolf/" class="game-card block group">
+                <div class="bg-white rounded-3xl shadow-md overflow-hidden border border-amber-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 h-full flex flex-col">
+                    <div class="h-64 overflow-hidden relative bg-slate-100 flex items-center justify-center">
+                        <img src="Werewolf/cover.jpg" alt="Werewolf Guide Cover" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="bg-teal-700 text-white text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Social Deduction / Moderator</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-amber-900 mb-2 group-hover:text-amber-600 transition">มนุษย์หมาป่า</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">รวม flow การเล่นเบื้องต้น ชุดเริ่มเกมแรก และคลังภาพบทบาทจากคู่มือ PDF ครบหลายหน้า</p>
+                        <div class="flex items-center text-slate-500 text-sm font-semibold mt-auto pt-4 border-t border-slate-100">
+                            <span class="mr-4">⏱ 20-40 นาที</span>
+                            <span>👥 6-15 คน</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </section>
     </main>
 
-    <footer class="bg-slate-800 text-slate-400 text-center py-6 mt-auto">
-        <p class="text-sm">Board Game Books | คลังความรู้สำหรับคนรักบอร์ดเกม</p>
+    <footer class="bg-slate-900 text-slate-400 text-center py-6 mt-auto">
+        <p class="text-sm">Board Game Books | คลังคู่มือการเล่นและผู้ช่วยเปิดระหว่างเล่น</p>
     </footer>
-
 </body>
 </html>
