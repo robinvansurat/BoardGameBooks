@@ -3,511 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Here to Slay - คู่มือการเล่นแบบอินเตอร์แอคทีฟ (หน้าเดียว)</title>
+    <title>Here to Slay - คู่มือการเล่นแบบเว็บ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Chosen Palette: Warm RPG Parchment (Amber/Slate) -->
-    <!-- Application Structure Plan: Transformed into a single long-scroll Landing Page. Users can scroll naturally through all sections. The sticky navigation now uses smooth anchor links and an Intersection Observer to highlight the currently viewed section, maintaining easy accessibility to specific rules without hiding content. -->
-    <!-- Visualization & Content Choices: Content remains identical to the previous version (AP Tracker, Dice Chart, Card Info). Layout adjusted for linear reading flow with appropriate spacing and scroll-margins to account for the sticky header. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        :root {
+            --ember: #c2410c;
+            --parchment: #f9f5ec;
+            --ink: #1f2937;
+        }
         body {
             font-family: 'Prompt', sans-serif;
-            background-color: #fdfbf7;
-            color: #1e293b;
+            background:
+                radial-gradient(circle at top left, rgba(194, 65, 12, 0.12), transparent 25%),
+                radial-gradient(circle at bottom right, rgba(120, 53, 15, 0.08), transparent 30%),
+                var(--parchment);
+            color: var(--ink);
             position: relative;
         }
         body::before {
             content: "";
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            inset: 0;
             background-image: url('cover.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0.08;
+            opacity: 0.07;
             z-index: -1;
             pointer-events: none;
         }
         .nav-btn.active {
-            background-color: #d97706;
+            background-color: var(--ember);
             color: white;
-            border-color: #d97706;
+            border-color: var(--ember);
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
+        .ap-orb.active {
+            background: #f59e0b;
+            color: white;
+            box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
+        .ap-orb.used {
+            background: #cbd5e1;
+            color: #64748b;
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
-
-    <header class="bg-amber-800 text-amber-50 p-6 shadow-md text-center relative z-20">
-        <h1 class="text-3xl md:text-4xl font-bold tracking-wide">HERE TO SLAY</h1>
-        <p class="text-amber-200 mt-2 text-sm md:text-base">คู่มือการเล่นและผู้ช่วยดิจิทัล (ภาษาไทย)</p>
+    <header class="bg-amber-900 text-amber-50 p-6 shadow-md text-center relative z-20 border-b-4 border-orange-400">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-wide">HERE TO SLAY</h1>
+        <p class="text-amber-100 mt-2 text-sm md:text-lg">คู่มือการเล่นฉบับเว็บสำหรับเช็กกฎไวระหว่างจัดปาร์ตี้และล่ามอนสเตอร์</p>
     </header>
 
-    <nav class="bg-amber-100 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap">
-        <div class="max-w-4xl mx-auto flex space-x-2 md:space-x-4 justify-start md:justify-center">
-            <a href="#sec-overview" id="btn-overview" class="nav-btn active px-4 py-2 rounded-full border border-amber-600 text-amber-800 font-semibold hover:bg-amber-200 transition inline-block">ภาพรวม & วิธีชนะ</a>
-            <a href="#sec-setup" id="btn-setup" class="nav-btn px-4 py-2 rounded-full border border-amber-600 text-amber-800 font-semibold hover:bg-amber-200 transition inline-block">การเตรียมบอร์ด</a>
-            <a href="#sec-actions" id="btn-actions" class="nav-btn px-4 py-2 rounded-full border border-amber-600 text-amber-800 font-semibold hover:bg-amber-200 transition inline-block">แอคชั่น (AP)</a>
-            <a href="#sec-cards" id="btn-cards" class="nav-btn px-4 py-2 rounded-full border border-amber-600 text-amber-800 font-semibold hover:bg-amber-200 transition inline-block">ประเภทการ์ด</a>
-            <a href="#sec-stats" id="btn-stats" class="nav-btn px-4 py-2 rounded-full border border-amber-600 text-amber-800 font-semibold hover:bg-amber-200 transition inline-block">สถิติทอยเต๋า</a>
-            <a href="#sec-expansion" id="btn-expansion" class="nav-btn px-4 py-2 rounded-full border border-amber-600 text-amber-800 font-semibold hover:bg-amber-200 transition inline-block">ภาคเสริม: Sleigh</a>
-            <a href="#sec-glossary" id="btn-glossary" class="nav-btn px-4 py-2 rounded-full border border-amber-600 text-amber-800 font-semibold hover:bg-amber-200 transition inline-block">คำศัพท์</a>
+    <nav class="bg-amber-50 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap border-b border-amber-100">
+        <div class="max-w-6xl mx-auto flex space-x-2 md:space-x-4 justify-start lg:justify-center">
+            <a href="#sec-overview" class="nav-btn active px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">ภาพรวม</a>
+            <a href="#sec-setup" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">เริ่มเกม</a>
+            <a href="#sec-actions" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">AP</a>
+            <a href="#sec-cards" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">ประเภทการ์ด</a>
+            <a href="#sec-stats" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">มอนสเตอร์ / 2D6</a>
+            <a href="#sec-expansion" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">Here to Sleigh</a>
+            <a href="#sec-glossary" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">คำศัพท์</a>
         </div>
     </nav>
 
-    <main class="flex-grow p-4 md:p-8 max-w-5xl mx-auto w-full">
-
+    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full">
         <section id="sec-overview" class="mb-20 scroll-mt-24">
-            <div class="mb-8 text-center">
-                <h2 class="text-2xl font-bold text-amber-800 mb-2">เป้าหมายของเกม</h2>
-                <p class="text-slate-600">รวบรวมปาร์ตี้ฮีโร่ สวมใส่อาวุธ ใช้เวทมนตร์ และปราบมอนสเตอร์สุดอันตราย พร้อมขัดขวางเพื่อนที่กลายเป็นศัตรู!</p>
-                <div class="mt-2 inline-block bg-slate-100 px-4 py-1 rounded-full text-sm font-semibold text-slate-500">⏱ 30-60 นาที | 🎲 เต๋า 6 หน้า 2 ลูก</div>
-            </div>
+            <div class="space-y-8">
+                <div class="bg-white/90 p-8 rounded-3xl shadow-lg border border-amber-100">
+                    <div class="flex flex-wrap gap-3 mb-5">
+                        <span class="bg-orange-700 text-white px-4 py-1 rounded-full text-sm font-bold">Take That / Party Builder</span>
+                        <span class="bg-slate-100 text-slate-700 px-4 py-1 rounded-full text-sm font-bold">2-6 คน</span>
+                        <span class="bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-sm font-bold">ประมาณ 30-60 นาที</span>
+                        <span class="bg-rose-100 text-rose-700 px-4 py-1 rounded-full text-sm font-bold">ดวง + ป่วน + อ่านโต๊ะ</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-amber-900 mb-3">เป้าหมายของเกม</h2>
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        <strong>Here to Slay</strong> คือเกมรวมปาร์ตี้แฟนตาซีที่ให้เราเล่นทั้งสายสะสมฮีโร่และสายล่ามอนสเตอร์
+                        คุณชนะได้ 2 ทาง คือ <strong>ปราบมอนสเตอร์ครบ 3 ตัว</strong> หรือ
+                        <strong>จบเทิร์นโดยมีคลาสในปาร์ตี้ครบ 6 แบบ</strong>
+                        ระหว่างทางทุกคนมีสิทธิ์โยนเวท, โมดิฟายเต๋า, หรือ challenge ใส่กันได้ตลอด
+                    </p>
+                    <p class="text-slate-700 leading-relaxed mb-5">
+                        เกมนี้จึงไม่ใช่แค่การ build engine เงียบ ๆ แต่เป็นเกมที่ต้องคุมมือ, คุมจังหวะใช้ AP,
+                        และเฝ้าระวังว่าคู่แข่งกำลังจะชนะจากทางไหนก่อน
+                    </p>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100">
+                            <h3 class="font-bold text-amber-800 mb-2">ชนะทางที่ 1</h3>
+                            <p class="text-sm text-slate-700">SLAY มอนสเตอร์ให้ครบ 3 ตัวก่อนใคร</p>
+                        </div>
+                        <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100">
+                            <h3 class="font-bold text-amber-800 mb-2">ชนะทางที่ 2</h3>
+                            <p class="text-sm text-slate-700">มีคลาสในปาร์ตี้ครบ 6 แบบตอนจบเทิร์นของตัวเอง</p>
+                        </div>
+                        <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100">
+                            <h3 class="font-bold text-amber-800 mb-2">สิ่งที่ต้องคุม</h3>
+                            <p class="text-sm text-slate-700">AP 3 แต้ม, การ์ดในมือ, และจังหวะทอย 2D6</p>
+                        </div>
+                        <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100">
+                            <h3 class="font-bold text-amber-800 mb-2">ความต่างของเกม</h3>
+                            <p class="text-sm text-slate-700">คนอื่นมีสิทธิ์ขัดจังหวะการ์ดคุณได้แทบตลอดผ่าน Challenge และ Modifier</p>
+                        </div>
+                    </div>
 
-            <div class="grid md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-red-500 hover:shadow-md transition cursor-default">
-                    <h3 class="text-xl font-bold mb-2 flex items-center">⚔️ วิธีชนะที่ 1: ปราบมอนสเตอร์</h3>
-                    <p class="text-slate-700">เป็นผู้เล่นคนแรกที่สามารถ <strong>SLAY (ปราบ)</strong> มอนสเตอร์ได้ครบ <span class="text-red-600 font-bold text-lg">3 ตัว</span></p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-6">
+                        <div class="bg-white p-3 rounded-xl border border-amber-100 text-center text-sm font-semibold text-slate-700">Fighter</div>
+                        <div class="bg-white p-3 rounded-xl border border-amber-100 text-center text-sm font-semibold text-slate-700">Guardian</div>
+                        <div class="bg-white p-3 rounded-xl border border-amber-100 text-center text-sm font-semibold text-slate-700">Ranger</div>
+                        <div class="bg-white p-3 rounded-xl border border-amber-100 text-center text-sm font-semibold text-slate-700">Thief</div>
+                        <div class="bg-white p-3 rounded-xl border border-amber-100 text-center text-sm font-semibold text-slate-700">Wizard</div>
+                        <div class="bg-white p-3 rounded-xl border border-amber-100 text-center text-sm font-semibold text-slate-700">Bard</div>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500 hover:shadow-md transition cursor-default">
-                    <h3 class="text-xl font-bold mb-2 flex items-center">🛡️ วิธีชนะที่ 2: รวบรวมปาร์ตี้</h3>
-                    <p class="text-slate-700">จบเทิร์นโดยมีฮีโร่และ/หรือผู้นำปาร์ตี้รวมกันครบ <span class="text-blue-600 font-bold text-lg">6 คลาส</span> ที่แตกต่างกัน</p>
-                </div>
-            </div>
 
-            <h3 class="text-xl font-bold text-amber-800 mb-4 border-b border-amber-200 pb-2">สัญลักษณ์คลาส (Classes)</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
-                <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">⚔️<br><span class="font-semibold">Fighter</span><br><span class="text-xs text-slate-500">นักสู้</span></div>
-                <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">🛡️<br><span class="font-semibold">Guardian</span><br><span class="text-xs text-slate-500">ผู้พิทักษ์</span></div>
-                <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">🏹<br><span class="font-semibold">Ranger</span><br><span class="text-xs text-slate-500">เรนเจอร์</span></div>
-                <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">🗡️<br><span class="font-semibold">Thief</span><br><span class="text-xs text-slate-500">หัวขโมย</span></div>
-                <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">🧙‍♂️<br><span class="font-semibold">Wizard</span><br><span class="text-xs text-slate-500">พ่อมด</span></div>
-                <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">🎵<br><span class="font-semibold">Bard</span><br><span class="text-xs text-slate-500">กวี</span></div>
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-amber-100">
+                    <img src="cover.jpg" alt="หน้าปก Here to Slay" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ภาพปก Here to Slay ที่สื่อชัดทั้งความแฟนตาซีและความป่วนแบบปาร์ตี้เกม</figcaption>
+                </figure>
             </div>
         </section>
-
-        <hr class="border-amber-200 my-12">
 
         <section id="sec-setup" class="mb-20 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-amber-800 mb-4 border-b border-amber-200 pb-2">ขั้นตอนการเตรียมบอร์ด (Setup)</h2>
-            <p class="mb-6 text-slate-600">ทำตามขั้นตอนเหล่านี้ตามลำดับก่อนเริ่มเล่น ผู้ที่เลือกการ์ดผู้นำปาร์ตี้เป็นคนสุดท้ายจะได้เริ่มเล่นคนแรก</p>
-            
-            <div class="space-y-4">
-                <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-slate-100">
-                    <div class="bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">1</div>
-                    <div>
-                        <h4 class="font-bold text-slate-800">แยกประเภทการ์ด</h4>
-                        <p class="text-sm text-slate-600">แยกการ์ดผู้นำปาร์ตี้ มอนสเตอร์ และการ์ดหลักออกจากกัน</p>
+            <h2 class="text-3xl font-bold text-amber-900 mb-4 border-b-2 border-amber-200 pb-2">เริ่มเกมอย่างย่อ</h2>
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                        <h3 class="font-bold text-slate-800 mb-1">1. แยกกองการ์ด</h3>
+                        <p class="text-sm text-slate-700">แยก Party Leader, Monster และ Main Deck ออกจากกัน จากนั้นสุ่มกองหลักไว้สำหรับจั่ว</p>
+                    </div>
+                    <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                        <h3 class="font-bold text-slate-800 mb-1">2. เลือก Party Leader</h3>
+                        <p class="text-sm text-slate-700">ผู้เล่นแต่ละคนรับ Party Leader 1 ใบและวางไว้ในพื้นที่ปาร์ตี้ ผู้นำปาร์ตี้มีคลาสและพาสซีฟเฉพาะตัว</p>
+                    </div>
+                    <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                        <h3 class="font-bold text-slate-800 mb-1">3. แจกการ์ดเริ่มต้นและเปิดมอนสเตอร์</h3>
+                        <p class="text-sm text-slate-700">แจกการ์ดหลักคนละ 5 ใบ แล้วเปิดมอนสเตอร์ 3 ตัวตรงกลางโต๊ะเพื่อเป็นเป้าหมายให้โจมตี</p>
                     </div>
                 </div>
-                <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-slate-100">
-                    <div class="bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">2</div>
-                    <div>
-                        <h4 class="font-bold text-slate-800">เลือกผู้นำปาร์ตี้</h4>
-                        <p class="text-sm text-slate-600">ผู้เล่นเลือกการ์ด <strong>ผู้นำปาร์ตี้ (Party Leader)</strong> 1 ใบ วางไว้ตรงหน้าในพื้นที่ "ปาร์ตี้" (แจกการ์ดกฎคนละใบ ที่เหลือเก็บลงกล่อง)</p>
-                    </div>
-                </div>
-                <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-slate-100">
-                    <div class="bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">3</div>
-                    <div>
-                        <h4 class="font-bold text-slate-800">แจกการ์ดเริ่มต้น</h4>
-                        <p class="text-sm text-slate-600">สับกองการ์ดหลัก (Main Deck) แล้วแจกให้ผู้เล่นคนละ <strong>5 ใบ</strong></p>
-                    </div>
-                </div>
-                <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-slate-100">
-                    <div class="bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">4</div>
-                    <div>
-                        <h4 class="font-bold text-slate-800">ตั้งกองการ์ด</h4>
-                        <p class="text-sm text-slate-600">วางการ์ดหลักที่เหลือคว่ำไว้กลางโต๊ะ เว้นที่ข้างๆ ไว้เป็น <strong>กองการ์ดทิ้ง (Discard Pile)</strong></p>
-                    </div>
-                </div>
-                <div class="flex items-start bg-white p-4 rounded-lg shadow-sm border border-slate-100">
-                    <div class="bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">5</div>
-                    <div>
-                        <h4 class="font-bold text-slate-800">เตรียมมอนสเตอร์</h4>
-                        <p class="text-sm text-slate-600">สับกองมอนสเตอร์ เปิดหงายหน้า <strong>3 ใบ</strong> ไว้กลางโต๊ะ ที่เหลือคว่ำเป็นกองมอนสเตอร์</p>
-                    </div>
+
+                <div class="bg-slate-950 text-white p-6 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold text-amber-300 mb-3">จำไว้ตั้งแต่ก่อนเริ่ม</h3>
+                    <ul class="space-y-3 text-sm text-slate-200">
+                        <li><strong>คนสุดท้ายที่เลือก Party Leader เริ่มก่อน</strong> ตามกติกามาตรฐานของเกม</li>
+                        <li><strong>Party Leader ไม่ใช่ Hero</strong> แม้จะมีคลาส แต่ไม่นับเป็น Hero card ปกติ</li>
+                        <li><strong>ผู้นำปาร์ตี้แทบแตะไม่ได้</strong> ไม่ถูก destroy, steal หรือส่งกลับมือแบบ Hero ปกติ</li>
+                    </ul>
                 </div>
             </div>
         </section>
-
-        <hr class="border-amber-200 my-12">
 
         <section id="sec-actions" class="mb-20 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-amber-800 mb-2 border-b border-amber-200 pb-2">ระบบแอคชั่น (Action Points)</h2>
-            <p class="mb-6 text-slate-600">ในแต่ละเทิร์น คุณมี <strong class="text-amber-600">3 แต้มแอคชั่น</strong> จำลองการใช้แต้มด้านล่างเพื่อวางแผนเทิร์นของคุณ (แต้มไม่สามารถสะสมข้ามเทิร์นได้)</p>
+            <h2 class="text-3xl font-bold text-amber-900 mb-4 border-b-2 border-amber-200 pb-2">ระบบ Action Point (AP)</h2>
+            <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-6">
+                <div>
+                    <p class="text-slate-700 mb-6">
+                        ทุกเทิร์นคุณมี <strong>3 AP</strong> ใช้แล้วหมดเลย ไม่สะสมข้ามตา
+                        ดังนั้นการวางแผนว่าจะจั่ว, ลงการ์ด, หรือเสี่ยงล่ามอนสเตอร์ในตาเดียวกันจึงสำคัญมาก
+                    </p>
 
-            <div class="bg-slate-800 p-6 rounded-2xl shadow-lg mb-8 text-white text-center sticky top-24 z-10 border-4 border-[#fdfbf7]">
-                <h3 class="text-lg font-semibold text-slate-300 mb-2">แต้มแอคชั่นคงเหลือ</h3>
-                <div class="flex justify-center space-x-4 mb-6" id="ap-display">
-                    <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-2xl font-bold shadow-[0_0_15px_rgba(245,158,11,0.6)]">1</div>
-                    <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-2xl font-bold shadow-[0_0_15px_rgba(245,158,11,0.6)]">2</div>
-                    <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-2xl font-bold shadow-[0_0_15px_rgba(245,158,11,0.6)]">3</div>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                            <div class="inline-block bg-green-100 text-green-800 font-bold px-3 py-1 rounded mb-2">-1 AP</div>
+                            <ul class="space-y-2 text-sm text-slate-700">
+                                <li><strong>Draw:</strong> จั่วการ์ด 1 ใบ</li>
+                                <li><strong>Play:</strong> ลง Hero, Item หรือ Magic จากมือ</li>
+                                <li><strong>Roll:</strong> ทอยใช้สกิล Hero 1 ตัวในปาร์ตี้</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                            <div class="inline-block bg-orange-100 text-orange-800 font-bold px-3 py-1 rounded mb-2">-2 AP</div>
+                            <ul class="space-y-2 text-sm text-slate-700">
+                                <li><strong>Attack:</strong> โจมตีมอนสเตอร์ 1 ตัว ถ้าปาร์ตี้คุณตรงเงื่อนไข</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                            <div class="inline-block bg-red-100 text-red-800 font-bold px-3 py-1 rounded mb-2">-3 AP</div>
+                            <ul class="space-y-2 text-sm text-slate-700">
+                                <li><strong>Discard & Draw:</strong> ทิ้งทุกใบในมือแล้วจั่วใหม่ 5 ใบ</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <button onclick="resetAP()" class="text-sm underline text-slate-400 hover:text-white">รีเซ็ตแต้ม (จบเทิร์น)</button>
+
+                <div class="bg-slate-950 text-white p-6 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold text-amber-300 mb-3">ตัวช่วยจำ AP</h3>
+                    <div class="flex justify-center gap-3 mb-5" id="ap-display">
+                        <div class="ap-orb active w-12 h-12 rounded-full flex items-center justify-center font-bold">1</div>
+                        <div class="ap-orb active w-12 h-12 rounded-full flex items-center justify-center font-bold">2</div>
+                        <div class="ap-orb active w-12 h-12 rounded-full flex items-center justify-center font-bold">3</div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <button type="button" onclick="spendAP(1)" class="bg-white/10 hover:bg-white/20 rounded-xl py-2 font-semibold">ใช้ 1 AP</button>
+                        <button type="button" onclick="spendAP(2)" class="bg-white/10 hover:bg-white/20 rounded-xl py-2 font-semibold">ใช้ 2 AP</button>
+                        <button type="button" onclick="spendAP(3)" class="bg-white/10 hover:bg-white/20 rounded-xl py-2 font-semibold">ใช้ 3 AP</button>
+                        <button type="button" onclick="resetAP()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl py-2 font-bold">รีเซ็ตเทิร์น</button>
+                    </div>
+                    <p id="ap-warning" class="text-red-300 font-bold text-center mt-4 h-6 opacity-0 transition-opacity">AP ไม่พอ</p>
+                </div>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-4 relative z-0">
-                <div class="bg-white p-4 rounded-xl shadow border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
-                    <div>
-                        <div class="inline-block bg-green-100 text-green-800 font-bold px-3 py-1 rounded mb-2">-1 แต้ม</div>
-                        <ul class="list-disc pl-5 space-y-1 text-slate-700 text-sm mb-4">
-                            <li><strong>DRAW:</strong> จั่วการ์ด 1 ใบ</li>
-                            <li><strong>Play:</strong> เล่นการ์ดฮีโร่, ไอเทม, หรือเวทมนตร์จากมือ</li>
-                            <li><strong>Roll:</strong> ทอยเต๋า 2 ลูก ใช้เอฟเฟกต์ฮีโร่ในปาร์ตี้ (ตัวละ 1 ครั้ง/เทิร์น)</li>
-                        </ul>
-                    </div>
-                    <button onclick="spendAP(1)" class="w-full bg-slate-100 hover:bg-green-100 text-slate-800 py-2 rounded font-semibold transition mt-auto">จำลองใช้ 1 แต้ม</button>
-                </div>
-
-                <div class="bg-white p-4 rounded-xl shadow border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
-                    <div>
-                        <div class="inline-block bg-orange-100 text-orange-800 font-bold px-3 py-1 rounded mb-2">-2 แต้ม</div>
-                        <ul class="list-disc pl-5 space-y-1 text-slate-700 text-sm mb-4">
-                            <li><strong>ATTACK:</strong> โจมตีการ์ดมอนสเตอร์ที่หงายอยู่ (ต้องมีปาร์ตี้ตรงเงื่อนไข)</li>
-                        </ul>
-                    </div>
-                    <button onclick="spendAP(2)" class="w-full bg-slate-100 hover:bg-orange-100 text-slate-800 py-2 rounded font-semibold transition mt-auto">จำลองใช้ 2 แต้ม</button>
-                </div>
-
-                <div class="bg-white p-4 rounded-xl shadow border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
-                    <div>
-                        <div class="inline-block bg-red-100 text-red-800 font-bold px-3 py-1 rounded mb-2">-3 แต้ม</div>
-                        <ul class="list-disc pl-5 space-y-1 text-slate-700 text-sm mb-4">
-                            <li><strong>DISCARD & DRAW:</strong> ทิ้งการ์ดทุกใบในมือ (ถ้ามี) และจั่วการ์ดใหม่ 5 ใบรวด</li>
-                        </ul>
-                    </div>
-                    <button onclick="spendAP(3)" class="w-full bg-slate-100 hover:bg-red-100 text-slate-800 py-2 rounded font-semibold transition mt-auto">จำลองใช้ 3 แต้ม</button>
-                </div>
-            </div>
-            <p id="ap-warning" class="text-red-500 font-bold text-center mt-4 h-6 opacity-0 transition-opacity">แต้มแอคชั่นไม่พอ!</p>
         </section>
-
-        <hr class="border-amber-200 my-12">
 
         <section id="sec-cards" class="mb-20 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-amber-800 mb-2 border-b border-amber-200 pb-2">คลังความรู้: ประเภทของการ์ด</h2>
-            <p class="mb-6 text-slate-600">รายละเอียดและกฎเฉพาะของการ์ดแต่ละประเภท</p>
-
-            <div class="space-y-6">
-                <!-- Hero -->
-                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
-                    <h3 class="text-xl font-bold text-amber-900 mb-3">🦸‍♂️ การ์ดฮีโร่ (Hero Cards)</h3>
-                    <div class="text-slate-700 space-y-3">
-                        <p>ฮีโร่แต่ละตัวจะมีคลาสและเอฟเฟกต์ประจำตัว ต้องทอยเต๋า 2 ลูกให้ได้ผลรวม <strong>เท่ากับหรือมากกว่า</strong> ตัวเลขกำกับเพื่อใช้เอฟเฟกต์</p>
-<ul class="list-disc pl-5 mt-2 mb-4">
-    <li>เมื่อลงฮีโร่จากมือสู่ปาร์ตี้ ทอยเต๋าใช้เอฟเฟกต์ได้ทันทีฟรี 1 ครั้ง</li>
-    <li>หากอยู่ในปาร์ตี้แล้ว จ่าย 1 AP ทอยเต๋าใช้เอฟเฟกต์ได้เทิร์นละ 1 ครั้ง/ตัว (ทอยพลาดไม่ได้ AP คืน)</li>
-    <li>ไม่จำกัดจำนวนฮีโร่ในปาร์ตี้</li>
-</ul>
-<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
-    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: Mellow Dee (คลาส: กวี 🎵)</h4>
-    <div class="flex flex-col md:flex-row gap-4 items-start">
-        <div class="bg-white border-2 border-slate-300 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
-            <div class="text-xl mb-1">🎵</div>
-            <div class="font-bold text-slate-800">Mellow Dee</div>
-            <div class="bg-slate-800 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto my-2 font-bold">7+</div>
-            <div class="text-xs text-slate-600">DRAW a card.</div>
-        </div>
-        <div>
-            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> เมื่อ Mellow Dee อยู่ในปาร์ตี้ของคุณ คุณสามารถจ่าย 1 AP ในเทิร์นเพื่อทอยลูกเต๋า 2 ลูก หากผลรวมลูกเต๋าได้ตั้งแต่ 7 ขึ้นไป คุณจะได้จั่วการ์ด 1 ใบจากกองหลักฟรี</p>
-        </div>
-    </div>
-</div>
-                    </div>
+            <h2 class="text-3xl font-bold text-amber-900 mb-4 border-b-2 border-amber-200 pb-2">ประเภทการ์ดที่ต้องรู้</h2>
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-2">Hero</h3>
+                    <p class="text-sm text-slate-700">ลงเข้าปาร์ตี้ด้วย 1 AP และมักมีเอฟเฟกต์ที่ต้องทอย 2D6 เพื่อใช้งาน เมื่ออยู่ในปาร์ตี้แล้วฮีโร่ช่วยทั้งเรื่องคลาสและคอมโบ</p>
                 </div>
-
-                <!-- Item -->
-                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
-                    <h3 class="text-xl font-bold text-amber-900 mb-3">🎒 การ์ดไอเทม (Item Cards)</h3>
-                    <div class="text-slate-700 space-y-3">
-                        <p>อาวุธและสิ่งของเวทมนตร์สำหรับสวมใส่ให้ฮีโร่ (ส่วนใหญ่บัฟ บางใบเป็นคำสาปใช้ใส่ศัตรูได้)</p>
-<ul class="list-disc pl-5 mt-2 mb-4">
-    <li>เล่นปุ๊บ ต้องสวมให้ฮีโร่ทันที (สอดไว้ใต้การ์ด)</li>
-    <li>ใส่ให้ฮีโร่เท่านั้น ผู้นำปาร์ตี้ใส่ไม่ได้</li>
-    <li>ฮีโร่ 1 ตัวใส่ได้ชิ้นเดียว เปลี่ยนไม่ได้</li>
-    <li>ถ้าฮีโร่ตาย/โดนเด้ง ไอเทมจะตามไปด้วยเสมอ</li>
-</ul>
-<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
-    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: Decoy Doll</h4>
-    <div class="flex flex-col md:flex-row gap-4 items-start">
-        <div class="bg-white border-2 border-slate-300 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
-            <div class="text-xl mb-1">🎒</div>
-            <div class="font-bold text-slate-800">Decoy Doll</div>
-            <div class="text-xs text-slate-600 mt-2">If this Hero card would be destroyed or stolen, DESTROY this card instead.</div>
-        </div>
-        <div>
-            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> จ่าย 1 AP นำการ์ดนี้ไปสวมใส่ (วางไว้ข้างใต้) การ์ดฮีโร่ใบหนึ่งในปาร์ตี้ของคุณ เมื่อฮีโร่ตัวนั้นถูกโจมตีให้ตาย (Destroy) หรือถูกขโมย (Steal) ไอเทมตุ๊กตาตัวแทนนี้จะถูกทำลายแทน และฮีโร่ของคุณจะรอดพ้นจากผลนั้น</p>
-        </div>
-    </div>
-</div>
-                    </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-2">Item</h3>
+                    <p class="text-sm text-slate-700">สวมให้ Hero เท่านั้น และฮีโร่ 1 ตัวใส่ได้ 1 ชิ้น ถ้าฮีโร่ถูกเอาออกจากปาร์ตี้ ไอเทมมักหลุดตามไปด้วย</p>
                 </div>
-
-                <!-- Magic -->
-                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
-                    <h3 class="text-xl font-bold text-amber-900 mb-3">✨ การ์ดเวทมนตร์ (Magic Cards)</h3>
-                    <div class="text-slate-700 space-y-3">
-                        <p>คาถาทรงพลังที่ให้ผลรุนแรงแต่ใช้ได้ <strong>เพียงครั้งเดียว</strong></p>
-<p class="mt-2 mb-4 text-amber-700 bg-amber-50 p-2 rounded border border-amber-200"><strong>วิธีใช้:</strong> จ่าย 1 AP เพื่อร่าย เมื่อผลของเวทมนตร์ทำงานเสร็จสิ้น ให้นำการ์ดใบนี้ไปวางไว้ที่กองการ์ดทิ้งทันที</p>
-<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
-    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: Destructive Spell</h4>
-    <div class="flex flex-col md:flex-row gap-4 items-start">
-        <div class="bg-white border-2 border-slate-300 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
-            <div class="text-xl mb-1">✨</div>
-            <div class="font-bold text-slate-800">Destructive Spell</div>
-            <div class="text-xs text-slate-600 mt-2">DESTROY a Hero card.</div>
-        </div>
-        <div>
-            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> จ่าย 1 AP เพื่อเล่นการ์ดใบนี้ จากนั้นเลือกการ์ดฮีโร่ 1 ใบในปาร์ตี้ของผู้เล่นคนอื่น แล้วส่งการ์ดฮีโร่นั้นลงกองการ์ดทิ้งทันที หลังจากนั้นนำการ์ด Destructive Spell ลงกองการ์ดทิ้ง</p>
-        </div>
-    </div>
-</div>
-                    </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-2">Magic</h3>
+                    <p class="text-sm text-slate-700">เวทใช้ครั้งเดียว ลงแล้วแสดงผลทันที จากนั้นไปกองทิ้ง เหมาะกับจังหวะพลิกเกมหรือหยุดคนที่กำลังนำ</p>
                 </div>
-
-                <!-- Modifier -->
-                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
-                    <h3 class="text-xl font-bold text-amber-900 mb-3">🎲 การ์ดปรับแต่งเต๋า (Modifier Cards)</h3>
-                    <div class="text-slate-700 space-y-3">
-                        <p>ใช้เพิ่มโอกาสชนะ หรือขัดขวางคนอื่น (บวก/ลบแต้มลูกเต๋า)</p>
-<ul class="list-disc pl-5 mt-2 mb-4">
-    <li>เล่น <strong>ทันทีจากมือ ไม่เสีย AP</strong> เมื่อมีการทอยเต๋าเกิดขึ้น (รวมตาตัวเองด้วย)</li>
-    <li>ถ้ามีการ์ด 2 ทางเลือก ให้ประกาศว่าจะใช้ฝั่งไหน</li>
-    <li>รอคนอื่นเลือกเป้าหมายก่อนค่อยลงได้</li>
-    <li>ลงกี่ใบก็ได้ เอาผลลัพธ์ทุกใบมารวมกัน</li>
-</ul>
-<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
-    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: +2 / -2</h4>
-    <div class="flex flex-col md:flex-row gap-4 items-start">
-        <div class="bg-white border-2 border-slate-300 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
-            <div class="text-xl mb-1">🎲</div>
-            <div class="font-bold text-slate-800">Modifier</div>
-            <div class="flex justify-between mt-2 font-bold px-2">
-                <span class="text-green-600">+2</span>
-                <span class="text-slate-400">หรือ</span>
-                <span class="text-red-600">-2</span>
-            </div>
-            <div class="text-xs text-slate-600 mt-1">Play this card after any player rolls the dice...</div>
-        </div>
-        <div>
-            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> สามารถเล่นได้ <strong>ฟรี ไม่เสีย AP</strong> เมื่อมีคนทอยลูกเต๋าเสร็จแล้ว (ทั้งคุณหรือคู่แข่ง) คุณสามารถโยนการ์ดใบนี้ลงมาเพื่อ <strong>บวก 2</strong> ให้กับผลลูกเต๋า (เพื่อให้คุณโจมตีผ่าน) หรือเลือก <strong>ลบ 2</strong> จากผลลูกเต๋า (เพื่อให้เพื่อนโจมตีพลาด) แล้วนำการ์ดนี้ลงกองทิ้ง</p>
-        </div>
-    </div>
-</div>
-                    </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-2">Modifier</h3>
+                    <p class="text-sm text-slate-700">ลงฟรีตอนมีการทอยเต๋า เพื่อบวกหรือลบผล 2D6 ใช้ได้ทั้งช่วยตัวเองและถ่วงคนอื่น</p>
                 </div>
-
-                <!-- Challenge -->
-                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
-                    <h3 class="text-xl font-bold text-amber-900 mb-3">🛑 การ์ดท้าทาย (Challenge Cards)</h3>
-                    <div class="text-slate-700 space-y-3">
-                        <p>ใช้ขัดขวางผู้เล่นอื่น <strong>ไม่เสีย AP</strong> เล่นตอนคนอื่นกำลังจะลง ฮีโร่/ไอเทม/เวทมนตร์</p>
-<ul class="list-disc pl-5 mt-2 mb-4">
-    <li>ทั้งคู่ทอย 2D6 สู้กัน</li>
-    <li>ฝ่ายท้าทาย (เรา) ทอยได้ <strong>มากกว่าหรือเท่ากับ</strong> = การ์ดนั้นตกกองทิ้งทันที (คนลงไม่ได้ AP คืน)</li>
-    <li>ฝ่ายถูกท้าทายชนะ = ลงการ์ดได้ตามปกติ</li>
-    <li>การ์ด 1 ใบโดนชาเลนจ์ได้แค่รอบเดียว</li>
-</ul>
-<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
-    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: Challenge</h4>
-    <div class="flex flex-col md:flex-row gap-4 items-start">
-        <div class="bg-white border-2 border-slate-300 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
-            <div class="text-xl mb-1">🛑</div>
-            <div class="font-bold text-slate-800">Challenge</div>
-            <div class="text-xs text-slate-600 mt-2">You may play this card when another player attempts to play...</div>
-        </div>
-        <div>
-            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> เมื่อผู้เล่นคนอื่นประกาศว่าจะจ่าย AP ลงการ์ดฮีโร่, ไอเทม, หรือเวทมนตร์ (ก่อนที่การ์ดนั้นจะแสดงผล) คุณสามารถโยนการ์ดใบนี้ลงไป <strong>(ฟรี ไม่เสีย AP)</strong> เพื่อ "ท้าทาย" ทั้งคุณและผู้เล่นคนนั้นต้องทอยลูกเต๋าสู้กัน ใครแต้มมากกว่าจะชนะ (ฝ่ายท้าทายชนะเสมอหากแต้มเท่ากัน) หากคุณชนะ การ์ดที่ผู้เล่นนั้นกำลังจะลงจะถูกส่งลงกองทิ้งทันทีและเสีย AP ฟรี</p>
-        </div>
-    </div>
-</div>
-                    </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-2">Challenge</h3>
+                    <p class="text-sm text-slate-700">ลงฟรีตอนมีคนจะเล่น Hero, Item หรือ Magic แล้วทอยแข่งกัน ผู้ท้าชนะเมื่อแต้มมากกว่าหรือเท่ากับอีกฝ่าย</p>
                 </div>
-
-                <!-- Leader -->
-                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
-                    <h3 class="text-xl font-bold text-amber-900 mb-3">👑 ผู้นำปาร์ตี้ (Party Leader)</h3>
-                    <div class="text-slate-700 space-y-3">
-                        <p>หัวหน้าแก๊ง มีคลาสและสกิลติดตัว ไม่ถือว่าเป็นฮีโร่</p>
-<ul class="list-disc pl-5 mt-2 mb-4">
-    <li>สกิลใช้ได้ <strong>ทุกครั้ง</strong> ที่ตรงเงื่อนไข (ไม่ต้องทอยเต๋า ไม่จำกัดรอบ)</li>
-    <li>อมตะ! ไม่สามารถถูกสังเวย ทำลาย ขโมย หรือส่งกลับมือได้</li>
-</ul>
-<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
-    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: The Charismatic Song (คลาส: กวี 🎵)</h4>
-    <div class="flex flex-col md:flex-row gap-4 items-start">
-        <div class="bg-amber-100 border-2 border-amber-400 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0">
-            <div class="text-xl mb-1">👑 🎵</div>
-            <div class="font-bold text-slate-800">The Charismatic Song</div>
-            <div class="text-xs text-slate-600 mt-2">Each time you roll to use a Bard Hero card's effect, +1 to your roll.</div>
-        </div>
-        <div>
-            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> การ์ดผู้นำปาร์ตี้จะอยู่บนโต๊ะตั้งแต่เริ่มเกม เอฟเฟกต์ของการ์ดใบนี้จะเป็นแบบ <strong>ติดตัว (Passive)</strong> เสมอ ตัวอย่างเช่นใบนี้: ทุกครั้งที่คุณทอยเต๋าเพื่อพยายามใช้เอฟเฟกต์ของฮีโร่คลาส "กวี (Bard)" คุณจะได้บวกแต้มลูกเต๋าฟรี 1 แต้มเสมอ ช่วยให้ใช้เอฟเฟกต์ติดง่ายขึ้น</p>
-        </div>
-    </div>
-</div>
-                    </div>
-                </div>
-
-                <!-- Monster -->
-                <div class="bg-white p-6 rounded-xl shadow-md border border-amber-100">
-                    <h3 class="text-xl font-bold text-amber-900 mb-3">🐉 มอนสเตอร์ (Monster Cards)</h3>
-                    <div class="text-slate-700 space-y-3">
-                        <p>เป้าหมายหลัก! ใช้ 2 AP โจมตี ต้องมีปาร์ตี้ตรงตามเงื่อนไขที่ระบุก่อนถึงจะตีได้</p>
-<ul class="list-disc pl-5 mt-2 mb-4">
-    <li>ทอยได้ <strong>เท่ากับ/มากกว่า</strong> ค่าพลัง = <strong>SLAY!</strong> (ได้มอนสเตอร์เข้าปาร์ตี้ และได้สกิลถาวร)</li>
-    <li>ทอยตกในช่อง <strong>ระยะสวนกลับ</strong> = โดนลงโทษตามที่ระบุบนการ์ดมอนสเตอร์</li>
-    <li>ทอยพลาดหรือชนะ ก็ไม่ได้ 2 AP คืน</li>
-</ul>
-<div class="bg-amber-50 p-4 rounded-lg border border-amber-200 mt-4">
-    <h4 class="font-bold text-amber-900 mb-2">🃏 ตัวอย่างการ์ด: Crowned Serpent</h4>
-    <div class="flex flex-col md:flex-row gap-4 items-start">
-        <div class="bg-red-50 border-2 border-red-800 rounded-lg p-3 w-full md:w-48 text-center shadow-sm shrink-0 relative overflow-hidden">
-            <div class="text-xl mb-1">🐉</div>
-            <div class="font-bold text-red-900">Crowned Serpent</div>
-            <div class="text-xs font-semibold text-slate-700 bg-slate-200 rounded px-1 my-1">เงื่อนไข: ฮีโร่ 2 ใบ</div>
-            <div class="flex justify-between text-sm mt-2 border-t border-red-200 pt-1">
-                <span class="text-red-600 font-bold">10+</span>
-                <span class="text-slate-500 font-bold">6-</span>
-            </div>
-            <div class="text-xs text-slate-600 mt-1">Slay: จั่วเพิ่ม 1 ใบเมื่อสั่งจั่ว<br>Fail: ดิสการ์ด 1 ใบ</div>
-        </div>
-        <div>
-            <p class="text-sm text-slate-700"><strong>วิธีใช้:</strong> หากในปาร์ตี้ของคุณมีฮีโร่อย่างน้อย 2 ใบ คุณสามารถจ่าย 2 AP เพื่อทอยเต๋าโจมตีมอนสเตอร์ตัวนี้ หากทอยได้รวม <strong>10 ขึ้นไป</strong> คุณจะปราบมันได้สำเร็จและได้สกิลติดตัว "จั่วการ์ดเพิ่ม 1 ใบทุกครั้งที่จั่ว" แต่ถ้าทอยได้ <strong>6 หรือต่ำกว่า</strong> คุณจะโดนมันสวนกลับและต้องทิ้งการ์ด 1 ใบจากมือ (ถ้าทอยได้ 7, 8, 9 จะไม่เกิดอะไรขึ้น แต่เสีย 2 AP ฟรี)</p>
-        </div>
-    </div>
-</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <hr class="border-amber-200 my-12">
-
-        <section id="sec-stats" class="mb-20 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-amber-800 mb-2 border-b border-amber-200 pb-2">วิเคราะห์กลยุทธ์: สถิติทอยลูกเต๋า (2D6)</h2>
-            <p class="mb-6 text-slate-600">การเข้าใจความน่าจะเป็นของลูกเต๋า 2 ลูก (2D6) จะช่วยให้คุณตัดสินใจใช้ <strong>การ์ด Modifier</strong> หรือประเมินความเสี่ยงในการ <strong>ATTACK มอนสเตอร์</strong> ได้ดีขึ้น กราฟด้านล่างแสดงโอกาสที่จะทอยได้ผลรวมต่างๆ</p>
-            
-            <div class="bg-white p-4 rounded-xl shadow border border-slate-200 mb-6 flex flex-col">
-                 <div class="chart-container">
-                    <canvas id="diceChart"></canvas>
+                <div class="bg-slate-950 text-white p-5 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold text-amber-300 mb-2">Party Leader</h3>
+                    <p class="text-sm text-slate-200">ผู้นำปาร์ตี้อยู่บนโต๊ะตั้งแต่เริ่มเกม มีความสามารถติดตัวและช่วยกำหนดแนวทางปาร์ตี้ของคุณ</p>
                 </div>
             </div>
 
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-                <h4 class="font-bold text-blue-800 mb-1">💡 เคล็ดลับจากนักวิเคราะห์</h4>
-                <p class="text-sm text-blue-900">
-                    เลข 7 คือตัวเลขที่มีโอกาสออกมากที่สุด (16.67%) การที่การ์ดมอนสเตอร์มีเงื่อนไขให้ทอยได้ 8+ แปลว่าคุณมีโอกาสชนะไม่ถึง 50% หากไม่มีไอเทมช่วย การเก็บการ์ด Modifier (+1 ถึง +3) ไว้ใช้ในจังหวะสำคัญที่ค่าเป้าหมายอยู่แถว 7, 8, หรือ 9 จะคุ้มค่าที่สุด เพราะช่วยข้ามช่วงที่ความน่าจะเป็นสูงไปได้
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-5 rounded-r-2xl mt-6">
+                <h3 class="font-bold text-amber-900 mb-2">สิ่งที่เจอบ่อยที่สุดระหว่างเล่นจริง</h3>
+                <p class="text-sm text-slate-700">
+                    ถ้าคนบนโต๊ะมีการ์ดในมือเยอะ อย่าคิดว่าลง Hero หรือ Magic จะผ่านง่าย
+                    เพราะ Challenge และ Modifier เปลี่ยนผลได้ตลอด จังหวะที่ปลอดภัยที่สุดมักเป็นตอนอีกฝ่ายใช้มือไปเยอะแล้ว
                 </p>
             </div>
         </section>
 
-        <hr class="border-amber-200 my-12">
+        <section id="sec-stats" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-amber-900 mb-4 border-b-2 border-amber-200 pb-2">มอนสเตอร์และการทอย 2D6</h2>
+            <div class="grid lg:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-3">วิธีล่ามอนสเตอร์</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><strong>ใช้ 2 AP</strong> เพื่อประกาศโจมตีมอนสเตอร์ 1 ตัว</li>
+                        <li><strong>ต้องมีปาร์ตี้ตรงเงื่อนไข</strong> เช่น ต้องมี Hero 2 ใบ หรือมีคลาสตามที่การ์ดระบุ</li>
+                        <li><strong>ทอย 2D6</strong> ถ้าได้เท่ากับหรือมากกว่าค่าที่กำหนด จะ SLAY สำเร็จและเก็บมอนสเตอร์เข้าปาร์ตี้</li>
+                        <li><strong>ถ้าทอยอยู่ในช่วง fail</strong> จะโดนโทษตามการ์ดมอนสเตอร์</li>
+                        <li><strong>ถ้าทอยไม่ถึงแต่ไม่เข้า fail range</strong> มักไม่เกิดอะไรเพิ่ม แต่ AP ที่ใช้ไปแล้วไม่คืน</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-950 text-white p-6 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold text-amber-300 mb-3">ทำไม 2D6 ถึงสำคัญ</h3>
+                    <p class="text-sm text-slate-200 leading-relaxed mb-4">
+                        ผล 2D6 ไม่กระจายเท่ากัน เลขกลาง ๆ ออกง่ายกว่าเลขปลายมาก
+                        ดังนั้นการ์ด Modifier ที่ช่วยข้ามจาก 7 ไป 8 หรือ 8 ไป 9 จึงคุ้มมากกว่าที่ดูเผิน ๆ
+                    </p>
+                    <div class="grid grid-cols-3 gap-3 text-center text-sm">
+                        <div class="bg-white/10 rounded-xl p-3">
+                            <div class="font-bold text-amber-300">7</div>
+                            <div>16.67%</div>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-3">
+                            <div class="font-bold text-amber-300">6 / 8</div>
+                            <div>13.89%</div>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-3">
+                            <div class="font-bold text-amber-300">5 / 9</div>
+                            <div>11.11%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-2xl">
+                <h3 class="font-bold text-blue-800 mb-2">สรุปเชิงกลยุทธ์</h3>
+                <p class="text-sm text-slate-700">
+                    มอนสเตอร์ที่ต้อง 8+ หรือ 9+ ไม่ได้ชนะง่ายถ้าไม่มีตัวช่วย
+                    ถ้าคุณมี Modifier ในมือ ควรเก็บไว้ใช้กับการล่ามอนสเตอร์ตัวที่ปิดเกมได้จริง
+                    มากกว่าหว่านใช้กับ Hero effect ทั่วไป
+                </p>
+            </div>
+        </section>
 
         <section id="sec-expansion" class="mb-20 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-red-700 mb-4 border-b border-red-200 pb-2">🎄 ภาคเสริม: Here to Sleigh (Holiday Expansion)</h2>
-            <p class="mb-6 text-slate-600">ฉลองเทศกาลวันหยุดด้วยภาคเสริม Here to Sleigh ที่มาพร้อมกับความป่วนและของขวัญมากมาย!</p>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-md border border-red-100">
-                    <h3 class="text-xl font-bold text-red-800 mb-3 flex items-center">🎁 ของขวัญ (Gift Cards)</h3>
-                    <p class="text-slate-700 text-sm mb-3">ประเภทการ์ดใหม่ที่เพิ่มเข้ามาในกองการ์ดหลัก</p>
-                    <ul class="list-disc pl-5 text-sm text-slate-700 space-y-2">
-                        <li><strong>การให้ของขวัญ:</strong> คุณสามารถใช้ 1 AP เพื่อเล่นการ์ด Gift จากมือ โดยมอบให้ผู้เล่นคนอื่น (วางไว้ในปาร์ตี้ของพวกเขา)</li>
-                        <li><strong>ผลของการ์ด:</strong> การ์ด Gift มักจะมีเอฟเฟกต์ที่ส่งผลดีต่อผู้ให้ หรือส่งผลเสีย/ป่วนผู้รับ</li>
-                        <li><strong>การกำจัด:</strong> การ์ด Gift ถือเป็นส่วนหนึ่งของปาร์ตี้และสามารถถูกทำลาย (DESTROY) ขโมย (STEAL) หรือท้าทาย (CHALLENGE) ได้เหมือนการ์ดทั่วไป</li>
-                    </ul>
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-red-700 mb-4 border-b-2 border-red-200 pb-2">ภาคเสริม Here to Sleigh</h2>
+                    <div class="grid lg:grid-cols-2 gap-6">
+                        <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-red-100">
+                            <h3 class="text-xl font-bold text-red-800 mb-3">ของขวัญและความป่วนใหม่</h3>
+                            <ul class="space-y-3 text-sm text-slate-700">
+                                <li><strong>Gift Cards</strong> เป็นการ์ดแบบใหม่ที่เล่นใส่ผู้เล่นอื่นได้ และมักมีผลต่อโต๊ะในเชิงการเมือง</li>
+                                <li>ของขวัญกลายเป็นชิ้นส่วนในปาร์ตี้ของผู้รับ จึงยังถูก destroy, steal หรือ challenge ได้ตามสถานการณ์</li>
+                                <li>ภาคเสริมเพิ่มทั้ง Hero, Item และมอนสเตอร์ธีมเทศกาล ทำให้เกมเบนไปทางต่อรองและแกล้งกันมากขึ้น</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-green-100">
+                            <h3 class="text-xl font-bold text-green-800 mb-3">แนวทางเล่นภาคเสริม</h3>
+                            <p class="text-sm text-slate-700 leading-relaxed mb-3">
+                                ภาคนี้ทำให้การ “ให้ของ” กลายเป็นเครื่องมือเจรจา ไม่ได้มีไว้ช่วยคนอื่นเสมอไป
+                                บางใบช่วยสร้างพันธมิตรชั่วคราว บางใบคือระเบิดเวลาที่ส่งไปถ่วงคนกำลังนำ
+                            </p>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                ถ้าโต๊ะชอบการเมืองและการอ่านใจ ภาคเสริมนี้จะทำให้ Here to Slay ป่วนขึ้นอย่างชัดเจน
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-md border border-green-100">
-                    <h3 class="text-xl font-bold text-green-800 mb-3 flex items-center">🎅 ฮีโร่ & ไอเทมใหม่</h3>
-                    <ul class="list-disc pl-5 text-sm text-slate-700 space-y-3">
-                        <li><strong>Holiday Heroes:</strong> ฮีโร่หน้าใหม่ในธีมคริสต์มาสที่มาพร้อมสกิลเข้ากับเทศกาล เช่น การสุ่มแจกของขวัญ หรือการขโมยของ</li>
-                        <li><strong>Festive Items:</strong> ไอเทมสวมใส่แบบใหม่ที่ช่วยเสริมพลังหรือป่วนคนอื่นให้หนักกว่าเดิม</li>
-                        <li><strong>มอนสเตอร์คริสต์มาส:</strong> ปราบมอนสเตอร์เทศกาลสุดแกร่งเพื่อรับบัฟพิเศษ</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="bg-red-50 p-4 rounded-lg border border-red-200 mt-6">
-                <h4 class="font-bold text-red-900 mb-2">💡 เคล็ดลับการเล่นภาคเสริม</h4>
-                <p class="text-sm text-red-800">การ์ด Gift เป็นเครื่องมือเจรจาต่อรองชั้นดี คุณสามารถให้ของขวัญเพื่อสร้างพันธมิตรชั่วคราว หรือใช้ของขวัญอาบยาพิษเพื่อขัดขวางคนที่กำลังจะชนะก็ได้!</p>
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-red-100">
+                    <img src="sleigh.jpg" alt="ภาพ Here to Sleigh expansion" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ภาพจากภาคเสริม Here to Sleigh ที่เพิ่มธีมวันหยุดและระบบ Gift เข้ามา</figcaption>
+                </figure>
             </div>
         </section>
 
-        <hr class="border-amber-200 my-12">
-
-        <section id="sec-glossary" class="mb-20 scroll-mt-24">
-            <h2 class="text-2xl font-bold text-amber-800 mb-4 border-b border-amber-200 pb-2">พจนานุกรมคำศัพท์ (Glossary)</h2>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="bg-white p-4 rounded border border-slate-100 shadow-sm">
-                    <h4 class="font-bold text-slate-800 border-b pb-1 mb-2">📍 คำศัพท์ในการตั้งค่า</h4>
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li><strong class="text-amber-700">Party (ปาร์ตี้):</strong> พื้นที่ตรงหน้าคุณสำหรับวางฮีโร่/ไอเทม</li>
-                        <li><strong class="text-amber-700">Main deck (กองหลัก):</strong> กองการ์ดสำหรับจั่ว</li>
-                        <li><strong class="text-amber-700">Discard pile (กองทิ้ง):</strong> กองการ์ดหงายหน้าที่ใช้แล้ว ถูกทำลาย สังเวย</li>
-                        <li><strong class="text-amber-700">Monster deck (กองมอนสเตอร์):</strong> สำหรับเปิดใบใหม่แทนตัวที่ถูกปราบ</li>
+        <section id="sec-glossary" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-amber-900 mb-4 border-b-2 border-amber-200 pb-2">คำศัพท์สำคัญ</h2>
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><strong>DESTROY:</strong> เอาการ์ดของผู้เล่นอื่นลงกองทิ้ง</li>
+                        <li><strong>SACRIFICE:</strong> เอาการ์ดของตัวเองลงกองทิ้ง</li>
+                        <li><strong>STEAL:</strong> ย้ายการ์ดจากปาร์ตี้คนอื่นมาเป็นของเรา</li>
                     </ul>
                 </div>
-                <div class="bg-white p-4 rounded border border-slate-100 shadow-sm">
-                    <h4 class="font-bold text-slate-800 border-b pb-1 mb-2">⚔️ คำศัพท์ในการเล่น</h4>
-                    <ul class="space-y-2 text-sm text-slate-700">
-                        <li><strong class="text-red-600">DESTROY (ทำลาย):</strong> นำการ์ดจากปาร์ตี้ <em>คนอื่น</em> ไปกองทิ้ง</li>
-                        <li><strong class="text-red-600">SACRIFICE (สังเวย):</strong> นำการ์ดจากปาร์ตี้ <em>ตนเอง</em> ไปกองทิ้ง</li>
-                        <li><strong class="text-indigo-600">STEAL (ขโมย):</strong> นำการ์ดจากปาร์ตี้คนอื่น มาไว้ปาร์ตี้เรา</li>
-                        <li><strong class="text-indigo-600">CHALLENGE (ท้าทาย):</strong> ขัดขวางไม่ให้ลงฮีโร่/ไอเทม/เวทย์ โดยทอยเต๋าสู้</li>
-                        <li><strong class="text-amber-600">ATTACK (โจมตี):</strong> ทอยเต๋าเพื่อปราบมอนสเตอร์</li>
-                        <li><strong class="text-amber-600">SLAY (ปราบ):</strong> โจมตีสำเร็จ เอามอนสเตอร์เข้าปาร์ตี้</li>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border border-amber-100">
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><strong>CHALLENGE:</strong> ท้าทายการลง Hero, Item หรือ Magic ของอีกฝ่าย</li>
+                        <li><strong>ATTACK:</strong> ใช้ 2 AP เพื่อโจมตีมอนสเตอร์</li>
+                        <li><strong>SLAY:</strong> โจมตีมอนสเตอร์สำเร็จและเก็บเข้าปาร์ตี้</li>
                     </ul>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <footer class="bg-slate-800 text-slate-400 text-center py-6 mt-auto">
-        <p class="text-sm">Interactive Guide for "Here to Slay" | Data & Structure Architecture</p>
+    <footer class="bg-slate-950 text-slate-400 text-center py-6 mt-auto border-t border-amber-900">
+        <p class="text-sm">Here to Slay Web Guide</p>
     </footer>
 
     <script>
         let currentAP = 3;
-        
-        // Setup Action Point Tracker
+
         function updateAPDisplay() {
-            const container = document.getElementById('ap-display');
-            container.innerHTML = '';
-            for(let i=1; i<=3; i++) {
-                if(i <= currentAP) {
-                    container.innerHTML += `<div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-2xl font-bold shadow-[0_0_15px_rgba(245,158,11,0.6)] transition-all transform scale-100">${i}</div>`;
-                } else {
-                    container.innerHTML += `<div class="w-12 h-12 bg-slate-600 rounded-full flex items-center justify-center text-2xl font-bold text-slate-500 transition-all transform scale-90 opacity-50">${i}</div>`;
-                }
-            }
+            const orbs = document.querySelectorAll('#ap-display .ap-orb');
+            orbs.forEach((orb, index) => {
+                const number = index + 1;
+                orb.classList.remove('active', 'used');
+                orb.classList.add(number <= currentAP ? 'active' : 'used');
+            });
+        }
+
+        function flashWarning() {
+            const warning = document.getElementById('ap-warning');
+            warning.style.opacity = '1';
+            window.setTimeout(() => {
+                warning.style.opacity = '0';
+            }, 1400);
         }
 
         function spendAP(cost) {
-            if(currentAP >= cost) {
-                currentAP -= cost;
-                updateAPDisplay();
-            } else {
-                const warning = document.getElementById('ap-warning');
-                warning.style.opacity = 1;
-                setTimeout(() => { warning.style.opacity = 0; }, 1500);
+            if (currentAP < cost) {
+                flashWarning();
+                return;
             }
+            currentAP -= cost;
+            updateAPDisplay();
         }
 
         function resetAP() {
@@ -515,98 +380,41 @@
             updateAPDisplay();
         }
 
-        // Setup Chart
-        function initChart() {
-            const ctx = document.getElementById('diceChart').getContext('2d');
-            const dataValues = [2.78, 5.56, 8.33, 11.11, 13.89, 16.67, 13.89, 11.11, 8.33, 5.56, 2.78];
-            const labels = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-            
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'โอกาสออก (%)',
-                        data: dataValues,
-                        backgroundColor: function(context) {
-                            const index = context.dataIndex;
-                            if (index === 5) return 'rgba(217, 119, 6, 0.8)'; 
-                            if (index >= 4 && index <= 6) return 'rgba(245, 158, 11, 0.6)'; 
-                            return 'rgba(203, 213, 225, 0.8)'; 
-                        },
-                        borderColor: '#b45309',
-                        borderWidth: 1,
-                        borderRadius: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return ` โอกาส: ${context.parsed.y}%`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: { display: true, text: 'ความน่าจะเป็น (%)' }
-                        },
-                        x: {
-                            title: { display: true, text: 'ผลรวมลูกเต๋า 2 ลูก (2D6)' }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Setup Scrollspy for Navigation Highlighting
         function setupScrollspy() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-btn');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '-20% 0px -70% 0px', // Trigger when section is roughly near the top
-                threshold: 0
-            };
+            const activeBg = '#c2410c';
 
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const activeId = entry.target.id;
-                        
-                        navLinks.forEach(link => {
-                            link.classList.remove('active', 'bg-amber-600', 'text-white');
-                            link.classList.add('text-amber-800');
-                            link.style.backgroundColor = '';
-                            link.style.color = '';
-                            
-                            if (link.getAttribute('href') === `#${activeId}`) {
-                                link.classList.add('active');
-                                link.style.backgroundColor = '#d97706';
-                                link.style.color = 'white';
-                                
-                                // Scroll the horizontal nav menu to keep active item in view on mobile
-                                link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
 
-            sections.forEach(section => observer.observe(section));
+                    const activeId = entry.target.id;
+                    navLinks.forEach((link) => {
+                        link.classList.remove('active');
+                        link.style.backgroundColor = '';
+                        link.style.color = '';
+
+                        if (link.getAttribute('href') === `#${activeId}`) {
+                            link.classList.add('active');
+                            link.style.backgroundColor = activeBg;
+                            link.style.color = 'white';
+                            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        }
+                    });
+                });
+            }, {
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            });
+
+            sections.forEach((section) => observer.observe(section));
         }
 
-        window.onload = () => {
-            initChart();
+        window.addEventListener('DOMContentLoaded', () => {
+            updateAPDisplay();
             setupScrollspy();
-        };
+        });
     </script>
 </body>
 </html>

@@ -3,238 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNO Show 'em No Mercy - คู่มือการเล่นสุดโหด</title>
+    <title>UNO Show 'em No Mercy - คู่มือการเล่นแบบเว็บ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        :root {
+            --danger: #b91c1c;
+            --night: #020617;
+            --paper: #f8fafc;
+        }
         body {
             font-family: 'Prompt', sans-serif;
-            background-color: #f8fafc;
+            background:
+                radial-gradient(circle at top left, rgba(239, 68, 68, 0.14), transparent 25%),
+                radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.1), transparent 30%),
+                var(--paper);
             color: #0f172a;
             position: relative;
         }
         body::before {
             content: "";
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            inset: 0;
             background-image: url('BG.webp');
-            background-size: contain;
-            background-repeat: no-repeat;
+            background-size: cover;
             background-position: center;
-            opacity: 0.2;
+            opacity: 0.07;
             z-index: -1;
             pointer-events: none;
         }
         .nav-btn.active {
-            background-color: #b91c1c; /* Red */
+            background-color: var(--danger);
             color: white;
-            border-color: #b91c1c;
+            border-color: var(--danger);
         }
-        .card-preview {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-        .c-red { background-color: #ef4444; }
-        .c-blue { background-color: #3b82f6; }
-        .c-green { background-color: #22c55e; }
-        .c-yellow { background-color: #eab308; color: black; text-shadow: none; }
-        .c-black { background-color: #1e293b; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
-
     <header class="bg-black text-white p-6 shadow-md text-center relative z-20 border-b-4 border-red-600">
         <h1 class="text-3xl md:text-5xl font-bold tracking-wide uppercase" style="font-family: Impact, sans-serif; letter-spacing: 2px;">UNO Show 'em No Mercy</h1>
-        <p class="text-red-400 mt-2 text-sm md:text-lg">เวอร์ชั่นที่โหดร้ายที่สุดของ UNO - ไร้ความปรานี กฎใหม่สุดเดือด!</p>
+        <p class="text-red-400 mt-2 text-sm md:text-lg">เวอร์ชัน UNO ที่ใจร้ายจนการ์ด 25 ใบอาจหมายถึงตายทั้งเป็น</p>
     </header>
 
-    <nav class="bg-slate-900 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap border-b border-slate-700">
+    <nav class="bg-slate-950 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap border-b border-slate-800">
         <div class="max-w-6xl mx-auto flex space-x-2 md:space-x-4 justify-start lg:justify-center">
-            <a href="#sec-overview" class="nav-btn active px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-700 transition inline-block text-sm md:text-base">ภาพรวม & เป้าหมาย</a>
-            <a href="#sec-rules" class="nav-btn px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-700 transition inline-block text-sm md:text-base">กฎใหม่สุดโหด (Mercy Rule)</a>
-            <a href="#sec-actions" class="nav-btn px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-700 transition inline-block text-sm md:text-base">การ์ดแอคชั่นนรกแตก</a>
+            <a href="#sec-overview" class="nav-btn active px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">ภาพรวม</a>
+            <a href="#sec-flow" class="nav-btn px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">ลำดับเล่น</a>
+            <a href="#sec-rules" class="nav-btn px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">กฎสุดโหด</a>
+            <a href="#sec-actions" class="nav-btn px-4 py-2 rounded-full border border-slate-600 text-slate-300 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">การ์ดพิเศษ</a>
         </div>
     </nav>
 
     <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full">
-
-        <!-- OVERVIEW -->
         <section id="sec-overview" class="mb-20 scroll-mt-24">
-            <div class="text-center bg-white/95 p-8 rounded-2xl shadow-md border border-slate-200 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-32 h-32 bg-red-100 rounded-br-full opacity-50 z-0"></div>
-                <h2 class="text-3xl font-bold text-slate-800 mb-4 relative z-10">เป้าหมายของเกม</h2>
-                <p class="text-slate-700 text-lg leading-relaxed max-w-3xl mx-auto relative z-10">
-                    UNO Show 'em No Mercy เพิ่มความดุดันด้วยการ์ดใหม่ที่โหดกว่าเดิม กฎการเล่นที่บังคับให้จั่วการ์ดจนกว่าจะเล่นได้ 
-                    และบทลงโทษสำหรับคนที่มีการ์ดเยอะเกินไป! <strong>ผู้ชนะคือคนที่เหลือรอดเป็นคนสุดท้าย หรือ ทิ้งการ์ดหมดมือเป็นคนแรก!</strong>
-                </p>
-                <div class="mt-6 flex flex-wrap justify-center gap-3 relative z-10">
-                    <span class="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow">⏱ 15-30 นาที</span>
-                    <span class="bg-black text-white px-4 py-2 rounded-full text-sm font-bold shadow">👥 2-6 คน</span>
-                    <span class="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow">🔥 ทำลายล้างมิตรภาพ</span>
+            <div class="space-y-8">
+                <div class="bg-white/95 p-8 rounded-3xl shadow-lg border border-slate-200">
+                    <div class="flex flex-wrap gap-3 mb-5">
+                        <span class="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold">Party / Take That</span>
+                        <span class="bg-slate-100 text-slate-700 px-4 py-1 rounded-full text-sm font-bold">2-6 คน</span>
+                        <span class="bg-orange-100 text-orange-800 px-4 py-1 rounded-full text-sm font-bold">ประมาณ 15-30 นาที</span>
+                        <span class="bg-red-100 text-red-700 px-4 py-1 rounded-full text-sm font-bold">มิตรภาพเสี่ยงพัง</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-3">เวอร์ชันนี้ต่างจาก UNO ปกติยังไง</h2>
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        <strong>Show 'em No Mercy</strong> ยังใช้หลักเดิมคือทิ้งการ์ดให้หมดมือก่อนคนอื่น
+                        แต่เพิ่มความโหดด้วยการ์ดจั่วที่ stack ได้แรงกว่าเดิม, กฎจั่วจนกว่าจะลงได้,
+                        และ <strong>Mercy Rule</strong> ที่ตัดผู้เล่นออกจากเกมทันทีเมื่อถือการ์ดครบ 25 ใบ
+                    </p>
+                    <p class="text-slate-700 leading-relaxed mb-5">
+                        เพราะงั้นเป้าหมายไม่ใช่แค่รีบทิ้งให้หมด แต่ยังต้อง <strong>ควบคุมขนาดมือ</strong> และรู้จังหวะปล่อยของหนัก
+                        ถ้าคุณปล่อยให้มือบวมเกินไป เกมนี้พร้อมเขี่ยคุณออกจากวงได้ทุกเมื่อ
+                    </p>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-red-50 p-4 rounded-2xl border border-red-100">
+                            <h3 class="font-bold text-red-800 mb-2">ชนะได้ 2 แบบ</h3>
+                            <p class="text-sm text-slate-700">เป็นคนแรกที่ทิ้งหมดมือ หรืออยู่รอดเป็นคนสุดท้ายหลังคนอื่นโดน Mercy Rule</p>
+                        </div>
+                        <div class="bg-slate-100 p-4 rounded-2xl border border-slate-200">
+                            <h3 class="font-bold text-slate-800 mb-2">จุดอันตรายที่สุด</h3>
+                            <p class="text-sm text-slate-700">โดน stack การ์ดจั่วต่อเนื่อง แล้วไม่มีใบใหญ่พอส่งภาระต่อ</p>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100">
+                            <h3 class="font-bold text-orange-800 mb-2">แนวคิดเอาตัวรอด</h3>
+                            <p class="text-sm text-slate-700">พยายามเคลียร์มือให้บาง อย่าเก็บใบเสี่ยงไว้เยอะเกิน และรู้ว่าเมื่อไรควรระเบิดเทิร์นเดียว</p>
+                        </div>
+                    </div>
+                </div>
+
+                <figure class="bg-white/95 p-4 rounded-3xl shadow-lg border border-slate-200">
+                    <img src="cover.jpg" alt="หน้าปก UNO Show em No Mercy" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ภาพปกเวอร์ชัน No Mercy ที่ชัดเจนตั้งแต่ชื่อว่าเกมนี้ไม่ค่อยให้อภัยใคร</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-flow" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4 border-b-2 border-slate-300 pb-2">ลำดับเล่นพื้นฐาน</h2>
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div class="bg-white/95 p-5 rounded-2xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-slate-800 mb-1">1. ลงการ์ดตามสี สัญลักษณ์ หรือเลข</h3>
+                        <p class="text-sm text-slate-700">ถ้ามีการ์ดที่ตรงกับกองกลาง คุณลงได้ตามกติกา UNO ปกติ รวมถึงการ์ด wild ที่เปลี่ยนสี</p>
+                    </div>
+                    <div class="bg-white/95 p-5 rounded-2xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-slate-800 mb-1">2. ถ้าลงไม่ได้ ต้องจั่วจนกว่าจะลงได้</h3>
+                        <p class="text-sm text-slate-700">นี่คือความต่างหลักจาก UNO เดิม คุณไม่ได้จั่ว 1 ใบแล้วผ่าน แต่ต้องจั่วต่อไปเรื่อย ๆ จนเจอใบที่เล่นได้</p>
+                    </div>
+                    <div class="bg-white/95 p-5 rounded-2xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-slate-800 mb-1">3. ถ้าเหลือ 1 ใบ ต้องประกาศ UNO</h3>
+                        <p class="text-sm text-slate-700">กติกาพื้นฐานยังอยู่เหมือนเดิม ถ้าพลาดโดนจับได้ก็ยังโดนลงโทษตามกติกาที่โต๊ะใช้</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 text-white p-6 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold text-red-400 mb-3">สิ่งที่เกมนี้บังคับให้คิดเพิ่ม</h3>
+                    <ul class="space-y-3 text-sm text-slate-200">
+                        <li><strong>มือใหญ่คือความเสี่ยง:</strong> ไม่ใช่แค่ตามหลัง แต่มีสิทธิ์โดนคัดออกจากเกมจริง</li>
+                        <li><strong>ใบจั่วคือโล่และระเบิด:</strong> บางทีเก็บไว้ช่วยชีวิต บางทีก็ต้องรีบปล่อยก่อนโดนบังคับจั่วเพิ่ม</li>
+                        <li><strong>ทิศทางวงยังสำคัญ:</strong> เพราะการปล่อย +6 หรือ +10 ใส่คนที่ไม่มีใบตอบได้ มักเปลี่ยนทั้งเกม</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- NEW RULES -->
         <section id="sec-rules" class="mb-20 scroll-mt-24">
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-300 pb-2">🚨 กฎใหม่สุดโหดที่เพิ่มเข้ามา</h2>
-            
+            <h2 class="text-3xl font-bold text-slate-900 mb-4 border-b-2 border-slate-300 pb-2">กฎสุดโหดที่ต้องจำ</h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Stacking -->
-                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-red-600">
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center">📚 กฎการทบการ์ดจั่ว (Stacking)</h3>
-                    <p class="text-slate-700 leading-relaxed mb-3">
-                        เมื่อมีคนลงการ์ดให้คุณจั่ว (+2, +4, +6, +10) คุณสามารถ <strong>ทบการ์ด (Stack)</strong> ให้คนถัดไปจั่วแทนได้!
+                <div class="bg-white/95 p-6 rounded-3xl shadow-sm border-l-4 border-red-600">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Stacking การ์ดจั่ว</h3>
+                    <p class="text-sm text-slate-700 leading-relaxed mb-3">
+                        ถ้ามีคนลงการ์ด +2, +4, +6 หรือ +10 ใส่คุณ
+                        คุณสามารถลงการ์ดจั่วที่มีค่า <strong>เท่ากันหรือมากกว่า</strong> เพื่อส่งภาระต่อให้คนถัดไปได้
                     </p>
-                    <ul class="list-disc pl-5 text-sm text-slate-600 space-y-2">
-                        <li>ต้องลงการ์ดจั่วที่มีมูลค่า <strong>"เท่ากัน หรือ มากกว่า"</strong> เท่านั้น</li>
-                        <li><em>ตัวอย่าง: ถ้าโดน +4 คุณสามารถลง +4, +6 หรือ +10 ทับได้ (คนถัดไปจะโดน +8, +10 หรือ +14 ตามลำดับ)</em></li>
-                        <li><em>ไม่สามารถลง +2 ทับ +4 ได้!</em></li>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li>โดน +4 ตอบด้วย +4, +6 หรือ +10 ได้</li>
+                        <li>โดน +6 ตอบด้วย +6 หรือ +10 ได้</li>
+                        <li>โดน +10 ถ้าไม่มี +10 ตอบก็รับเต็ม</li>
                     </ul>
                 </div>
 
-                <!-- Draw Until You Play -->
-                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-slate-800">
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center">🔄 จั่วจนกว่าจะลงได้ (Draw Until You Play)</h3>
-                    <p class="text-slate-700 leading-relaxed">
-                        ใน UNO ปกติ ถ้าไม่มีการ์ดลงให้จั่ว 1 ใบ... แต่ใน No Mercy <strong>ถ้าคุณไม่มีการ์ดลง คุณต้องจั่วจากกองไปเรื่อยๆ จนกว่าจะได้การ์ดที่ลงได้!</strong>
+                <div class="bg-white/95 p-6 rounded-3xl shadow-sm border-l-4 border-slate-800">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Draw Until You Play</h3>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        ถ้าคุณไม่มีใบเล่นได้ในเทิร์นปกติ ต้องจั่วจากกองต่อเนื่องจนกว่าจะเจอใบที่ลงได้ทันที
+                        จึงไม่มีจังหวะ “จั่ว 1 แล้วรอด” แบบ UNO เดิมอีกต่อไป
                     </p>
-                    <p class="text-sm text-red-600 font-bold mt-3">*นี่คือสาเหตุที่ทำให้การ์ดล้นมืออย่างรวดเร็ว!</p>
                 </div>
 
-                <!-- 7 and 0 -->
-                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-blue-600">
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 flex items-center">🔄 กฎเลข 7 และ เลข 0</h3>
-                    <ul class="list-disc pl-5 text-sm text-slate-700 space-y-3">
-                        <li><strong>เลข 7 (สลับมือ):</strong> เมื่อลงเลข 7 คุณสามารถเลือก <strong>"สลับการ์ดทั้งหมดบนมือ"</strong> กับผู้เล่นคนใดก็ได้ 1 คน!</li>
-                        <li><strong>เลข 0 (ส่งต่อ):</strong> เมื่อลงเลข 0 ผู้เล่นทุกคนต้อง <strong>"ส่งการ์ดทั้งหมดบนมือ"</strong> ให้ผู้เล่นคนถัดไป ตามทิศทางการเล่นปัจจุบัน!</li>
+                <div class="bg-white/95 p-6 rounded-3xl shadow-sm border-l-4 border-blue-600">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">กฎเลข 7 และเลข 0</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><strong>เลข 7:</strong> เลือกสลับมือกับผู้เล่นคนใดก็ได้ 1 คน</li>
+                        <li><strong>เลข 0:</strong> ผู้เล่นทุกคนส่งมือทั้งชุดไปให้ผู้เล่นถัดไปตามทิศทางปัจจุบัน</li>
                     </ul>
                 </div>
 
-                <!-- Mercy Rule -->
-                <div class="bg-white/95 p-6 rounded-xl shadow-md border-l-4 border-black bg-red-50">
-                    <h3 class="text-xl font-bold text-red-700 mb-3 flex items-center">☠️ กฎไร้ความปรานี (The Mercy Rule)</h3>
-                    <p class="text-slate-800 leading-relaxed font-semibold text-lg text-center my-4">
-                        "หากผู้เล่นคนใดมีการ์ดบนมือตั้งแต่ 25 ใบขึ้นไป...<br>
-                        ผู้นั้นจะถูก <span class="text-red-600 font-bold text-2xl">คัดออก (Eliminated)</span> จากเกมทันที!"
+                <div class="bg-red-50 p-6 rounded-3xl shadow-sm border-l-4 border-black">
+                    <h3 class="text-xl font-bold text-red-700 mb-3">Mercy Rule</h3>
+                    <p class="text-lg font-bold text-slate-900 leading-relaxed mb-3">
+                        ถ้าผู้เล่นคนใดถือการ์ดตั้งแต่ <span class="text-red-600">25 ใบขึ้นไป</span>
+                        ผู้เล่นคนนั้นจะถูกคัดออกจากเกมทันที
                     </p>
-                    <p class="text-sm text-slate-600">เอาการ์ดของคนที่ถูกคัดออก ใส่กลับคืนในกองจั่ว แล้วเล่นต่อจนกว่าจะเหลือผู้รอดชีวิตเพียงคนเดียว</p>
+                    <p class="text-sm text-slate-700">การ์ดของผู้เล่นที่ตกรอบจะถูกนำกลับเข้าระบบตามกติกาโต๊ะ และเกมเดินต่อจนเหลือผู้รอดหรือมีคนหมดมือ</p>
                 </div>
             </div>
         </section>
 
-        <!-- ACTION CARDS -->
-        <section id="sec-actions" class="mb-20 scroll-mt-24">
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-2 border-slate-300 pb-2">การ์ดแอคชั่นนรกแตก</h2>
-            
-            <div class="space-y-4">
-                <!-- Skip Everyone -->
-                <div class="bg-white/95 p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-4 items-center md:items-start">
-                    <div class="flex-shrink-0 w-24 h-32 bg-slate-200 rounded-lg flex items-center justify-center border-4 border-slate-800 relative overflow-hidden">
-                        <span class="text-4xl">⏭️</span>
-                        <div class="absolute inset-0 border-4 border-transparent rounded-lg mix-blend-overlay"></div>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-800 mb-1">ข้ามทุกคน (Skip Everyone)</h3>
-                        <p class="text-slate-600 text-sm mb-2">ข้ามตาของผู้เล่นคนอื่นทั้งหมดในวง แล้ว <strong>กลับมาเป็นตาของคุณอีกครั้งทันที!</strong> (เหมือนได้เล่นเบิ้ล)</p>
-                        <p class="text-xs text-slate-500">มีการ์ดนี้ในทุกสี (แดง, เหลือง, เขียว, ฟ้า)</p>
+        <section id="sec-actions" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4 border-b-2 border-slate-300 pb-2">การ์ดพิเศษที่ป่วนที่สุด</h2>
+            <div class="space-y-5">
+                <div class="bg-white/95 p-6 rounded-3xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Skip Everyone</h3>
+                    <p class="text-sm text-slate-700">ข้ามผู้เล่นคนอื่นทั้งวง แล้วกลับมาเป็นตาคุณอีกครั้ง เหมาะกับจังหวะเร่งปิดเกมหรือคอมโบกับการ์ดกวาดมือ</p>
+                </div>
+
+                <div class="bg-white/95 p-6 rounded-3xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Discard All</h3>
+                    <p class="text-sm text-slate-700">ทิ้งการ์ดสีเดียวกันทั้งหมดจากมือในคราวเดียว เป็นเครื่องมือสำคัญมากสำหรับลดจำนวนการ์ดหนี Mercy Rule</p>
+                </div>
+
+                <div class="bg-white/95 p-6 rounded-3xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">ชุดการ์ดจั่วหนัก</h3>
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div class="bg-slate-100 p-4 rounded-2xl text-center">
+                            <h4 class="font-bold text-slate-800 mb-1">+2 / +4</h4>
+                            <p class="text-xs text-slate-600">พื้นฐานของเกม แต่ยังอันตรายเมื่อถูก stack ต่อกัน</p>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-2xl text-center border border-red-100">
+                            <h4 class="font-bold text-red-700 mb-1">+6</h4>
+                            <p class="text-xs text-slate-600">ใบกลางเกมที่เริ่มทำให้มือคนอื่นบวมเร็ว</p>
+                        </div>
+                        <div class="bg-black p-4 rounded-2xl text-center border border-red-700">
+                            <h4 class="font-bold text-red-500 mb-1">+10</h4>
+                            <p class="text-xs text-slate-300">อาวุธหนักสุด ถ้าคนถัดไปไม่มีใบตอบมักเกือบจบชีวิต</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 p-4 rounded-2xl text-center text-white">
+                            <h4 class="font-bold mb-1">Color Roulette</h4>
+                            <p class="text-xs">บังคับคนถัดไปจั่วจนกว่าจะได้สีที่คุณประกาศ</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Discard All -->
-                <div class="bg-white/95 p-5 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-4 items-center md:items-start">
-                    <div class="flex-shrink-0 w-24 h-32 bg-slate-200 rounded-lg flex items-center justify-center border-4 border-slate-800">
-                        <span class="text-3xl font-black">🗑️</span>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-800 mb-1">ทิ้งทั้งหมด (Discard All)</h3>
-                        <p class="text-slate-600 text-sm mb-2">เมื่อลงการ์ดใบนี้ คุณสามารถนำการ์ด <strong>"สีเดียวกัน"</strong> ทั้งหมดในมือคุณ ทิ้งลงกองได้เลย (วางซ้อนกันไปทีเดียว)</p>
-                        <p class="text-xs text-slate-500">วิธีลดการ์ดบนมือที่ดีที่สุด เพื่อหนีตายจาก Mercy Rule!</p>
-                    </div>
-                </div>
-
-                <!-- The Draw Cards -->
-                <div class="bg-white/95 p-5 rounded-xl shadow-sm border border-slate-200">
-                    <h3 class="text-lg font-bold text-slate-800 mb-3">🃏 แก๊งการ์ดจั่วสุดโหด</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="bg-slate-100 p-4 rounded-lg text-center border-2 border-slate-300">
-                            <span class="text-2xl font-bold text-slate-800">+2 / +4</span>
-                            <p class="text-xs text-slate-600 mt-2">จั่วปกติ มีทั้งแบบธรรมดาและ Wild (เปลี่ยนสี)</p>
-                        </div>
-                        <div class="bg-red-50 p-4 rounded-lg text-center border-2 border-red-300">
-                            <span class="text-2xl font-bold text-red-600">+6</span>
-                            <p class="text-xs text-slate-600 mt-2">Wild Draw 6 เปลี่ยนสีและบังคับคนถัดไปจั่ว 6 ใบ!</p>
-                        </div>
-                        <div class="bg-black p-4 rounded-lg text-center border-2 border-red-600">
-                            <span class="text-2xl font-bold text-red-500">+10</span>
-                            <p class="text-xs text-slate-300 mt-2">Wild Draw 10 อาวุธหนักที่สุดในเกม เปลี่ยนสีและโดนจั่ว 10 ใบเน้นๆ!</p>
-                        </div>
-                        <div class="bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 p-4 rounded-lg text-center border-2 border-white shadow-inner">
-                            <span class="text-2xl font-bold text-white drop-shadow-md">🎨 รูเล็ต</span>
-                            <p class="text-xs text-white font-semibold mt-2 drop-shadow-md">Wild Color Roulette</p>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-4 p-4 bg-orange-50 border border-orange-200 rounded-lg">
-                        <h4 class="font-bold text-orange-800 text-sm mb-1">รายละเอียด Wild Color Roulette</h4>
-                        <p class="text-xs text-orange-700">คุณเลือกว่าจะให้เป็นสีอะไร จากนั้น <strong>คนถัดไปจะต้องจั่วการ์ดจากกองไปเรื่อยๆ จนกว่าจะได้การ์ดสีที่คุณเลือก!</strong> (การ์ดที่จั่วได้ก่อนหน้านั้นต้องเก็บเข้ามือทั้งหมด โคตรอันตราย!)</p>
-                    </div>
+                <div class="bg-orange-50 border-l-4 border-orange-500 p-5 rounded-r-2xl">
+                    <h3 class="font-bold text-orange-800 mb-2">สั้น ๆ ว่าควรเล่นยังไง</h3>
+                    <p class="text-sm text-slate-700">
+                        อย่าเก็บใบใหญ่ไว้ “เผื่อ” นานเกินไปถ้ามือเริ่มหนา เพราะ Mercy Rule โหดพอจะทำให้คุณไม่มีโอกาสใช้มันเลย
+                        ในทางกลับกัน ถ้ามือบางอยู่แล้ว การถือ +6 หรือ +10 ไว้กันตัว 1 ใบมักคุ้มมาก
+                    </p>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <footer class="bg-black text-slate-400 text-center py-8 mt-auto border-t-4 border-red-800">
+    <footer class="bg-black text-slate-400 text-center py-8 mt-auto border-t border-red-900">
         <h3 class="text-xl font-bold text-red-600 tracking-wider mb-2">UNO SHOW 'EM NO MERCY</h3>
-        <p class="text-sm">Interactive Comprehensive Guide | Board Game Books Architecture</p>
+        <p class="text-sm">UNO No Mercy Web Guide</p>
     </footer>
 
     <script>
-        // Setup Scrollspy for Navigation Highlighting
         function setupScrollspy() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-btn');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '-20% 0px -70% 0px',
-                threshold: 0
-            };
+            const activeBg = '#b91c1c';
 
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const activeId = entry.target.id;
-                        
-                        navLinks.forEach(link => {
-                            link.classList.remove('active', 'bg-red-600', 'text-white');
-                            link.classList.add('text-slate-300');
-                            link.style.backgroundColor = '';
-                            link.style.color = '';
-                            
-                            if (link.getAttribute('href') === `#${activeId}`) {
-                                link.classList.add('active');
-                                link.style.backgroundColor = '#b91c1c';
-                                link.style.color = 'white';
-                                
-                                link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
 
-            sections.forEach(section => observer.observe(section));
+                    const activeId = entry.target.id;
+                    navLinks.forEach((link) => {
+                        link.classList.remove('active');
+                        link.style.backgroundColor = '';
+                        link.style.color = '';
+
+                        if (link.getAttribute('href') === `#${activeId}`) {
+                            link.classList.add('active');
+                            link.style.backgroundColor = activeBg;
+                            link.style.color = 'white';
+                            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        }
+                    });
+                });
+            }, {
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            });
+
+            sections.forEach((section) => observer.observe(section));
         }
 
-        window.onload = () => {
-            setupScrollspy();
-        };
+        window.addEventListener('DOMContentLoaded', setupScrollspy);
     </script>
 </body>
 </html>
