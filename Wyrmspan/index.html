@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ปีกมังกร Wyrmspan - คู่มือการเล่นแบบเว็บ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #f6f4ee;
+            color: #16221f;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url('cover.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.06;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .nav-btn.active {
+            background-color: #0f766e;
+            color: white;
+            border-color: #0f766e;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="bg-slate-950 text-emerald-50 p-6 shadow-md text-center relative z-20 border-b-4 border-amber-400">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-wide">ปีกมังกร Wyrmspan</h1>
+        <p class="text-emerald-100 mt-2 text-sm md:text-lg">คู่มือการเล่นฉบับเว็บจากคู่มือและ Rules &amp; FAQ ทางการ</p>
+    </header>
+
+    <nav class="bg-emerald-50 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap border-b border-emerald-100">
+        <div class="max-w-6xl mx-auto flex space-x-2 md:space-x-4 justify-start lg:justify-center">
+            <a href="#sec-overview" class="nav-btn active px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">ภาพรวม</a>
+            <a href="#sec-setup" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">เริ่มเกม</a>
+            <a href="#sec-flow" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">ลูปการเล่น</a>
+            <a href="#sec-dragons" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">มังกร</a>
+            <a href="#sec-guild" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">กิลด์และคะแนน</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full">
+        <section id="sec-overview" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div class="bg-white/90 p-8 rounded-3xl shadow-lg border border-emerald-100">
+                    <div class="flex flex-wrap gap-3 mb-5">
+                        <span class="bg-emerald-700 text-white px-4 py-1 rounded-full text-sm font-bold">Engine Building / Dragons</span>
+                        <span class="bg-slate-100 text-slate-700 px-4 py-1 rounded-full text-sm font-bold">1-5 คน</span>
+                        <span class="bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-sm font-bold">ประมาณ 90 นาที</span>
+                        <span class="bg-rose-100 text-rose-700 px-4 py-1 rounded-full text-sm font-bold">ค่อนข้างลึก</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-emerald-900 mb-3">เกมนี้เล่นเรื่องอะไร</h2>
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        ใน <strong>Wyrmspan</strong> คุณรับบทเป็นนักศึกษาเรื่องมังกรที่ค้นพบเขาวงกตใต้ดินบนที่ดินของตัวเอง
+                        เป้าหมายคือค่อย ๆ <strong>ขุดถ้ำ</strong>, <strong>ล่อมังกรเข้ามาอาศัย</strong>, และ
+                        <strong>เดินสำรวจถ้ำ</strong> เพื่อจุดคอมโบของความสามารถและสะสมคะแนนให้มากที่สุดภายใน 4 รอบ
+                    </p>
+                    <p class="text-slate-700 leading-relaxed mb-5">
+                        เกมนี้ได้แรงบันดาลใจจาก Wingspan แต่ทางผู้พัฒนาระบุชัดว่าเป็นเกมแยกที่มีระบบต่างจากเดิมหลายจุด เช่น
+                        การใช้เหรียญแทน action cube, การมี Dragon Guild, ลูกมังกร hatchling, การสำรวจจากซ้ายไปขวา
+                        และการเก็บเหรียญหรือทรัพยากรข้ามรอบได้บางส่วน
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                            <h3 class="font-bold text-emerald-800 mb-2">แกนของเกม</h3>
+                            <p class="text-sm text-slate-700">ขุดพื้นที่ใหม่ให้พร้อม แล้ววางมังกรเพื่อสร้างเครื่องจักรทำแต้มจากไข่ ทรัพยากรที่เก็บบนการ์ด การ tuck ไพ่ และเป้าหมายรายรอบ</p>
+                        </div>
+                        <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100">
+                            <h3 class="font-bold text-amber-800 mb-2">จังหวะที่ต้องบริหาร</h3>
+                            <p class="text-sm text-slate-700">ทุกแอ็กชันใช้เหรียญ และการสำรวจแถวเดิมซ้ำในรอบเดียวจะเริ่มกินไข่มากขึ้นเรื่อย ๆ ทำให้ต้องวางแผนลำดับเทิร์นให้ดี</p>
+                        </div>
+                    </div>
+                </div>
+
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-01.jpg" alt="หน้าปกคู่มือ Wyrmspan" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">หน้าปกคู่มือและสรุปอุปกรณ์จาก rulebook</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-setup" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-emerald-900 mb-4 border-b-2 border-emerald-200 pb-2">เริ่มเกมอย่างย่อ</h2>
+                    <div class="space-y-4">
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">1. จัดกระดานกลาง</h3>
+                            <p class="text-sm text-slate-600">สุ่ม Dragon Guild มา 1 แผ่น, เปิดเป้าหมาย 4 รอบบน round tracker, และเตรียม display กลางด้วยมังกร 3 ใบกับ cave card 3 ใบ</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">2. แจกของเริ่มต้นให้ผู้เล่น</h3>
+                            <p class="text-sm text-slate-600">แต่ละคนวาง player mat ของตัวเอง เลือกไพ่เริ่มต้น 4 ใบจากชุดเปิดเริ่มเกม และเลือกทรัพยากรเริ่มต้น 3 ชิ้นตามกติกา setup</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">3. เริ่มด้วยถ้ำที่เปิดแล้ว 3 ช่อง</h3>
+                            <p class="text-sm text-slate-600">ทุกคนเริ่มจากช่องซ้ายสุดของ Crimson Cavern, Golden Grotto และ Amethyst Abyss ที่ถูกขุดไว้แล้ว จึงพร้อมวางมังกรได้ทันทีในแต่ละแถว</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <h3 class="font-bold text-slate-800 mb-1">4. วางไข่เริ่มต้นและเตรียมเหรียญ</h3>
+                            <p class="text-sm text-slate-600">ผู้เล่นแต่ละคนมีรังเริ่มต้น 2 ช่องบน mat วางไข่เริ่มต้น 1 ฟองในหนึ่งรัง และทุกคนจะได้รายรับมาตรฐาน 6 เหรียญกับ 1 ไข่ในแต่ละรอบ</p>
+                        </div>
+                        <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-2xl">
+                            <h3 class="font-bold text-amber-800 mb-1">หลักที่ควรจำตั้งแต่ setup</h3>
+                            <p class="text-sm text-slate-700">เกมนี้ไม่มีลูกเต๋าทรัพยากรแบบ Wingspan และเริ่มจากมือที่ยืดหยุ่นกว่าเดิมมาก ทำให้การวางแผนรอบแรกเปิดทางคอมโบได้เร็วกว่า</p>
+                        </div>
+                    </div>
+                </div>
+
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-02.jpg" alt="หน้าคู่มือ setup ของ Wyrmspan" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">หน้าคู่มือ setup ที่รวม Dragon Guild, display กลาง, เป้าหมายรายรอบ และของเริ่มต้นผู้เล่น</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-flow" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-emerald-900 mb-4 border-b-2 border-emerald-200 pb-2">ลูปการเล่น 5 แอ็กชัน</h2>
+                    <p class="text-slate-700 leading-relaxed mb-6">
+                        คู่มือทางการระบุว่าในแต่ละเทิร์นคุณจะทำ <strong>1 จาก 5 แอ็กชัน</strong>:
+                        <strong>Excavate</strong>, <strong>Entice</strong>, หรือ <strong>Explore</strong> หนึ่งในสามถ้ำของคุณ
+                        เกมยาว 4 รอบ และผู้เล่นจะผลัดกันเล่นไปเรื่อย ๆ จนกว่าจะเลือก <strong>pass</strong> ในรอบนั้น
+                    </p>
+
+                    <div class="grid md:grid-cols-2 xl:grid-cols-5 gap-4">
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-t-4 border-emerald-600">
+                            <h3 class="font-bold text-slate-800 mb-2">1. Excavate</h3>
+                            <p class="text-sm text-slate-600">เล่น cave card จากมือไปยังช่องว่างซ้ายสุดของแถวที่ต้องการ เพื่อขุดถ้ำให้ลึกขึ้น และรับโบนัส “when played” ของการ์ดถ้าการ์ดนั้นมี</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-t-4 border-amber-500">
+                            <h3 class="font-bold text-slate-800 mb-2">2. Entice</h3>
+                            <p class="text-sm text-slate-600">เล่นมังกรจากมือไปยังช่องที่ขุดแล้ว โดยต้องลงในถ้ำที่มังกรชอบและจ่ายค่าพิมพ์บนการ์ดให้ครบ</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-t-4 border-rose-500">
+                            <h3 class="font-bold text-slate-800 mb-2">3. Explore Crimson</h3>
+                            <p class="text-sm text-slate-600">เดิน adventurer จากซ้ายไปขวาในแถวสีแดง เก็บผลลัพธ์ตามช่องและมังกรที่ถูกกระตุ้นระหว่างทาง</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-t-4 border-yellow-500">
+                            <h3 class="font-bold text-slate-800 mb-2">4. Explore Golden</h3>
+                            <p class="text-sm text-slate-600">สำรวจแถวสีทอง โดยจังหวะปลายแถวมักช่วยเรื่อง tuck ไพ่และกระตุ้นทรัพยากรที่หมุนเกมได้ดี</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-t-4 border-violet-500">
+                            <h3 class="font-bold text-slate-800 mb-2">5. Explore Amethyst</h3>
+                            <p class="text-sm text-slate-600">สำรวจแถวสีม่วง ซึ่งกติกาทางการอธิบายว่าออกแบบมาให้ปลายถ้ำแรงขึ้นเพื่อชดเชยความถี่การ build ที่ต่ำกว่าอีกสองแถว</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-slate-950 text-white p-6 rounded-3xl shadow-lg">
+                        <h3 class="text-xl font-bold text-amber-300 mb-3">เศรษฐกิจรอบและเทิร์น</h3>
+                        <ul class="space-y-3 text-sm text-slate-200">
+                            <li><strong>1 เทิร์น = 1 แอ็กชัน:</strong> จ่ายต้นทุนก่อน แล้วค่อยทำแอ็กชันนั้น</li>
+                            <li><strong>ต้นแต่ละรอบ:</strong> ได้ 6 เหรียญและ 1 ไข่ เป็นเวลา 4 รอบ</li>
+                            <li><strong>Explore แถวเดิมซ้ำ:</strong> ครั้งแรกใช้ 1 เหรียญ, ครั้งที่สองใช้ 1 เหรียญ + 1 ไข่, ครั้งที่สามใช้ 1 เหรียญ + 2 ไข่</li>
+                            <li><strong>Explore ได้สูงสุด 3 ครั้งต่อแถวต่อรอบ</strong> และเมื่อถึง stop sign หรือสุดถ้ำ adventurer จะกลับ Base Camp ทันที</li>
+                            <li><strong>จบเทิร์นให้ทิ้งลงมาเหลือ:</strong> ไพ่รวมไม่เกิน 9, เหรียญไม่เกิน 9, ทรัพยากรไม่เกิน 9</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-emerald-100">
+                        <h3 class="text-xl font-bold text-emerald-800 mb-3">สั้น ๆ ว่าควรคิดอะไรในแต่ละรอบ</h3>
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li><strong>รอบต้น:</strong> รีบเปิดถ้ำและวางฐานมังกรให้ครบแถวสำคัญก่อน</li>
+                            <li><strong>รอบกลาง:</strong> เริ่มเลือกว่าจะวน explore แถวไหนซ้ำเพื่อเร่งคอมโบ</li>
+                            <li><strong>รอบท้าย:</strong> มองทั้งแต้มจากปลายถ้ำ, Dragon Guild, เป้าหมายรายรอบ และ end game ability บนการ์ด</li>
+                            <li><strong>เหรียญเหลือไม่เสียเปล่าเสมอ:</strong> ถ้าเก็บไว้ได้โดยไม่เกินลิมิต ก็สามารถพกข้ามไปรวมพลังรอบถัดไปได้</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-04.jpg" alt="หน้าคู่มือ overview และ 5 แอ็กชันของ Wyrmspan" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">หน้า overview จากคู่มือที่สรุปภาพใหญ่ของเกมและ 5 แอ็กชันหลัก</figcaption>
+                </figure>
+
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-05.jpg" alt="หน้าคู่มือ player mat และต้นทุนแอ็กชันของ Wyrmspan" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">player mat, ต้นทุนการขุดถ้ำ, การล่อมังกร และการสำรวจจากคู่มือ</figcaption>
+                </figure>
+
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-10.jpg" alt="หน้าคู่มืออธิบายการ Explore ใน Wyrmspan" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ตัวอย่างกติกา Explore ซึ่งเป็นหัวใจของการหมุนคอมโบในเกม</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-dragons" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-emerald-900 mb-4 border-b-2 border-emerald-200 pb-2">มังกรทั่วไปและ Hatchling</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-emerald-100">
+                            <h3 class="text-xl font-bold text-emerald-800 mb-3">ความสามารถของมังกร</h3>
+                            <ul class="space-y-3 text-sm text-slate-700">
+                                <li><strong>When played:</strong> ได้ทันทีตอนลงการ์ด</li>
+                                <li><strong>If activated:</strong> ได้เมื่อ adventurer เดินผ่านการ์ดนั้นระหว่าง Explore</li>
+                                <li><strong>Once per round:</strong> ได้ช่วงจบรอบ</li>
+                                <li><strong>End of game:</strong> นับคะแนนตอนสรุปท้ายเกม</li>
+                                <li><strong>ความสามารถส่วนใหญ่เลือกใช้ได้:</strong> ยกเว้นความสามารถที่ให้ผลกับผู้เล่นอื่น ซึ่งต้องเปิดสิทธิ์ให้ทุกคนตามกติกาทางการ</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-emerald-100">
+                            <h3 class="text-xl font-bold text-emerald-800 mb-3">สิ่งที่ทำให้ Hatchling ต่างออกไป</h3>
+                            <ul class="space-y-3 text-sm text-slate-700">
+                                <li>ลูกมังกรทุกใบมีต้นทุนเป็น <strong>ไข่ + นม</strong></li>
+                                <li>ทุกครั้งที่เดินผ่าน hatchling คุณอาจ cache หรือต tuck ตามที่การ์ดระบุ</li>
+                                <li>เมื่อทำเงื่อนไขเดิมครบครั้งที่ 3 จะได้โบนัสใหญ่แบบ <strong>ครั้งเดียวต่อเกม</strong> แทนการ “โตเต็มวัย”</li>
+                                <li>หลังปลดโบนัสแล้ว ความสามารถสองบรรทัดแรกยังคงใช้ต่อได้ตามปกติ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-06.jpg" alt="หน้าคู่มือการ Entice มังกรใน Wyrmspan" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ตัวอย่างหน้าคู่มือที่อธิบายการลงมังกรและการวางการ์ดลงบนถ้ำของคุณ</figcaption>
+                </figure>
+
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-09.jpg" alt="หน้าคู่มือ Hatchling ของ Wyrmspan" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">กติกา Hatchling จากคู่มือ ซึ่งเป็นหนึ่งในระบบใหม่ที่ต่างจาก Wingspan อย่างชัดเจน</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-guild" class="mb-16 scroll-mt-24">
+            <div class="space-y-8">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-slate-950 text-white p-6 rounded-3xl shadow-lg">
+                        <h2 class="text-2xl font-bold text-amber-300 mb-3">Dragon Guild</h2>
+                        <ul class="space-y-3 text-sm text-slate-200">
+                            <li>เมื่อได้สัญลักษณ์ advancement ให้ขยับ guild token ตามเข็มนาฬิกา 1 ช่อง แล้วรับผลของช่องนั้นทันที</li>
+                            <li>ถ้าเดินถึงช่องสีน้ำตาล จะได้วาง marker ลงบน guild tile เพื่อรับโบนัส in-game หรือ end-game ตามช่องที่เลือก</li>
+                            <li>แต่ละเกมใช้กิลด์เพียง 1 แบบ จึงทำให้แนวทางทำแต้มของแต่ละรอบเปลี่ยนไปมาก</li>
+                            <li>กติกาทางการระบุว่าถ้าได้ advancement หลายครั้งในเทิร์นเดียว ให้รับผลทุกช่องที่ผ่าน ไม่ใช่แค่ช่องสุดท้าย</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-emerald-100">
+                        <h2 class="text-2xl font-bold text-emerald-800 mb-3">การนับคะแนนที่ควรจำ</h2>
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li><strong>เป้าหมายรายรอบเป็นแบบ friendly ties:</strong> ถ้าเสมออันดับหนึ่ง ทุกคนที่เสมอได้แต้มเต็มของอันดับหนึ่ง</li>
+                            <li><strong>ทรัพยากร cache และไพ่ tuck</strong> เป็นแหล่งแต้มปลายเกมสำคัญ</li>
+                            <li><strong>marker บน Dragon Guild</strong> จะนับคะแนนเฉพาะ marker ที่วางบนช่อง end-game scoring ที่เกี่ยวข้อง</li>
+                            <li><strong>tucked cards ไม่ใช่มังกรบน mat</strong> เวลานับเงื่อนไขที่ถามหาจำนวนหรือประเภทมังกรบนกระดาน</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-12.jpg" alt="หน้าคู่มือ Dragon Guild ของ Wyrmspan" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">กติกา Dragon Guild ซึ่งเป็นหนึ่งในแกนการแข่งขันหลักของโต๊ะ</figcaption>
+                </figure>
+
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-emerald-100">
+                    <img src="page-13.jpg" alt="หน้าคู่มืออธิบายพลังของ Dragon Guild ใน Wyrmspan" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ตัวอย่างการอธิบายพลังเฉพาะของ guild แต่ละแบบจากคู่มือ</figcaption>
+                </figure>
+
+                <div class="bg-emerald-50 border border-emerald-200 p-6 rounded-3xl shadow-sm">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-3">แหล่งอ้างอิงที่ใช้ทำหน้านี้</h3>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        สรุปจาก <a class="text-emerald-700 underline" href="https://stonemaiergames.com/games/wyrmspan/" target="_blank" rel="noreferrer">หน้าเกม Wyrmspan</a>,
+                        <a class="text-emerald-700 underline" href="https://stonemaiergames.com/games/wyrmspan/rules-faq/" target="_blank" rel="noreferrer">หน้า Rules &amp; FAQ ทางการ</a>
+                        และคู่มือ <a class="text-emerald-700 underline" href="https://content.cmpl.org/bg/Wyrmspan.pdf" target="_blank" rel="noreferrer">Wyrmspan rulebook PDF</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 text-emerald-100 text-center py-6 mt-auto">
+        <p class="text-sm">Wyrmspan | Web guide based on the official rulebook and Stonemaier Rules &amp; FAQ</p>
+    </footer>
+
+    <script>
+        function setupScrollspy() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-btn');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const activeId = entry.target.id;
+
+                    navLinks.forEach((link) => {
+                        link.classList.remove('active');
+                        link.style.backgroundColor = '';
+                        link.style.color = '';
+
+                        if (link.getAttribute('href') === `#${activeId}`) {
+                            link.classList.add('active');
+                            link.style.backgroundColor = '#0f766e';
+                            link.style.color = 'white';
+                            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        }
+                    });
+                });
+            }, {
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            });
+
+            sections.forEach((section) => observer.observe(section));
+        }
+
+        window.onload = () => {
+            setupScrollspy();
+        };
+    </script>
+</body>
+</html>
