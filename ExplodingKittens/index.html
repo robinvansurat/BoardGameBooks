@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เหมียวระเบิด - คู่มือการเล่นแบบเว็บ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #fff7ed;
+            color: #1f2937;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url('cover.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .nav-btn.active {
+            background-color: #dc2626;
+            color: white;
+            border-color: #dc2626;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="bg-red-700 text-white p-6 shadow-md text-center relative z-20 border-b-4 border-orange-300">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-wide">เหมียวระเบิด</h1>
+        <p class="text-red-100 mt-2 text-sm md:text-lg">Exploding Kittens ฉบับย่อยง่ายจากคู่มือ PDF</p>
+    </header>
+
+    <nav class="bg-orange-50 p-4 shadow-inner sticky top-0 z-50 overflow-x-auto whitespace-nowrap border-b border-orange-200">
+        <div class="max-w-6xl mx-auto flex space-x-2 md:space-x-4 justify-start lg:justify-center">
+            <a href="#sec-overview" class="nav-btn active px-4 py-2 rounded-full border border-red-300 text-red-700 font-semibold hover:bg-red-100 transition inline-block text-sm md:text-base">ภาพรวม</a>
+            <a href="#sec-setup" class="nav-btn px-4 py-2 rounded-full border border-red-300 text-red-700 font-semibold hover:bg-red-100 transition inline-block text-sm md:text-base">เตรียมเกม</a>
+            <a href="#sec-flow" class="nav-btn px-4 py-2 rounded-full border border-red-300 text-red-700 font-semibold hover:bg-red-100 transition inline-block text-sm md:text-base">ลำดับเล่น</a>
+            <a href="#sec-cards" class="nav-btn px-4 py-2 rounded-full border border-red-300 text-red-700 font-semibold hover:bg-red-100 transition inline-block text-sm md:text-base">การ์ดสำคัญ</a>
+            <a href="#sec-gallery" class="nav-btn px-4 py-2 rounded-full border border-red-300 text-red-700 font-semibold hover:bg-red-100 transition inline-block text-sm md:text-base">ภาพจากคู่มือ</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow p-4 md:p-8 max-w-6xl mx-auto w-full">
+        <section id="sec-overview" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div class="bg-white/90 p-8 rounded-3xl shadow-lg border border-red-100">
+                    <div class="flex flex-wrap gap-3 mb-5">
+                        <span class="bg-red-600 text-white px-4 py-1 rounded-full text-sm font-bold">Party / Push Your Luck</span>
+                        <span class="bg-orange-100 text-orange-800 px-4 py-1 rounded-full text-sm font-bold">2-10 คน</span>
+                        <span class="bg-slate-100 text-slate-700 px-4 py-1 rounded-full text-sm font-bold">ประมาณ 15-20 นาที</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-red-800 mb-3">เป้าหมายของเกม</h2>
+                    <p class="text-slate-700 leading-relaxed mb-5">
+                        ทุกคนผลัดกันเล่นการ์ดและจั่วการ์ดจากกองกลางไปเรื่อย ๆ จนกว่าจะมีใครจั่วเจอ
+                        <strong>เหมียวระเบิด</strong> หากไม่มีการ์ดปลดระเบิดไว้แก้สถานการณ์ ผู้เล่นคนนั้นจะตกรอบทันที
+                        คนที่รอดเป็นคนสุดท้ายคือผู้ชนะ
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-red-50 p-4 rounded-2xl border border-red-100">
+                            <h3 class="font-bold text-red-700 mb-2">ชนะยังไง</h3>
+                            <p class="text-sm text-slate-700">เอาตัวรอดจากการจั่วระเบิดไปจนเหลือผู้เล่นเพียงคนเดียว</p>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100">
+                            <h3 class="font-bold text-orange-700 mb-2">แพ้เมื่อไร</h3>
+                            <p class="text-sm text-slate-700">จั่วเจอเหมียวระเบิดแล้วไม่มีการ์ดปลดระเบิดไว้รับมือ</p>
+                        </div>
+                    </div>
+                </div>
+                <figure class="bg-white/80 p-4 rounded-3xl shadow-lg border border-red-100">
+                    <img src="page-01.jpg" alt="หน้าคู่มือเกมเหมียวระเบิด" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ภาพเปิดจากคู่มือ PDF ต้นฉบับ</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-setup" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-red-800 mb-4 border-b-2 border-red-200 pb-2">การเตรียมเกมแบบเร็ว</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <div class="w-9 h-9 rounded-full bg-red-600 text-white flex items-center justify-center font-bold mr-4 shrink-0">1</div>
+                            <div>
+                                <h3 class="font-bold text-slate-800">แยกการ์ดเหมียวระเบิดและการ์ดปลดระเบิดออกมาก่อน</h3>
+                                <p class="text-sm text-slate-600">ผู้เล่นทุกคนต้องได้การ์ดปลดระเบิดคนละ 1 ใบตั้งแต่เริ่มเกม</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <div class="w-9 h-9 rounded-full bg-red-600 text-white flex items-center justify-center font-bold mr-4 shrink-0">2</div>
+                            <div>
+                                <h3 class="font-bold text-slate-800">แจกการ์ดคว่ำให้คนละ 7 ใบ</h3>
+                                <p class="text-sm text-slate-600">เมื่อรวมการ์ดปลดระเบิดแล้ว ผู้เล่นจะเริ่มด้วยการ์ดบนมือคนละ 8 ใบ</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <div class="w-9 h-9 rounded-full bg-red-600 text-white flex items-center justify-center font-bold mr-4 shrink-0">3</div>
+                            <div>
+                                <h3 class="font-bold text-slate-800">ใส่เหมียวระเบิดกลับเข้ากอง</h3>
+                                <p class="text-sm text-slate-600">จำนวนที่ใส่กลับต้องน้อยกว่าจำนวนผู้เล่น 1 ใบ จากนั้นสับกองให้เรียบร้อย</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white/90 p-4 rounded-2xl shadow-sm border border-slate-100">
+                            <div class="w-9 h-9 rounded-full bg-red-600 text-white flex items-center justify-center font-bold mr-4 shrink-0">4</div>
+                            <div>
+                                <h3 class="font-bold text-slate-800">ปรับชุดการ์ดให้เหมาะกับจำนวนคนเล่น</h3>
+                                <p class="text-sm text-slate-600">ถ้าใช้ชุด Party Pack ให้ดูสัญลักษณ์อุ้งเท้าแมวบนการ์ดตามที่คู่มือระบุ เพื่อคัดเฉพาะการ์ดที่เหมาะกับจำนวนผู้เล่น</p>
+                            </div>
+                        </div>
+                        <div class="bg-orange-50 border-l-4 border-orange-400 p-4 rounded-r-2xl">
+                            <h3 class="font-bold text-orange-700 mb-1">หลักจำง่าย</h3>
+                            <p class="text-sm text-slate-700">เล่นการ์ดได้กี่ใบก็ได้ในตาของตัวเอง แต่สุดท้ายต้องจั่ว 1 ใบเสมอ เว้นแต่การ์ดที่เล่นจะระบุว่าจบตาโดยไม่ต้องจั่ว</p>
+                        </div>
+                    </div>
+                </div>
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-red-100">
+                    <img src="page-02.jpg" alt="ภาพอธิบายการเตรียมเกมเหมียวระเบิด" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">สรุปการตั้งกอง แจกการ์ด และจังหวะเล่นต่อคน</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sec-flow" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-red-800 mb-4 border-b-2 border-red-200 pb-2">ลำดับการเล่นในแต่ละตา</h2>
+            <div class="grid md:grid-cols-3 gap-5">
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border-t-4 border-sky-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">1. เล่นการ์ด</h3>
+                    <p class="text-sm text-slate-600">จะเล่น 0 ใบหรือหลายใบติดกันก็ได้ ขอแค่ทำตามคำสั่งบนการ์ดครบถ้วน</p>
+                </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border-t-4 border-orange-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">2. บริหารความเสี่ยง</h3>
+                    <p class="text-sm text-slate-600">ใช้การ์ดดูอนาคต สับกอง หรือจั่วจากใต้กองเพื่อควบคุมโอกาสเจอเหมียวระเบิด</p>
+                </div>
+                <div class="bg-white/90 p-5 rounded-2xl shadow-sm border-t-4 border-red-500">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">3. จั่วเพื่อจบตา</h3>
+                    <p class="text-sm text-slate-600">ถ้าจั่วแล้วเจอเหมียวระเบิด ต้องใช้การ์ดปลดระเบิดทันที ไม่อย่างนั้นตกรอบ</p>
+                </div>
+            </div>
+
+            <div class="mt-8 grid lg:grid-cols-2 gap-6">
+                <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-3 text-orange-300">จังหวะที่ต้องจำ</h3>
+                    <ul class="space-y-3 text-sm text-slate-200">
+                        <li><strong>Attack / โจมตี:</strong> จบตาคุณทันทีโดยไม่ต้องจั่ว และส่งภาระให้คนถัดไปเล่นหลายตาตามจำนวนที่โดนสะสม</li>
+                        <li><strong>Skip / ข้าม:</strong> ใช้ตัดหนึ่งตาออกจากภาระที่ต้องเล่น ถ้าโดนโจมตีสองตาก็ใช้สองใบเพื่อหนีได้</li>
+                        <li><strong>Nope / ม่าย:</strong> ใช้ยกเลิกการ์ดที่เพิ่งถูกเล่น ยกเว้นเหมียวระเบิดและปลดระเบิด</li>
+                        <li><strong>Defuse / ปลดระเบิด:</strong> หลังใช้แล้วต้องสอดการ์ดเหมียวระเบิดกลับเข้าไปในกองตรงตำแหน่งใดก็ได้โดยไม่ให้คนอื่นรู้</li>
+                    </ul>
+                </div>
+                <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-red-100">
+                    <h3 class="text-xl font-bold text-red-700 mb-3">คอมโบแมวที่ใช้บ่อย</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><strong>คู่ (2 ใบเหมือน):</strong> สุ่มขโมยการ์ด 1 ใบจากมือผู้เล่นคนใดก็ได้</li>
+                        <li><strong>ตอง (3 ใบเหมือน):</strong> ระบุชื่อการ์ดที่ต้องการจากผู้เล่นคนหนึ่ง ถ้าเขามีต้องให้คุณ</li>
+                        <li><strong>แมวป่า:</strong> ใช้เป็นตัวแทนการ์ดแมวเพื่อทำคอมโบคู่หรือตองได้</li>
+                        <li><strong>Feral Cat + ชุดแมว:</strong> เหมาะมากเวลามีการ์ดแมวไม่ครบคู่บนมือ</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-cards" class="mb-20 scroll-mt-24">
+            <div class="space-y-8">
+                <figure class="bg-white/90 p-4 rounded-3xl shadow-lg border border-red-100">
+                    <img src="page-03.jpg" alt="หน้าคู่มือการ์ดคอมโบและการ์ดคำสั่งของเหมียวระเบิด" class="w-full rounded-2xl shadow-sm">
+                    <figcaption class="text-sm text-slate-500 mt-3">ตัวอย่างการใช้คอมโบคู่-ตอง และการ์ดคำสั่งจากคู่มือ</figcaption>
+                </figure>
+                <div>
+                    <h2 class="text-3xl font-bold text-red-800 mb-4 border-b-2 border-red-200 pb-2">การ์ดสำคัญที่ควรรู้ก่อนเล่น</h2>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-l-4 border-red-500">
+                            <h3 class="font-bold text-slate-800 mb-2">เหมียวระเบิด</h3>
+                            <p class="text-sm text-slate-600">การ์ดแพ้เกมประจำกอง จั่วเจอเมื่อไรต้องรีบหาปลดระเบิดให้ทัน</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-l-4 border-lime-500">
+                            <h3 class="font-bold text-slate-800 mb-2">ปลดระเบิด</h3>
+                            <p class="text-sm text-slate-600">การ์ดเอาชีวิตรอดที่สำคัญที่สุด ใช้แล้วต้องแอบสอดระเบิดกลับเข้ากอง</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-l-4 border-orange-500">
+                            <h3 class="font-bold text-slate-800 mb-2">โจมตี / เลือกเป้าโจมตี</h3>
+                            <p class="text-sm text-slate-600">ส่งภาระหลายตาให้ผู้เล่นถัดไป หรือเลือกเป้าหมายเองในบางเวอร์ชัน</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-l-4 border-sky-500">
+                            <h3 class="font-bold text-slate-800 mb-2">ข้าม / จั่วจากใต้กอง</h3>
+                            <p class="text-sm text-slate-600">ช่วยจบตาโดยไม่ต้องเสี่ยงจั่วจากด้านบน หรือเลี่ยงตำแหน่งการ์ดที่เพิ่งเห็นมา</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-l-4 border-violet-500">
+                            <h3 class="font-bold text-slate-800 mb-2">ดูอนาคต / เปลี่ยนอนาคต</h3>
+                            <p class="text-sm text-slate-600">เปิดดู 3 ใบบนกองและอาจสลับลำดับใหม่เพื่อควบคุมจังหวะระเบิด</p>
+                        </div>
+                        <div class="bg-white/90 p-4 rounded-2xl shadow-sm border-l-4 border-slate-700">
+                            <h3 class="font-bold text-slate-800 mb-2">ม่าย / Nope</h3>
+                            <p class="text-sm text-slate-600">ยกเลิกผลการ์ดที่เพิ่งเล่น ใช้สวนคอมโบแรง ๆ ได้ดีมาก</p>
+                        </div>
+                    </div>
+                    <figure class="bg-white/90 p-4 rounded-3xl shadow-sm border border-red-100 mt-6">
+                        <img src="page-04.jpg" alt="หน้าคู่มือรวมการ์ดหลักของเหมียวระเบิด" class="w-full rounded-2xl shadow-sm">
+                        <figcaption class="text-sm text-slate-500 mt-3">สเปรดรวมการ์ดหลักที่ใช้บ่อยระหว่างเล่น</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-gallery" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-red-800 mb-4 border-b-2 border-red-200 pb-2">ภาพจากคู่มือ PDF</h2>
+            <p class="text-slate-600 mb-6">เผื่ออยากเทียบกับต้นฉบับ ผมคัดหน้าที่ใช้อธิบายกติกาหลักมาไว้ในหน้าเว็บนี้ด้วย</p>
+            <div class="space-y-5">
+                <figure class="bg-white/90 p-3 rounded-2xl shadow-sm border border-slate-100">
+                    <img src="page-02.jpg" alt="หน้าอธิบายวิธีเตรียมเกมเหมียวระเบิด" class="w-full rounded-xl">
+                    <figcaption class="text-sm text-slate-500 mt-2">เตรียมเกมและลำดับเล่น</figcaption>
+                </figure>
+                <figure class="bg-white/90 p-3 rounded-2xl shadow-sm border border-slate-100">
+                    <img src="page-03.jpg" alt="หน้าอธิบายคอมโบการ์ดเหมียวระเบิด" class="w-full rounded-xl">
+                    <figcaption class="text-sm text-slate-500 mt-2">คอมโบและการ์ดคำสั่ง</figcaption>
+                </figure>
+                <figure class="bg-white/90 p-3 rounded-2xl shadow-sm border border-slate-100">
+                    <img src="page-04.jpg" alt="หน้ารวมการ์ดสำคัญของเหมียวระเบิด" class="w-full rounded-xl">
+                    <figcaption class="text-sm text-slate-500 mt-2">สรุปการ์ดสำคัญ</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-red-800 text-red-100 text-center py-6 mt-auto">
+        <p class="text-sm">เหมียวระเบิด | Web guide generated from the PDF booklet</p>
+    </footer>
+
+    <script>
+        function setupScrollspy() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-btn');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    const activeId = entry.target.id;
+
+                    navLinks.forEach((link) => {
+                        link.classList.remove('active');
+                        link.style.backgroundColor = '';
+                        link.style.color = '';
+
+                        if (link.getAttribute('href') === `#${activeId}`) {
+                            link.classList.add('active');
+                            link.style.backgroundColor = '#dc2626';
+                            link.style.color = 'white';
+                            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        }
+                    });
+                });
+            }, {
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            });
+
+            sections.forEach((section) => observer.observe(section));
+        }
+
+        window.onload = () => {
+            setupScrollspy();
+        };
+    </script>
+</body>
+</html>
