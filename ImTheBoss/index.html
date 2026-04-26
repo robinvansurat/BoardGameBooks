@@ -44,6 +44,7 @@
             <a href="#sec-flow" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">ลำดับเล่น</a>
             <a href="#sec-cards" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">การ์ดอิทธิพล</a>
             <a href="#sec-closing" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">ปิดการเจรจา</a>
+            <a href="#sec-gallery" class="nav-btn px-4 py-2 rounded-full border border-emerald-300 text-emerald-800 font-semibold hover:bg-emerald-100 transition inline-block text-sm md:text-base">คู่มือเต็ม</a>
         </div>
     </nav>
 
@@ -187,7 +188,7 @@
             </div>
         </section>
 
-        <section id="sec-closing" class="mb-16 scroll-mt-24">
+        <section id="sec-closing" class="mb-20 scroll-mt-24">
             <div class="space-y-8">
                 <div class="space-y-6">
                     <div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-emerald-100">
@@ -224,6 +225,12 @@
                 </div>
             </div>
         </section>
+
+        <section id="sec-gallery" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-emerald-800 mb-4 border-b-2 border-emerald-200 pb-2">ภาพคู่มือ PDF ฉบับเต็ม</h2>
+            <p class="text-slate-600 mb-6">เพิ่มภาพจาก PDF ต้นฉบับครบทั้ง 12 หน้าไว้ท้ายหน้าเว็บ เผื่อใช้เทียบกติกาหรือเปิดดูรายละเอียดระหว่างเล่น</p>
+            <div id="manual-gallery" class="space-y-5"></div>
+        </section>
     </main>
 
     <footer class="bg-emerald-800 text-emerald-100 text-center py-6 mt-auto">
@@ -231,6 +238,22 @@
     </footer>
 
     <script>
+        function renderManualGallery() {
+            const gallery = document.getElementById('manual-gallery');
+            if (!gallery) return;
+
+            gallery.innerHTML = Array.from({ length: 12 }, (_, index) => {
+                const page = index + 1;
+                const pageLabel = String(page).padStart(2, '0');
+                return `
+                    <figure class="bg-white/90 p-4 rounded-3xl shadow-sm border border-emerald-100">
+                        <img src="page-${pageLabel}.jpg" alt="คู่มือ I'm the Boss หน้า ${page}" class="w-full rounded-2xl shadow-sm" loading="lazy">
+                        <figcaption class="text-sm text-slate-500 mt-3">คู่มือ PDF หน้า ${page}</figcaption>
+                    </figure>
+                `;
+            }).join('');
+        }
+
         function setupScrollspy() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-btn');
@@ -262,6 +285,7 @@
         }
 
         window.onload = () => {
+            renderManualGallery();
             setupScrollspy();
         };
     </script>

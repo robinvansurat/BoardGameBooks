@@ -44,6 +44,7 @@
             <a href="#sec-flow" class="nav-btn px-4 py-2 rounded-full border border-teal-700 text-teal-200 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">กลางคืน/กลางวัน</a>
             <a href="#sec-variants" class="nav-btn px-4 py-2 rounded-full border border-teal-700 text-teal-200 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">กติกาพิเศษ</a>
             <a href="#sec-roles" class="nav-btn px-4 py-2 rounded-full border border-teal-700 text-teal-200 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">บทบาท</a>
+            <a href="#sec-gallery" class="nav-btn px-4 py-2 rounded-full border border-teal-700 text-teal-200 font-semibold hover:bg-slate-800 transition inline-block text-sm md:text-base">คู่มือเต็ม</a>
         </div>
     </nav>
 
@@ -197,7 +198,7 @@
             </div>
         </section>
 
-        <section id="sec-roles" class="mb-16 scroll-mt-24">
+        <section id="sec-roles" class="mb-20 scroll-mt-24">
             <h2 class="text-3xl font-bold text-white mb-4 border-b-2 border-slate-700 pb-2">บทบาทเด่นจากคู่มือ</h2>
             <p class="text-slate-400 mb-6">ผมสรุปบทบาทที่เห็นบ่อยจากหน้ารวมบทบาท และแนบสเปรดจาก PDF ไว้ด้านล่างเพื่อใช้อ้างอิงระหว่างเล่น</p>
 
@@ -259,6 +260,12 @@
                 </figure>
             </div>
         </section>
+
+        <section id="sec-gallery" class="mb-16 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-white mb-4 border-b-2 border-slate-700 pb-2">ภาพคู่มือ PDF ฉบับเต็ม</h2>
+            <p class="text-slate-400 mb-6">เพิ่มภาพจาก PDF ต้นฉบับครบทั้ง 15 หน้าไว้ท้ายหน้าเว็บ เพื่อให้เปิดเทียบกติกา บทบาท และโหมดพิเศษได้ครบในหน้าเดียว</p>
+            <div id="manual-gallery" class="space-y-5"></div>
+        </section>
     </main>
 
     <footer class="bg-black text-slate-400 text-center py-6 mt-auto">
@@ -266,6 +273,22 @@
     </footer>
 
     <script>
+        function renderManualGallery() {
+            const gallery = document.getElementById('manual-gallery');
+            if (!gallery) return;
+
+            gallery.innerHTML = Array.from({ length: 15 }, (_, index) => {
+                const page = index + 1;
+                const pageLabel = String(page).padStart(2, '0');
+                return `
+                    <figure class="bg-slate-950/85 p-4 rounded-3xl shadow-sm border border-slate-800">
+                        <img src="page-${pageLabel}.jpg" alt="คู่มือมนุษย์หมาป่า หน้า ${page}" class="w-full rounded-2xl shadow-sm" loading="lazy">
+                        <figcaption class="text-sm text-slate-500 mt-3">คู่มือ PDF หน้า ${page}</figcaption>
+                    </figure>
+                `;
+            }).join('');
+        }
+
         function setupScrollspy() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-btn');
@@ -297,6 +320,7 @@
         }
 
         window.onload = () => {
+            renderManualGallery();
             setupScrollspy();
         };
     </script>

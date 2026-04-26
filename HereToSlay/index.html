@@ -46,6 +46,30 @@
             background: #cbd5e1;
             color: #64748b;
         }
+        .card-db-control {
+            width: 100%;
+            border: 1px solid #fcd34d;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 1rem;
+            padding: 0.75rem 1rem;
+            color: #334155;
+            outline: none;
+        }
+        .card-db-control:focus {
+            border-color: #c2410c;
+            box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.16);
+        }
+        .card-result {
+            min-height: 220px;
+        }
+        .card-art {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 1rem;
+            border: 1px solid #fde68a;
+            background: #fffbeb;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -62,6 +86,7 @@
             <a href="#sec-cards" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">ประเภทการ์ด</a>
             <a href="#sec-stats" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">มอนสเตอร์ / 2D6</a>
             <a href="#sec-expansion" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">Here to Sleigh</a>
+            <a href="#sec-card-db" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">ฐานข้อมูลการ์ด</a>
             <a href="#sec-glossary" class="nav-btn px-4 py-2 rounded-full border border-amber-400 text-amber-900 font-semibold hover:bg-amber-100 transition inline-block text-sm md:text-base">คำศัพท์</a>
         </div>
     </nav>
@@ -321,6 +346,35 @@
             </div>
         </section>
 
+        <section id="sec-card-db" class="mb-20 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-amber-900 mb-4 border-b-2 border-amber-200 pb-2">ฐานข้อมูลการ์ดทั้งหมด</h2>
+            <div class="bg-white/90 p-6 rounded-3xl shadow-lg border border-amber-100 mb-6">
+                <div class="grid lg:grid-cols-[1.3fr_0.7fr_0.7fr_0.7fr] gap-3 mb-4">
+                    <label class="block">
+                        <span class="block text-sm font-bold text-amber-900 mb-2">ค้นหาชื่อการ์ด / คำอธิบาย</span>
+                        <input id="card-db-search" class="card-db-control" type="search" placeholder="เช่น Mellow Dee, Monster, Bard, Gift">
+                    </label>
+                    <label class="block">
+                        <span class="block text-sm font-bold text-amber-900 mb-2">ชุด</span>
+                        <select id="card-db-set" class="card-db-control"></select>
+                    </label>
+                    <label class="block">
+                        <span class="block text-sm font-bold text-amber-900 mb-2">ประเภท</span>
+                        <select id="card-db-type" class="card-db-control"></select>
+                    </label>
+                    <label class="block">
+                        <span class="block text-sm font-bold text-amber-900 mb-2">คลาส</span>
+                        <select id="card-db-class" class="card-db-control"></select>
+                    </label>
+                </div>
+                <div id="card-db-stats" class="grid md:grid-cols-4 gap-3"></div>
+                <p class="text-xs text-slate-500 mt-4">
+                    ข้อมูลนี้เก็บในไฟล์ cards-data.js ภายใน repo และสรุปคุณสมบัติเป็นภาษาไทยจาก inventory/source ของ Unstable Games Wiki ส่วนรูปการ์ดจะ lazy-load จากไฟล์ภาพของ wiki และซ่อนอัตโนมัติถ้า source ใบนั้นโหลดไม่ได้
+                </p>
+            </div>
+            <div id="card-db-results" class="grid md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+        </section>
+
         <section id="sec-glossary" class="mb-16 scroll-mt-24">
             <h2 class="text-3xl font-bold text-amber-900 mb-4 border-b-2 border-amber-200 pb-2">คำศัพท์สำคัญ</h2>
             <div class="grid md:grid-cols-2 gap-5">
@@ -346,6 +400,7 @@
         <p class="text-sm">Here to Slay Web Guide</p>
     </footer>
 
+    <script src="cards-data.js"></script>
     <script>
         let currentAP = 3;
 
@@ -378,6 +433,113 @@
         function resetAP() {
             currentAP = 3;
             updateAPDisplay();
+        }
+
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>"']/g, (character) => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            }[character]));
+        }
+
+        function setupCardDatabase() {
+            const data = window.HERE_TO_SLAY_CARD_DATA;
+            if (!data) return;
+
+            const searchInput = document.getElementById('card-db-search');
+            const setSelect = document.getElementById('card-db-set');
+            const typeSelect = document.getElementById('card-db-type');
+            const classSelect = document.getElementById('card-db-class');
+            const statsEl = document.getElementById('card-db-stats');
+            const resultsEl = document.getElementById('card-db-results');
+
+            const unique = (items) => [...new Set(items.filter(Boolean))].sort((a, b) => a.localeCompare(b));
+            const totalCopies = data.cards.reduce((sum, card) => sum + card.copies, 0);
+
+            function fillSelect(select, label, values) {
+                select.innerHTML = `<option value="">${label}</option>${values.map((value) => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join('')}`;
+            }
+
+            fillSelect(setSelect, 'ทุกชุด', data.decks.map((deck) => deck.name));
+            fillSelect(typeSelect, 'ทุกประเภท', unique(data.cards.map((card) => card.type)));
+            fillSelect(classSelect, 'ทุกคลาส', unique(data.cards.map((card) => card.cardClass)));
+
+            function renderStats(filteredCards) {
+                const filteredCopies = filteredCards.reduce((sum, card) => sum + card.copies, 0);
+                const types = unique(filteredCards.map((card) => card.type)).length;
+                const classes = unique(filteredCards.map((card) => card.cardClass)).length;
+                const boxes = [
+                    ['การ์ดที่พบ', `${filteredCards.length} ใบ`, `จาก ${data.cards.length} รายการ`],
+                    ['จำนวนตามสำเนา', `${filteredCopies} ใบ`, `จาก ${totalCopies} ใบรวม`],
+                    ['ประเภท', `${types} แบบ`, 'Hero, Monster, Item ฯลฯ'],
+                    ['คลาส', `${classes} คลาส`, 'รวมคลาสจากภาคเสริม']
+                ];
+
+                statsEl.innerHTML = boxes.map(([title, value, note]) => `
+                    <div class="bg-amber-50 border border-amber-100 rounded-2xl p-4">
+                        <div class="text-xs font-bold text-amber-800 uppercase tracking-wide">${escapeHtml(title)}</div>
+                        <div class="text-2xl font-bold text-slate-900 mt-1">${escapeHtml(value)}</div>
+                        <div class="text-xs text-slate-500 mt-1">${escapeHtml(note)}</div>
+                    </div>
+                `).join('');
+            }
+
+            function renderCards() {
+                const query = searchInput.value.trim().toLowerCase();
+                const setValue = setSelect.value;
+                const typeValue = typeSelect.value;
+                const classValue = classSelect.value;
+
+                const filteredCards = data.cards.filter((card) => {
+                    const searchable = [card.name, card.setName, card.type, card.cardClass, card.summary, card.tags.join(' ')].join(' ').toLowerCase();
+                    return (!query || searchable.includes(query))
+                        && (!setValue || card.setName === setValue)
+                        && (!typeValue || card.type === typeValue)
+                        && (!classValue || card.cardClass === classValue);
+                });
+
+                renderStats(filteredCards);
+
+                if (!filteredCards.length) {
+                    resultsEl.innerHTML = '<div class="bg-white/90 p-6 rounded-3xl shadow-sm border border-amber-100 text-slate-600 md:col-span-2 xl:col-span-3">ไม่พบการ์ดที่ตรงกับตัวกรองนี้</div>';
+                    return;
+                }
+
+                resultsEl.innerHTML = filteredCards.map((card) => `
+                    <article class="card-result bg-white/90 p-5 rounded-3xl shadow-sm border border-amber-100 flex flex-col">
+                        ${card.imageUrl ? `
+                            <a href="${escapeHtml(card.sourceUrl)}" target="_blank" rel="noopener" class="block mb-4">
+                                <img class="card-art" src="${escapeHtml(card.imageUrl)}" alt="${escapeHtml(card.name)}" loading="lazy" onerror="this.closest('a').remove()">
+                            </a>
+                        ` : ''}
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="bg-slate-900 text-amber-200 px-3 py-1 rounded-full text-xs font-bold">${escapeHtml(card.type)}</span>
+                            ${card.cardClass ? `<span class="bg-amber-100 text-amber-900 px-3 py-1 rounded-full text-xs font-bold">${escapeHtml(card.cardClass)}</span>` : ''}
+                            ${card.copies > 1 ? `<span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold">x${card.copies}</span>` : ''}
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">${escapeHtml(card.name)}</h3>
+                        <p class="text-sm text-slate-700 leading-relaxed flex-grow">${escapeHtml(card.summary)}</p>
+                        ${card.tags.length ? `<p class="text-xs text-slate-500 mt-3">Tags: ${escapeHtml(card.tags.join(', '))}</p>` : ''}
+                        <div class="mt-4 pt-3 border-t border-amber-100 flex flex-wrap items-center justify-between gap-3">
+                            <span class="text-xs text-slate-500">${escapeHtml(card.setName)}</span>
+                            <span class="flex gap-3">
+                                <a href="${escapeHtml(card.sourceUrl)}" class="text-xs font-bold text-amber-800 hover:text-orange-700" target="_blank" rel="noopener">source รายใบ</a>
+                                <a href="${escapeHtml(card.deckSourceUrl)}" class="text-xs font-bold text-slate-500 hover:text-orange-700" target="_blank" rel="noopener">inventory</a>
+                            </span>
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            [searchInput, setSelect, typeSelect, classSelect].forEach((control) => {
+                control.addEventListener('input', renderCards);
+                control.addEventListener('change', renderCards);
+            });
+
+            renderCards();
         }
 
         function setupScrollspy() {
@@ -413,6 +575,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             updateAPDisplay();
+            setupCardDatabase();
             setupScrollspy();
         });
     </script>
