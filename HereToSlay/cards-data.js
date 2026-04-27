@@ -331,6 +331,16 @@
         return { copies: 1, ...raw };
     }
 
+    function slugify(value) {
+        return value
+            .toLowerCase()
+            .replace(/\+/g, " plus ")
+            .replace(/-/g, " minus ")
+            .replace(/&/g, " and ")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-|-$/g, "");
+    }
+
     function summarize(type, cardClass, tags) {
         const classText = cardClass && classHints[cardClass] ? ` คลาส/ธีม: ${classHints[cardClass]}` : "";
         const tagText = tags.length ? ` หมายเหตุ: ${tags.join(", ")}.` : "";
@@ -357,8 +367,9 @@
                 const card = normalizeCard(raw);
                 const cardClass = card.cardClass || group.cardClass || "";
                 const tags = [...(group.tags || []), ...(card.tags || [])];
+                const id = `${deck.id}-${slugify(card.name)}`;
                 return {
-                    id: `${deck.id}-${card.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`,
+                    id,
                     name: card.name,
                     setId: deck.id,
                     setName: deck.name,
@@ -367,7 +378,7 @@
                     copies: card.copies,
                     tags,
                     summary: card.summary || summarize(group.type, cardClass, tags),
-                    imageUrl: findImageUrl(deck.id, card.name),
+                    imageUrl: (window.HERE_TO_SLAY_CARD_IMAGES && window.HERE_TO_SLAY_CARD_IMAGES[id]) || findImageUrl(deck.id, card.name),
                     sourceUrl: wikiCardUrl(card.name),
                     deckSourceUrl: deck.sourceUrl
                 };
